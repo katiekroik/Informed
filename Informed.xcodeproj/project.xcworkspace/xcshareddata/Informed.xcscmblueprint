@@ -1,0 +1,30 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "C8188D26FA55F117BFBD9AF2E5952005EE2BA92C",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "F29CAA6C5D850E4B372F0B4658984BA8694C3CF1" : 0,
+    "C8188D26FA55F117BFBD9AF2E5952005EE2BA92C" : 0
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "07173FC2-90EA-40DD-BFF5-2B49EDE2AD38",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "F29CAA6C5D850E4B372F0B4658984BA8694C3CF1" : "..",
+    "C8188D26FA55F117BFBD9AF2E5952005EE2BA92C" : "Informed\/"
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "Informed",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "Informed\/Informed.xcodeproj",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/katiekroik\/Informed.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "C8188D26FA55F117BFBD9AF2E5952005EE2BA92C"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/meghamadan\/manhattan-trees.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "F29CAA6C5D850E4B372F0B4658984BA8694C3CF1"
+    }
+  ]
+}
