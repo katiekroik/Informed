@@ -42,6 +42,8 @@
 		029E3DBF1CAC8ADC00640C82 /* IndividualArticleViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IndividualArticleViewController.swift; sourceTree = "<group>"; };
 		029E3DC11CAC925000640C82 /* indivArticleImage.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = indivArticleImage.jpg; sourceTree = "<group>"; };
 		029E3DC31CAC99D500640C82 /* leaderboardIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = leaderboardIcon.png; sourceTree = "<group>"; };
+		02C399A11CB31C250043B2B1 /* Realm.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Realm.framework; path = "../Downloads/realm-swift-0.98.6/osx/swift-2.2/Realm.framework"; sourceTree = "<group>"; };
+		02C399A21CB31C250043B2B1 /* RealmSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RealmSwift.framework; path = "../Downloads/realm-swift-0.98.6/osx/swift-2.2/RealmSwift.framework"; sourceTree = "<group>"; };
 		02C6A8E81CB3030E00F78425 /* LeaderboardViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LeaderboardViewController.swift; sourceTree = "<group>"; };
 		17B51CB41CAC811C002CC471 /* Informed.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Informed.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		17B51CB71CAC811C002CC471 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -87,6 +89,8 @@
 		17B51CAB1CAC811B002CC471 = {
 			isa = PBXGroup;
 			children = (
+				02C399A11CB31C250043B2B1 /* Realm.framework */,
+				02C399A21CB31C250043B2B1 /* RealmSwift.framework */,
 				17B51CB61CAC811C002CC471 /* Informed */,
 				17B51CCD1CAC811C002CC471 /* InformedTests */,
 				17B51CD81CAC811C002CC471 /* InformedUITests */,
@@ -428,6 +432,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				"FRAMEWORK_SEARCH_PATHS[arch=*]" = RealmSwift.framework;
 				INFOPLIST_FILE = Informed/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = nyu.edu.Informed;
