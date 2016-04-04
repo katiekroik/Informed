@@ -10,6 +10,7 @@
 		029E3DC01CAC8ADC00640C82 /* IndividualArticleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 029E3DBF1CAC8ADC00640C82 /* IndividualArticleViewController.swift */; };
 		029E3DC21CAC925000640C82 /* indivArticleImage.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 029E3DC11CAC925000640C82 /* indivArticleImage.jpg */; };
 		029E3DC41CAC99D500640C82 /* leaderboardIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 029E3DC31CAC99D500640C82 /* leaderboardIcon.png */; };
+		02C6A8E91CB3030E00F78425 /* LeaderboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02C6A8E81CB3030E00F78425 /* LeaderboardViewController.swift */; };
 		17B51CB81CAC811C002CC471 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17B51CB71CAC811C002CC471 /* AppDelegate.swift */; };
 		17B51CBA1CAC811C002CC471 /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17B51CB91CAC811C002CC471 /* FirstViewController.swift */; };
 		17B51CBC1CAC811C002CC471 /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17B51CBB1CAC811C002CC471 /* SecondViewController.swift */; };
@@ -41,6 +42,7 @@
 		029E3DBF1CAC8ADC00640C82 /* IndividualArticleViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IndividualArticleViewController.swift; sourceTree = "<group>"; };
 		029E3DC11CAC925000640C82 /* indivArticleImage.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = indivArticleImage.jpg; sourceTree = "<group>"; };
 		029E3DC31CAC99D500640C82 /* leaderboardIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = leaderboardIcon.png; sourceTree = "<group>"; };
+		02C6A8E81CB3030E00F78425 /* LeaderboardViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LeaderboardViewController.swift; sourceTree = "<group>"; };
 		17B51CB41CAC811C002CC471 /* Informed.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Informed.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		17B51CB71CAC811C002CC471 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		17B51CB91CAC811C002CC471 /* FirstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
@@ -110,6 +112,7 @@
 				17B51CB91CAC811C002CC471 /* FirstViewController.swift */,
 				17B51CBB1CAC811C002CC471 /* SecondViewController.swift */,
 				029E3DBF1CAC8ADC00640C82 /* IndividualArticleViewController.swift */,
+				02C6A8E81CB3030E00F78425 /* LeaderboardViewController.swift */,
 				17B51CBD1CAC811C002CC471 /* Main.storyboard */,
 				029E3DC31CAC99D500640C82 /* leaderboardIcon.png */,
 				17B51CC01CAC811C002CC471 /* Assets.xcassets */,
@@ -272,6 +275,7 @@
 			files = (
 				029E3DC01CAC8ADC00640C82 /* IndividualArticleViewController.swift in Sources */,
 				17B51CBC1CAC811C002CC471 /* SecondViewController.swift in Sources */,
+				02C6A8E91CB3030E00F78425 /* LeaderboardViewController.swift in Sources */,
 				17B51CB81CAC811C002CC471 /* AppDelegate.swift in Sources */,
 				17B51CBA1CAC811C002CC471 /* FirstViewController.swift in Sources */,
 			);

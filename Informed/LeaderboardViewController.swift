@@ -1,20 +1,27 @@
 //
-//  IndividualArticleViewController.swift
+//  LeaderboardViewController.swift
 //  Informed
 //
-//  Created by Katie Kroik on 3/30/16.
+//  Created by Katie Kroik on 4/4/16.
 //  Copyright © 2016 nyu.edu. All rights reserved.
 //
 
 import UIKit
 
-class IndividualArticleViewController: UIViewController {
+class LeaderboardViewController: UIViewController {
 
+    @IBOutlet weak var leader1: UILabel!
+    @IBOutlet weak var leader2: UILabel!
+    @IBOutlet weak var leader3: UILabel!
+    @IBOutlet weak var leader4: UILabel!
+    @IBOutlet weak var leader5: UILabel!
+    @IBOutlet weak var points1: UILabel!
+    @IBOutlet weak var points2: UILabel!
+    @IBOutlet weak var points3: UILabel!
+    @IBOutlet weak var points4: UILabel!
+    @IBOutlet weak var points5: UILabel!
     
-    // Name of article
-    @IBOutlet weak var articleName: UILabel!
-    // Article contents
-    @IBOutlet weak var article: UIScrollView!
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
