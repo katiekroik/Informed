@@ -1,4 +1,4 @@
 target 'Informed' do
-	use_frameworks!
-	pod 'RealmSwift'
+        use_frameworks!
+        pod 'Realm'
 end
