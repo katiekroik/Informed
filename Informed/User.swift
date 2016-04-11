@@ -12,7 +12,7 @@ import RealmSwift
 class User: Object {
     dynamic var name = "";
     // TODO : How are we representing Articles?
-    let articles = List<Object>()
-    let favorites = List<Object>()
+//    let articles = List<Object>()
+//    let favorites = List<Object>()
     dynamic var points = 0;
 }

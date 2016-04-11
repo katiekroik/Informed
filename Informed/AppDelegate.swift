@@ -8,40 +8,30 @@
 
 import UIKit
 import RealmSwift
-import Realm
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
 
-
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
-        // Override point for customization after application launch.
-        
-        /*
-            WANT TO TRY THE RealmSwift DB
-        */
-        
         
         let katie = User();
         katie.name = "Katie"
         katie.points = 0
         
         print("katie exists: \(katie.name)")
-//        
-//        let realm: Realm
-//        do {
-//            realm = try! Realm()
-//            realm.objects(User)
-//        } catch {
-//            print("REALM IS STILL NOT WORKING")
-//        }
+        let realm = try! Realm()
         
+        let users = realm.objects(User)
+        print(users.count)
         
-//        let realm = try! Realm()
-//        let people = realm.objects(User)
-//        print(people.count)
+        try! realm.write{
+            realm.add(katie)
+        }
+        
+        print(users.count)
+        
         return true
     }
 
