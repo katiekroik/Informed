@@ -7,10 +7,12 @@
 //
 
 import Foundation
+import RealmSwift
 
-public class User: NSObject {
-    public dynamic var name = "";
-    public dynamic var articles = [];
-    public dynamic var favorites = [];
-    public dynamic var points = 0;
+class User: Object {
+    dynamic var name = "";
+    // TODO : How are we representing Articles?
+    let articles = List<Object>()
+    let favorites = List<Object>()
+    dynamic var points = 0;
 }
