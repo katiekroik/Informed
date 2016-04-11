@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import RealmSwift
 
 class FirstViewController: UIViewController {
 
@@ -15,6 +16,8 @@ class FirstViewController: UIViewController {
     
     // Where the news articles loaded
     @IBOutlet weak var NewsArticles: UITableView!
+    
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
