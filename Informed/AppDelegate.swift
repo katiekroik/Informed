@@ -16,21 +16,37 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         
-        let katie = User();
-        katie.name = "Katie"
-        katie.points = 0
-        
-        print("katie exists: \(katie.name)")
         let realm = try! Realm()
+
+        /* ADDS A NEW USER*/
+//        let katie = User();
+//        katie.name = "Katie"
+//        katie.points = 0
+//        // katie.favoriteArticles = ;
+//        
+//        print("katie exists: \(katie.name)")
+//
+//        let users = realm.objects(User)
+//        print(users.count)
+//        
+//        try! realm.write{
+//            realm.add(katie)
+//        }
         
-        let users = realm.objects(User)
-        print(users.count)
+        /* ADDS AN ARTICLE */
+//        let article = Article()
+//        article.articleName = "Article Name";
+//        article.articleText = "This is the Article Text and it is cool";
+//        
+//        try! realm.write {
+//            realm.add(article)
+//        }
         
-        try! realm.write{
-            realm.add(katie)
-        }
+        print(realm.objects(User))
+        print(realm.objects(Article))
         
-        print(users.count)
+        // print(users.count)
+        
         
         return true
     }

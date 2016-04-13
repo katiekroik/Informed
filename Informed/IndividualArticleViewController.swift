@@ -31,7 +31,8 @@ class IndividualArticleViewController: UIViewController {
         let nearestIndex = Int(CGFloat(targetContentOffset.memory.x) / scrollView.bounds.size.width + 0.5)
         
         //Just to make sure we don't scroll past your content
-        let clampedIndex = 100.5; // max( min(nearestIndex, yourPagesArray.count - 1 ), 0 )
+        let clampedIndex = 100.5;
+        // TODO : REPLACE 100.5 WITH : max( min(nearestIndex, yourPagesArray.count - 1 ), 0 )
         
         NSLog("hi");
         //This is the actual x position in the scroll view

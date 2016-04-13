@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		022BB11A1CBC3AC60044452D /* Article.swift in Sources */ = {isa = PBXBuildFile; fileRef = 022BB1191CBC3AC60044452D /* Article.swift */; };
 		023E77081CB4A3F2009768EF /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 023E77071CB4A3F2009768EF /* User.swift */; };
 		029E3DC01CAC8ADC00640C82 /* IndividualArticleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 029E3DBF1CAC8ADC00640C82 /* IndividualArticleViewController.swift */; };
 		029E3DC21CAC925000640C82 /* indivArticleImage.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 029E3DC11CAC925000640C82 /* indivArticleImage.jpg */; };
@@ -41,6 +42,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		022BB1191CBC3AC60044452D /* Article.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Article.swift; sourceTree = "<group>"; };
 		023E77071CB4A3F2009768EF /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		029E3DBF1CAC8ADC00640C82 /* IndividualArticleViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IndividualArticleViewController.swift; sourceTree = "<group>"; };
 		029E3DC11CAC925000640C82 /* indivArticleImage.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = indivArticleImage.jpg; sourceTree = "<group>"; };
@@ -73,7 +75,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				BC85C896FA88618BC52E4C07 /* Pods_Informed.framework in Frameworks */,
-        a53aec2fd82d5aa278ffffd680b7c1a526e97592
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -125,6 +126,7 @@
 				17B51CB71CAC811C002CC471 /* AppDelegate.swift */,
 				17B51CB91CAC811C002CC471 /* FirstViewController.swift */,
 				023E77071CB4A3F2009768EF /* User.swift */,
+				022BB1191CBC3AC60044452D /* Article.swift */,
 				17B51CBB1CAC811C002CC471 /* SecondViewController.swift */,
 				029E3DBF1CAC8ADC00640C82 /* IndividualArticleViewController.swift */,
 				02C6A8E81CB3030E00F78425 /* LeaderboardViewController.swift */,
@@ -159,8 +161,6 @@
 			isa = PBXGroup;
 			children = (
 				646F802F5F4186BD3AAEAE6A /* Pods_Informed.framework */,
-
-        a53aec2fd82d5aa278ffffd680b7c1a526e97592
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -170,7 +170,6 @@
 			children = (
 				4B68D4CBFF649B9548960750 /* Pods-Informed.debug.xcconfig */,
 				1DC8D04BE29E1C742C54F17F /* Pods-Informed.release.xcconfig */,
-        53aec2fd82d5aa278ffffd680b7c1a526e97592
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -188,7 +187,6 @@
 				17B51CB21CAC811C002CC471 /* Resources */,
 				13F78D9263D6C37B7721454E /* 📦 Embed Pods Frameworks */,
 				558A1DC3E8FCB422379F9ED8 /* 📦 Copy Pods Resources */,
-
 			);
 			buildRules = (
 			);
@@ -309,7 +307,6 @@
 
 /* Begin PBXShellScriptBuildPhase section */
 		13F78D9263D6C37B7721454E /* 📦 Embed Pods Frameworks */ = {
-
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -325,7 +322,6 @@
 			showEnvVarsInLog = 0;
 		};
 		558A1DC3E8FCB422379F9ED8 /* 📦 Copy Pods Resources */ = {
-
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -341,7 +337,6 @@
 			showEnvVarsInLog = 0;
 		};
 		6E079003C1E7C4784DB8FC99 /* 📦 Check Pods Manifest.lock */ = {
-
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -356,36 +351,6 @@
 			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
-
-		F83A3381E03E74BA90E86065 /*  */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
-			showEnvVarsInLog = 0;
-		};
-		FAD4155BBC724A5A83DC461E /*  */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellScript = "";
-			showEnvVarsInLog = 0;
-		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -393,6 +358,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				022BB11A1CBC3AC60044452D /* Article.swift in Sources */,
 				029E3DC01CAC8ADC00640C82 /* IndividualArticleViewController.swift in Sources */,
 				17B51CBC1CAC811C002CC471 /* SecondViewController.swift in Sources */,
 				023E77081CB4A3F2009768EF /* User.swift in Sources */,
@@ -537,7 +503,6 @@
 		17B51CDF1CAC811C002CC471 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 4B68D4CBFF649B9548960750 /* Pods-Informed.debug.xcconfig */;
-
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = Informed/Info.plist;
@@ -550,7 +515,6 @@
 		17B51CE01CAC811C002CC471 /* Release */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 1DC8D04BE29E1C742C54F17F /* Pods-Informed.release.xcconfig */;
-
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				"FRAMEWORK_SEARCH_PATHS[arch=*]" = RealmSwift.framework;

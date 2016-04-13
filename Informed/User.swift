@@ -10,9 +10,12 @@ import Foundation
 import RealmSwift
 
 class User: Object {
-    dynamic var name = "";
-    // TODO : How are we representing Articles?
+    dynamic var name = ""
+    dynamic var points = 0
 //    let articles = List<Object>()
-//    let favorites = List<Object>()
-    dynamic var points = 0;
+//    let favoriteArticles = List<Article>()
+    
+//    dynamic var readArticles
+//    dynamic var favoriteArticles
+
 }
