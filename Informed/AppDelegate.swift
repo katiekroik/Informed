@@ -35,17 +35,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         /* ADDS AN ARTICLE */
 //        let article = Article()
-//        article.articleName = "Article Name";
-//        article.articleText = "This is the Article Text and it is cool";
+//        article.articleName = "I love Articles";
+//        article.articleText = "That's why we're making this news app called Informed!";
 //        
 //        try! realm.write {
 //            realm.add(article)
 //        }
         
-        print(realm.objects(User))
-        print(realm.objects(Article))
-        
-        // print(users.count)
+        /* Prints the objects */
+//         print(realm.objects(User))
+//         print(realm.objects(Article))
+//        
+//         print(users.count)
         
         
         return true
