@@ -53,7 +53,7 @@ class FirstViewController: UITableViewController {
     
     override func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         // print(articleArray)
-        return "Genre \(section)"
+        return "Genre: None Right Now"
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
@@ -70,6 +70,23 @@ class FirstViewController: UITableViewController {
         // cell.textLabel?.text = "Section \(indexPath.section) Row \(indexPath.row)"
         cell.textLabel?.text = articleArray[i].articleName
         return cell
+    }
+    
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        
+        tableView.deselectRowAtIndexPath(indexPath, animated: true)
+        
+        let row = indexPath.row
+        print("Row: \(row)")
+        // performSegueWithIdentifier("segue", sender: self)
+        
+        // print(articleArray[row] as! String)
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!) {
+        if segue.identifier == "segue" {
+            // Setup new view controller
+        }
     }
 }
 
