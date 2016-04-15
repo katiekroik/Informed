@@ -17,14 +17,11 @@ class FirstViewController: UITableViewController {
 //    let textCellIdentifier = "TextCell"
 //    
     var articleArray = [(Article)]();
+//    let indivArticleSegueIdentifier = "ShowIndivSegue"
+    var selectedArticle = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
-//        NewsGenre.text = "Changed News Genre";
-        // genre.text = "Changed Genre in FVC!";
-        // self.genre.text = "Changed Genre in FVC!";
-//        self.newsArticles.registerClass(UITableViewCell.self, forCellReuseIdentifier: "TextCell")
         let realm = try! Realm()
         let articles = realm.objects(Article)
         // tableView.delegate = self;
@@ -33,6 +30,7 @@ class FirstViewController: UITableViewController {
         }
         print("** PRINTING ARTICLES **")
         print(articleArray)
+        
 //
     }
 
@@ -79,13 +77,31 @@ class FirstViewController: UITableViewController {
         let row = indexPath.row
         print("Row: \(row)")
         // performSegueWithIdentifier("segue", sender: self)
-        
+        // self.performSegueWithIdentifier("ShowIndivSegue", sender: tableView)
+        selectedArticle = row
+        performSegueWithIdentifier("ShowIndivSegue", sender: self)
+
         // print(articleArray[row] as! String)
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!) {
-        if segue.identifier == "segue" {
-            // Setup new view controller
+        print("in prepare for segue")
+        print(segue.identifier)
+        print(sender)
+        if segue.identifier == "ShowIndivSegue" {
+            print("preparing")
+            if let cell = sender as? UITableViewCell {
+                let i = selectedArticle
+                if segue.identifier == "ShowIndivSegue" {
+                    let vc = segue.destinationViewController as! IndividualArticleViewController
+                    vc.articleName.text = articleArray[i].articleName
+                    vc.articleContents.text = articleArray[i].articleText
+                    
+//                    let vc = segue.destinationViewController as! NavLeaderViewController
+//                    vc.articleName = articleArray[i].articleName
+//                    vc.articleContents = articleArray[i].articleText
+                }
+            }
         }
     }
 }

@@ -13,16 +13,24 @@ class IndividualArticleViewController: UIViewController {
     // Name of article
     @IBOutlet weak var articleName: UILabel!
     // Article contents
-    @IBOutlet weak var article: UIScrollView!
+    @IBOutlet weak var articleContents: UITextView!
 
+    var aName = String()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        article.decelerationRate = UIScrollViewDecelerationRateFast;
+        articleContents.decelerationRate = UIScrollViewDecelerationRateFast;
+        articleContents.userInteractionEnabled = false
+
         NSLog("Did load Individual Article");
-        scrollViewDidEndDragging(article, willDecelerate:false);
+        scrollViewDidEndDragging(articleContents, willDecelerate:false);
 
         // Do any additional setup after loading the view.
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        articleName.text = aName;
     }
     
     func scrollViewWillEndDragging(scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>)
