@@ -15,6 +15,8 @@ class IndividualArticleViewController: UIViewController {
     // Article contents
     @IBOutlet weak var articleContents: UITextView!
 
+    var name = String()
+    var contents = String()
     var aName = String()
     
     override func viewDidLoad() {
@@ -22,6 +24,8 @@ class IndividualArticleViewController: UIViewController {
 
         articleContents.decelerationRate = UIScrollViewDecelerationRateFast;
         articleContents.userInteractionEnabled = false
+        
+        print(articleName.text)
 
         NSLog("Did load Individual Article");
         scrollViewDidEndDragging(articleContents, willDecelerate:false);

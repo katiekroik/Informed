@@ -15,36 +15,32 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
-        
-        
         // Lets the schema be accepted by Realm
         let config = Realm.Configuration(
-            // Set the new schema version. This must be greater than the previously used
-            // version (if you've never set a schema version before, the version is 0).
+            // Sets the new Schema version
             schemaVersion: 1,
             
-            // Set the block which will be called automatically when opening a Realm with
-            // a schema version lower than the one set above
+            // Blocks older versions
             migrationBlock: { migration, oldSchemaVersion in
-                // We haven’t migrated anything yet, so oldSchemaVersion == 0
+                // Old schema is less than 1
                 if (oldSchemaVersion < 1) {
-                    // Nothing to do!
-                    // Realm will automatically detect new properties and removed properties
-                    // And will update the schema on disk automatically
+                    // And do nothing -> Realm will update it :D
                 }
             }
         )
+        // Set the config
         Realm.Configuration.defaultConfiguration = config
 
         let realm = try! Realm()
 
         
-        let article1 = Article()
-        article1.articleName = "Article 2";
-        article1.articleText = "YAY WE HAVE A SECOND ARTICLE!!!";
-        try! realm.write {
-            realm.add(article1)
-        }
+        /* Adding articles to the DB */
+//        let article1 = Article()
+//        article1.articleName = "Article 2";
+//        article1.articleText = "YAY WE HAVE A SECOND ARTICLE!!!";
+//        try! realm.write {
+//            realm.add(article1)
+//        }
 
 //        let list = List<Article>()
 //        list.append(article1)
@@ -69,7 +65,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 //        article.articleName = "I love Articles";
 //        article.articleText = "That's why we're making this news app called Informed!";
 //        
-        
         
         /* Prints the objects */
          print(realm.objects(User))

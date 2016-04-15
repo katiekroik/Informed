@@ -69,7 +69,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GMf-ko-9Ms" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1401" y="-297"/>
+            <point key="canvasLocation" x="1399" y="-297"/>
         </scene>
         <!--User Stats-->
         <scene sceneID="wg7-f3-ORb">
@@ -417,7 +417,7 @@
             </objects>
             <point key="canvasLocation" x="400" y="1029"/>
         </scene>
-        <!--Read News-->
+        <!--First View Controller-->
         <scene sceneID="FIM-gG-cKB">
             <objects>
                 <tableViewController id="1Ku-Ob-C0w" customClass="FirstViewController" customModule="Informed" customModuleProvider="target" sceneMemberID="viewController">
@@ -426,27 +426,30 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <label key="tableHeaderView" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=" [ GENRE ]" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="pBR-0K-yBw">
-                            <rect key="frame" x="0.0" y="0.0" width="320" height="66"/>
+                            <rect key="frame" x="0.0" y="64" width="320" height="66"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <tabBar key="tableFooterView" contentMode="scaleToFill" id="H90-Hu-yPe">
-                            <rect key="frame" x="0.0" y="135" width="320" height="49"/>
+                            <rect key="frame" x="0.0" y="199" width="320" height="49"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             <items/>
                         </tabBar>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="LabelCell" rowHeight="41" id="l7V-Na-cbX">
-                                <rect key="frame" x="0.0" y="94" width="320" height="41"/>
+                                <rect key="frame" x="0.0" y="158" width="320" height="41"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="l7V-Na-cbX" id="JiC-2v-Utv">
                                     <rect key="frame" x="0.0" y="0.0" width="287" height="40.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                                 <accessibility key="accessibilityConfiguration" label="Read Indiv Article"/>
+                                <connections>
+                                    <segue destination="o9b-iq-qc1" kind="push" id="iIu-zh-dfG"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <sections/>
@@ -455,11 +458,10 @@
                             <outlet property="delegate" destination="1Ku-Ob-C0w" id="FMp-sQ-BAG"/>
                         </connections>
                     </tableView>
-                    <tabBarItem key="tabBarItem" title="Read News" image="first" selectedImage="first" id="qpJ-ul-Onq"/>
+                    <navigationItem key="navigationItem" id="nXU-xJ-Ljr"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="searchDisplayController" destination="9nE-43-Qsn" id="1Jk-iy-zAe"/>
-                        <segue destination="KeI-wa-rCb" kind="push" identifier="ShowIndivSegue" id="tf1-XP-8cs"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7vJ-nV-kBJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -472,7 +474,7 @@
                     </connections>
                 </searchDisplayController>
             </objects>
-            <point key="canvasLocation" x="406" y="-297"/>
+            <point key="canvasLocation" x="938" y="-297"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="yl2-sM-qoP">
@@ -485,7 +487,7 @@
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     </tabBar>
                     <connections>
-                        <segue destination="1Ku-Ob-C0w" kind="relationship" relationship="viewControllers" id="nYj-RN-Y13"/>
+                        <segue destination="p0T-N0-WPO" kind="relationship" relationship="viewControllers" id="nYj-RN-Y13"/>
                         <segue destination="8rJ-Kc-sve" kind="relationship" relationship="viewControllers" id="lzU-1b-eKA"/>
                         <segue destination="bOY-J4-F8G" kind="relationship" relationship="viewControllers" id="cmB-er-9eX"/>
                     </connections>
@@ -494,24 +496,24 @@
             </objects>
             <point key="canvasLocation" x="-16" y="172.29333333333324"/>
         </scene>
-        <!--ShowIndivSegue-->
-        <scene sceneID="4G0-vQ-LWo">
+        <!--Read News-->
+        <scene sceneID="AA8-EF-8O4">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="DTe-HB-KwH" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <navigationController title="ShowIndivSegue" automaticallyAdjustsScrollViewInsets="NO" id="KeI-wa-rCb" customClass="NavLeaderViewController" customModule="Informed" customModuleProvider="target" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="p0T-N0-WPO" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Read News" image="first" selectedImage="first" id="qpJ-ul-Onq"/>
                     <toolbarItems/>
-                    <navigationItem key="navigationItem" id="FQI-Yf-nun"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Wca-xV-L1w">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="mZa-7A-DDK">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="o9b-iq-qc1" kind="relationship" relationship="rootViewController" id="Fqc-lh-b9j"/>
+                        <segue destination="1Ku-Ob-C0w" kind="relationship" relationship="rootViewController" id="ecn-V4-RdG"/>
                     </connections>
                 </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ZDe-wB-rXv" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="869" y="-297"/>
+            <point key="canvasLocation" x="406" y="-297"/>
         </scene>
     </scenes>
     <resources>

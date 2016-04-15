@@ -16,6 +16,7 @@
 		02A4D8431CBF208B0007E924 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 02A4D8411CBF208B0007E924 /* Main.storyboard */; };
 		02A4D8451CBF21C10007E924 /* black-icons-news-vector.png in Resources */ = {isa = PBXBuildFile; fileRef = 02A4D8441CBF21C10007E924 /* black-icons-news-vector.png */; };
 		02A4D8471CC04E5F0007E924 /* NavLeaderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02A4D8461CC04E5F0007E924 /* NavLeaderViewController.swift */; };
+		02A4D84B1CC121670007E924 /* Genre.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02A4D84A1CC121670007E924 /* Genre.swift */; };
 		02C6A8E91CB3030E00F78425 /* LeaderboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02C6A8E81CB3030E00F78425 /* LeaderboardViewController.swift */; };
 		17B51CB81CAC811C002CC471 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17B51CB71CAC811C002CC471 /* AppDelegate.swift */; };
 		17B51CBA1CAC811C002CC471 /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17B51CB91CAC811C002CC471 /* FirstViewController.swift */; };
@@ -54,6 +55,7 @@
 		02A4D8421CBF208B0007E924 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		02A4D8441CBF21C10007E924 /* black-icons-news-vector.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "black-icons-news-vector.png"; sourceTree = "<group>"; };
 		02A4D8461CC04E5F0007E924 /* NavLeaderViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavLeaderViewController.swift; sourceTree = "<group>"; };
+		02A4D84A1CC121670007E924 /* Genre.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Genre.swift; sourceTree = "<group>"; };
 		02C399A11CB31C250043B2B1 /* Realm.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Realm.framework; path = "../Downloads/realm-swift-0.98.6/osx/swift-2.2/Realm.framework"; sourceTree = "<group>"; };
 		02C399A21CB31C250043B2B1 /* RealmSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RealmSwift.framework; path = "../Downloads/realm-swift-0.98.6/osx/swift-2.2/RealmSwift.framework"; sourceTree = "<group>"; };
 		02C6A8E81CB3030E00F78425 /* LeaderboardViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LeaderboardViewController.swift; sourceTree = "<group>"; };
@@ -132,6 +134,7 @@
 				17B51CB71CAC811C002CC471 /* AppDelegate.swift */,
 				17B51CB91CAC811C002CC471 /* FirstViewController.swift */,
 				023E77071CB4A3F2009768EF /* User.swift */,
+				02A4D84A1CC121670007E924 /* Genre.swift */,
 				022BB1191CBC3AC60044452D /* Article.swift */,
 				17B51CBB1CAC811C002CC471 /* SecondViewController.swift */,
 				02A4D8441CBF21C10007E924 /* black-icons-news-vector.png */,
@@ -369,6 +372,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				02A4D84B1CC121670007E924 /* Genre.swift in Sources */,
 				022BB11A1CBC3AC60044452D /* Article.swift in Sources */,
 				02A4D8471CC04E5F0007E924 /* NavLeaderViewController.swift in Sources */,
 				029E3DC01CAC8ADC00640C82 /* IndividualArticleViewController.swift in Sources */,

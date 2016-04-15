@@ -54,15 +54,9 @@ class FirstViewController: UITableViewController {
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("LabelCell", forIndexPath: indexPath)
         
-        // cell.textLabel?.text = "Section \(indexPath.section) Row \(indexPath.row)"
-//        let a = self.articleArray[indexPath]
-//        print(a)
-        // print(cellForRowAtIndexPath)
         print(indexPath.indexAtPosition(1))
         let i = indexPath.indexAtPosition(1)
         print(articleArray[i])
-        // print(articleArray[indexPath.indexAtPostition(1)])
-        // cell.textLabel?.text = "Section \(indexPath.section) Row \(indexPath.row)"
         cell.textLabel?.text = articleArray[i].articleName
         return cell
     }
@@ -73,12 +67,9 @@ class FirstViewController: UITableViewController {
         
         let row = indexPath.row
         print("Row: \(row)")
-        // performSegueWithIdentifier("segue", sender: self)
-        // self.performSegueWithIdentifier("ShowIndivSegue", sender: tableView)
         selectedArticle = row
-        performSegueWithIdentifier("ShowIndivSegue", sender: self)
+//        performSegueWithIdentifier("ShowIndivSegue", sender: self)
 
-        // print(articleArray[row] as! String)
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!) {
@@ -90,9 +81,16 @@ class FirstViewController: UITableViewController {
             if let cell = sender as? UITableViewCell {
                 let i = selectedArticle
                 if segue.identifier == "ShowIndivSegue" {
+                    /* Right now I have it set to NavLeaderViewController, bc I'm playing around
+                    with it and idk what's wrong... */
                     let vc = segue.destinationViewController as! IndividualArticleViewController
-                    vc.articleName.text = articleArray[i].articleName
-                    vc.articleContents.text = articleArray[i].articleText
+                    print(articleArray[i].articleName)
+                    print(articleArray[i].articleText)
+                    vc.name = articleArray[i].articleName
+                    vc.contents = articleArray[i].articleText
+                    
+//                    vc.articleName.text = articleArray[i].articleName
+//                    vc.articleContents.text = articleArray[i].articleText
                     
 //                    let vc = segue.destinationViewController as! NavLeaderViewController
 //                    vc.articleName = articleArray[i].articleName
