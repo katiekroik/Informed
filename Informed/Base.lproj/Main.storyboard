@@ -448,7 +448,7 @@
                                 </tableViewCellContentView>
                                 <accessibility key="accessibilityConfiguration" label="Read Indiv Article"/>
                                 <connections>
-                                    <segue destination="o9b-iq-qc1" kind="push" id="iIu-zh-dfG"/>
+                                    <segue destination="o9b-iq-qc1" kind="push" identifier="ShowIndivSegue" id="iIu-zh-dfG"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>

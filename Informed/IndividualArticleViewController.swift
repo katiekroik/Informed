@@ -26,6 +26,9 @@ class IndividualArticleViewController: UIViewController {
         articleContents.userInteractionEnabled = false
         
         print(articleName.text)
+        
+        articleName.text = name
+        articleContents.text = contents
 
         NSLog("Did load Individual Article");
         scrollViewDidEndDragging(articleContents, willDecelerate:false);

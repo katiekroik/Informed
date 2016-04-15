@@ -68,14 +68,13 @@ class FirstViewController: UITableViewController {
         let row = indexPath.row
         print("Row: \(row)")
         selectedArticle = row
-//        performSegueWithIdentifier("ShowIndivSegue", sender: self)
+        // performSegueWithIdentifier("ShowIndivSegue", sender: self)
 
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!) {
         print("in prepare for segue")
         print(segue.identifier)
-        print(sender)
         if segue.identifier == "ShowIndivSegue" {
             print("preparing")
             if let cell = sender as? UITableViewCell {
@@ -84,8 +83,9 @@ class FirstViewController: UITableViewController {
                     /* Right now I have it set to NavLeaderViewController, bc I'm playing around
                     with it and idk what's wrong... */
                     let vc = segue.destinationViewController as! IndividualArticleViewController
-                    print(articleArray[i].articleName)
-                    print(articleArray[i].articleText)
+                    print(articleArray[i])
+                    // print(articleArray[i].articleName)
+                    // print(articleArray[i].articleText)
                     vc.name = articleArray[i].articleName
                     vc.contents = articleArray[i].articleText
                     
