@@ -16,14 +16,45 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         
+        
+        // Lets the schema be accepted by Realm
+        let config = Realm.Configuration(
+            // Set the new schema version. This must be greater than the previously used
+            // version (if you've never set a schema version before, the version is 0).
+            schemaVersion: 1,
+            
+            // Set the block which will be called automatically when opening a Realm with
+            // a schema version lower than the one set above
+            migrationBlock: { migration, oldSchemaVersion in
+                // We haven’t migrated anything yet, so oldSchemaVersion == 0
+                if (oldSchemaVersion < 1) {
+                    // Nothing to do!
+                    // Realm will automatically detect new properties and removed properties
+                    // And will update the schema on disk automatically
+                }
+            }
+        )
+        Realm.Configuration.defaultConfiguration = config
+
         let realm = try! Realm()
 
-        /* ADDS A NEW USER*/
+        
+        let article1 = Article()
+        article1.articleName = "Article 2";
+        article1.articleText = "YAY WE HAVE A SECOND ARTICLE!!!";
+        try! realm.write {
+            realm.add(article1)
+        }
+
+//        let list = List<Article>()
+//        list.append(article1)
+//
+//        /* ADDS A NEW USER*/
 //        let katie = User();
 //        katie.name = "Katie"
-//        katie.points = 0
-//        // katie.favoriteArticles = ;
-//        
+//        katie.points = 5
+//        katie.favoriteArticles = list
+        
 //        print("katie exists: \(katie.name)")
 //
 //        let users = realm.objects(User)
@@ -38,14 +69,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 //        article.articleName = "I love Articles";
 //        article.articleText = "That's why we're making this news app called Informed!";
 //        
-//        try! realm.write {
-//            realm.add(article)
-//        }
+        
         
         /* Prints the objects */
-//         print(realm.objects(User))
-//         print(realm.objects(Article))
-//        
+         print(realm.objects(User))
+         print(realm.objects(Article))
+//
 //         print(users.count)
         
         

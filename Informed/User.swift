@@ -12,6 +12,7 @@ import RealmSwift
 class User: Object {
     dynamic var name = ""
     dynamic var points = 0
+     public var favoriteArticles = List<Article>()
 //    let articles = List<Object>()
 //    let favoriteArticles = List<Article>()
     

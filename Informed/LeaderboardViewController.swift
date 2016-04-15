@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import RealmSwift
+//import RealmSwift
 
 
 class LeaderboardViewController: UIViewController {
@@ -28,28 +28,26 @@ class LeaderboardViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let realm = try! Realm()
-        let users = realm.objects(User)
-        
-        let sortedUsers = users.sorted("points", ascending: false)
-        
-        
-        leader1.text = sortedUsers[0].name
-        points1.text = String(sortedUsers[0].points)
-        
-        leader2.text = sortedUsers[1].name
-        points2.text = String(sortedUsers[1].points)
-        
-        leader3.text = sortedUsers[2].name
-        points3.text = String(sortedUsers[2].points)
-        
-        leader4.text = sortedUsers[3].name
-        points4.text = String(sortedUsers[3].points)
-        
-        leader5.text = sortedUsers[4].name
-        points5.text = String(sortedUsers[4].points)
-        // leader2.text = sortedArticles[1]
-        // let sortedDogs = realm.objects(Dog).filter("color = 'tan' AND name BEGINSWITH 'B'").sorted("name")
+//        let realm = try! Realm()
+//        let users = realm.objects(User)
+//        
+//        let sortedUsers = users.sorted("points", ascending: false)
+//        
+//        
+//        leader1.text = sortedUsers[0].name
+//        points1.text = String(sortedUsers[0].points)
+//        
+//        leader2.text = sortedUsers[1].name
+//        points2.text = String(sortedUsers[1].points)
+//        
+//        leader3.text = sortedUsers[2].name
+//        points3.text = String(sortedUsers[2].points)
+//        
+//        leader4.text = sortedUsers[3].name
+//        points4.text = String(sortedUsers[3].points)
+//        
+//        leader5.text = sortedUsers[4].name
+//        points5.text = String(sortedUsers[4].points)
 
         // Do any additional setup after loading the view.
     }

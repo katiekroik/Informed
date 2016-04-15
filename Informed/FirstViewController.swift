@@ -14,10 +14,7 @@ class FirstViewController: UITableViewController {
     @IBOutlet weak var genre: UILabel!
     // Genre of News
 
-//    let textCellIdentifier = "TextCell"
-//    
     var articleArray = [(Article)]();
-//    let indivArticleSegueIdentifier = "ShowIndivSegue"
     var selectedArticle = 0
     
     override func viewDidLoad() {
