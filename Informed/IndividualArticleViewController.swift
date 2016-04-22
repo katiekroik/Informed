@@ -23,12 +23,21 @@ class IndividualArticleViewController: UIViewController {
         super.viewDidLoad()
 
         articleContents.decelerationRate = UIScrollViewDecelerationRateFast;
-        articleContents.userInteractionEnabled = false
-        
+        articleContents.userInteractionEnabled = true;
+        articleContents.scrollEnabled = true;
+        articleContents.scrollRangeToVisible(NSRange(location:0, length:0))
+
         print(articleName.text)
         
-        articleName.text = name
+        articleName.text = aName
         articleContents.text = contents
+        
+//        articleContents.frame
+        var frame = self.view.frame;
+    
+        print(articleContents.frame)
+        print(frame)
+        // articleContents.frame = frame
 
         NSLog("Did load Individual Article");
         scrollViewDidEndDragging(articleContents, willDecelerate:false);
