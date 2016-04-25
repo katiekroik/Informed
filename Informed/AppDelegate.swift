@@ -18,12 +18,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Lets the schema be accepted by Realm
         let config = Realm.Configuration(
             // Sets the new Schema version
-            schemaVersion: 1,
+            schemaVersion: 2,
             
             // Blocks older versions
             migrationBlock: { migration, oldSchemaVersion in
                 // Old schema is less than 1
-                if (oldSchemaVersion < 1) {
+                if (oldSchemaVersion < 2) {
                     // And do nothing -> Realm will update it :D
                 }
             }
