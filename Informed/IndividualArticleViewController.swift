@@ -33,7 +33,7 @@ class IndividualArticleViewController: UIViewController {
         articleContents.text = contents
         
 //        articleContents.frame
-        var frame = self.view.frame;
+        let frame = self.view.frame;
     
         print(articleContents.frame)
         print(frame)

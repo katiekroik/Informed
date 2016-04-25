@@ -11,6 +11,4 @@ import RealmSwift
 
 class Genre: Object {
     dynamic var name = ""
-    dynamic var numAricles = 0
-    public var articles = List<Article>()
 }

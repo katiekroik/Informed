@@ -10,8 +10,9 @@ import Foundation
 import RealmSwift
 
 class Article: Object {
-    dynamic var articleName = "";
-    dynamic var articleText = "";
-//    var tags = [(String)]();
-    // TODO : How are we representing Articles?
+    dynamic var genre: Genre!
+    dynamic var id = 0
+    dynamic var name = ""
+    dynamic var content = ""
+    dynamic var publisher = ""
 }
