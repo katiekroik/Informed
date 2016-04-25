@@ -1,4 +1,8 @@
+platform :ios, '9.0'
+use_frameworks!
+
 target 'Informed' do
-	use_frameworks!
-	pod 'RealmSwift'
+    
+    pod 'RealmSwift', '~> 0.98'
+    
 end

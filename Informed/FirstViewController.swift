@@ -17,9 +17,13 @@ class FirstViewController: UITableViewController {
     var articleArray = [(Article)]();
     var selectedArticle = 0
     
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         let realm = try! Realm()
+        print(Realm.Configuration.defaultConfiguration.fileURL!)
+        
+        /*
         let articles = realm.objects(Article)
         // tableView.delegate = self;
         for a in articles {
@@ -27,6 +31,7 @@ class FirstViewController: UITableViewController {
         }
         print("** PRINTING ARTICLES **")
         print(articleArray)
+ */
         
 //
     }
@@ -57,7 +62,7 @@ class FirstViewController: UITableViewController {
         print(indexPath.indexAtPosition(1))
         let i = indexPath.indexAtPosition(1)
         print(articleArray[i])
-        cell.textLabel?.text = articleArray[i].articleName
+        cell.textLabel?.text = articleArray[i].name
         return cell
     }
     
@@ -86,8 +91,8 @@ class FirstViewController: UITableViewController {
                     print(articleArray[i])
                     // print(articleArray[i].articleName)
                     // print(articleArray[i].articleText)
-                    vc.name = articleArray[i].articleName
-                    vc.contents = articleArray[i].articleText
+                    vc.name = articleArray[i].name
+                    vc.contents = articleArray[i].content
                     
 //                    vc.articleName.text = articleArray[i].articleName
 //                    vc.articleContents.text = articleArray[i].articleText

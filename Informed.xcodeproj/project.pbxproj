@@ -23,8 +23,6 @@
 		17B51CBC1CAC811C002CC471 /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17B51CBB1CAC811C002CC471 /* SecondViewController.swift */; };
 		17B51CC11CAC811C002CC471 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 17B51CC01CAC811C002CC471 /* Assets.xcassets */; };
 		17B51CC41CAC811C002CC471 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 17B51CC21CAC811C002CC471 /* LaunchScreen.storyboard */; };
-		17B51CCF1CAC811C002CC471 /* InformedTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17B51CCE1CAC811C002CC471 /* InformedTests.swift */; };
-		17B51CDA1CAC811C002CC471 /* InformedUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17B51CD91CAC811C002CC471 /* InformedUITests.swift */; };
 		BC85C896FA88618BC52E4C07 /* Pods_Informed.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 646F802F5F4186BD3AAEAE6A /* Pods_Informed.framework */; };
 /* End PBXBuildFile section */
 
@@ -67,11 +65,7 @@
 		17B51CC31CAC811C002CC471 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		17B51CC51CAC811C002CC471 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		17B51CCA1CAC811C002CC471 /* InformedTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = InformedTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		17B51CCE1CAC811C002CC471 /* InformedTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InformedTests.swift; sourceTree = "<group>"; };
-		17B51CD01CAC811C002CC471 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		17B51CD51CAC811C002CC471 /* InformedUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = InformedUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		17B51CD91CAC811C002CC471 /* InformedUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InformedUITests.swift; sourceTree = "<group>"; };
-		17B51CDB1CAC811C002CC471 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1DC8D04BE29E1C742C54F17F /* Pods-Informed.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Informed.release.xcconfig"; path = "Pods/Target Support Files/Pods-Informed/Pods-Informed.release.xcconfig"; sourceTree = "<group>"; };
 		4B68D4CBFF649B9548960750 /* Pods-Informed.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Informed.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Informed/Pods-Informed.debug.xcconfig"; sourceTree = "<group>"; };
 		646F802F5F4186BD3AAEAE6A /* Pods_Informed.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Informed.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -106,14 +100,10 @@
 		17B51CAB1CAC811B002CC471 = {
 			isa = PBXGroup;
 			children = (
-				02C399A11CB31C250043B2B1 /* Realm.framework */,
-				02C399A21CB31C250043B2B1 /* RealmSwift.framework */,
+				3D4D280630EC2579611CCA35 /* Frameworks */,
 				17B51CB61CAC811C002CC471 /* Informed */,
-				17B51CCD1CAC811C002CC471 /* InformedTests */,
-				17B51CD81CAC811C002CC471 /* InformedUITests */,
 				17B51CB51CAC811C002CC471 /* Products */,
 				4E46EB481D079807839CF3C2 /* Pods */,
-				3D4D280630EC2579611CCA35 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -130,48 +120,48 @@
 		17B51CB61CAC811C002CC471 /* Informed */ = {
 			isa = PBXGroup;
 			children = (
-				029E3DC11CAC925000640C82 /* indivArticleImage.jpg */,
 				17B51CB71CAC811C002CC471 /* AppDelegate.swift */,
 				17B51CB91CAC811C002CC471 /* FirstViewController.swift */,
-				023E77071CB4A3F2009768EF /* User.swift */,
-				02A4D84A1CC121670007E924 /* Genre.swift */,
-				022BB1191CBC3AC60044452D /* Article.swift */,
 				17B51CBB1CAC811C002CC471 /* SecondViewController.swift */,
-				02A4D8441CBF21C10007E924 /* black-icons-news-vector.png */,
-				02A4D83B1CBF128C0007E924 /* newsp.png */,
 				029E3DBF1CAC8ADC00640C82 /* IndividualArticleViewController.swift */,
 				02C6A8E81CB3030E00F78425 /* LeaderboardViewController.swift */,
 				02A4D8461CC04E5F0007E924 /* NavLeaderViewController.swift */,
 				02A4D8411CBF208B0007E924 /* Main.storyboard */,
-				029E3DC31CAC99D500640C82 /* leaderboardIcon.png */,
-				17B51CC01CAC811C002CC471 /* Assets.xcassets */,
 				17B51CC21CAC811C002CC471 /* LaunchScreen.storyboard */,
-				17B51CC51CAC811C002CC471 /* Info.plist */,
+				24D747D31CCE707E00C13B35 /* Models */,
+				24D747D41CCE72E800C13B35 /* Supporting Files */,
 			);
 			path = Informed;
 			sourceTree = "<group>";
 		};
-		17B51CCD1CAC811C002CC471 /* InformedTests */ = {
+		24D747D31CCE707E00C13B35 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				17B51CCE1CAC811C002CC471 /* InformedTests.swift */,
-				17B51CD01CAC811C002CC471 /* Info.plist */,
+				02A4D84A1CC121670007E924 /* Genre.swift */,
+				023E77071CB4A3F2009768EF /* User.swift */,
+				022BB1191CBC3AC60044452D /* Article.swift */,
 			);
-			path = InformedTests;
+			name = Models;
 			sourceTree = "<group>";
 		};
-		17B51CD81CAC811C002CC471 /* InformedUITests */ = {
+		24D747D41CCE72E800C13B35 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				17B51CD91CAC811C002CC471 /* InformedUITests.swift */,
-				17B51CDB1CAC811C002CC471 /* Info.plist */,
+				029E3DC11CAC925000640C82 /* indivArticleImage.jpg */,
+				02A4D8441CBF21C10007E924 /* black-icons-news-vector.png */,
+				02A4D83B1CBF128C0007E924 /* newsp.png */,
+				029E3DC31CAC99D500640C82 /* leaderboardIcon.png */,
+				17B51CC01CAC811C002CC471 /* Assets.xcassets */,
+				17B51CC51CAC811C002CC471 /* Info.plist */,
 			);
-			path = InformedUITests;
+			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
 		3D4D280630EC2579611CCA35 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				02C399A11CB31C250043B2B1 /* Realm.framework */,
+				02C399A21CB31C250043B2B1 /* RealmSwift.framework */,
 				646F802F5F4186BD3AAEAE6A /* Pods_Informed.framework */,
 			);
 			name = Frameworks;
@@ -199,6 +189,7 @@
 				17B51CB21CAC811C002CC471 /* Resources */,
 				13F78D9263D6C37B7721454E /* 📦 Embed Pods Frameworks */,
 				558A1DC3E8FCB422379F9ED8 /* 📦 Copy Pods Resources */,
+				EBD9D2746E1D6720C946426E /* Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -365,6 +356,21 @@
 			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
+		EBD9D2746E1D6720C946426E /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Informed/Pods-Informed-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -388,7 +394,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				17B51CCF1CAC811C002CC471 /* InformedTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -396,7 +401,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				17B51CDA1CAC811C002CC471 /* InformedUITests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
