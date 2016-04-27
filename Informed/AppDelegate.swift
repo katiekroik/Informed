@@ -34,6 +34,21 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let realm = try! Realm()
         
 //        let articles = realm.objects(Article)
+//        
+//        var list = List<Article>()
+//        list.append(articles[2])
+//        
+//        let katie = User();
+//        katie.name = "Katie"
+//        katie.points = 5
+//        katie.id = 1
+////        katie.favoriteArticles = list
+//        
+//        try! realm.write {
+//            realm.add(katie, update: true)
+//        }
+        
+//        let articles = realm.objects(Article)
 //        let g = Genre()
 //        g.name = "World News"
 //        

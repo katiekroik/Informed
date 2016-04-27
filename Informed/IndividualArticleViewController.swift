@@ -7,9 +7,11 @@
 //
 
 import UIKit
+import RealmSwift
 
 class IndividualArticleViewController: UIViewController, UITextViewDelegate {
     
+
     // Name of article
     @IBOutlet weak var articleName: UILabel!
     // Article contents
@@ -90,8 +92,19 @@ class IndividualArticleViewController: UIViewController, UITextViewDelegate {
         if (scrollView.contentOffset.y == scrollView.contentSize.height - scrollView.frame.size.height) {
             // reached the bottom
             print ("BOTTOM!!")
-            // TODO : ADD USER POINTS
+
+            let realm = try! Realm()
+            let users = realm.objects(User)
             
+            
+            let u = users[0]
+            print(u)
+            let val = u.points + 50
+            print(val)
+            
+            try! realm.write {
+                u.points = val
+            }
         }
     }
     
