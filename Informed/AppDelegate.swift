@@ -32,6 +32,25 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         Realm.Configuration.defaultConfiguration = config
 
         let realm = try! Realm()
+        
+//        let articles = realm.objects(Article)
+//        let g = Genre()
+//        g.name = "World News"
+//        
+//        let article = Article()
+//        article.genre = realm.objects(Genre)[0]
+//        article.name = "Really Long Article"
+//        article.content = "Lorem ipsum dolor sit amet, in per aeterno suscipiantur, te nibh aperiam sit. Id albucius referrentur sea, an vis eirmod similique. Eos no oratio virtute, vel errem liberavisse cu. Verear albucius ex sed, erant dissentias in qui, in simul epicuri pri. Vis viderer feugiat appetere id, ipsum vidisse tritani ius ex. Rebum equidem et his, sed eius debet maiestatis te. An qui ludus facete iisque. Iriure corpora ut sed, inani error facilis mei ad. In maiorum oportere nec. Eos fierent accusamus consequuntur cu, reque eripuit menandri has eu. Vim consul aliquip suscipiantur id, mei vidisse ullamcorper ne. Eos nobis facilis prodesset et. Est in offendit percipit, te nec tibique theophrastus. In alienum recusabo vituperata vel, nec te ullum accommodare. In admodum luptatum eam, dicant aeterno maiestatis qui et, cu mel decore volumus argumentum. Duo dicta inermis ad, eum tale offendit no. Ne cetero detraxit nominati vim. Est oratio minimum at. Ex tempor putant pri, no elit oporteat sadipscing ius. Ornatus ceteros offendit mea no, eos et ancillae voluptua mandamus. Zril nonumy ad vix, prompta iuvaret mea te. Omnesque salutatus repudiandae nec ea, et usu vidit tollit reformidans. Est harum ridens maiorum an, ut cum omittam elaboraret. An natum dicta duo, labitur fabulas vis cu. Lorem ipsum dolor sit amet, in per aeterno suscipiantur, te nibh aperiam sit. Id albucius referrentur sea, an vis eirmod similique. Eos no oratio virtute, vel errem liberavisse cu. Verear albucius ex sed, erant dissentias in qui, in simul epicuri pri. Vis viderer feugiat appetere id, ipsum vidisse tritani ius ex. Rebum equidem et his, sed eius debet maiestatis te. An qui ludus facete iisque. Iriure corpora ut sed, inani error facilis mei ad. In maiorum oportere nec. Eos fierent accusamus consequuntur cu, reque eripuit menandri has eu. Vim consul aliquip suscipiantur id, mei vidisse ullamcorper ne. Eos nobis facilis prodesset et. Est in offendit percipit, te nec tibique theophrastus. In alienum recusabo vituperata vel, nec te ullum accommodare. In admodum luptatum eam, dicant aeterno maiestatis qui et, cu mel decore volumus argumentum. Duo dicta inermis ad, eum tale offendit no. Ne cetero detraxit nominati vim. Est oratio minimum at. Ex tempor putant pri, no elit oporteat sadipscing ius. Ornatus ceteros offendit mea no, eos et ancillae voluptua mandamus. Zril nonumy ad vix, prompta iuvaret mea te. Omnesque salutatus repudiandae nec ea, et usu vidit tollit reformidans. Est harum ridens maiorum an, ut cum omittam elaboraret. An natum dicta duo, labitur fabulas vis cu. Lorem ipsum dolor sit amet, in per aeterno suscipiantur, te nibh aperiam sit. Id albucius referrentur sea, an vis eirmod similique. Eos no oratio virtute, vel errem liberavisse cu. Verear albucius ex sed, erant dissentias in qui, in simul epicuri pri. Vis viderer feugiat appetere id, ipsum vidisse tritani ius ex. Rebum equidem et his, sed eius debet maiestatis te. An qui ludus facete iisque. Iriure corpora ut sed, inani error facilis mei ad. In maiorum oportere nec. Eos fierent accusamus consequuntur cu, reque eripuit menandri has eu. Vim consul aliquip suscipiantur id, mei vidisse ullamcorper ne. Eos nobis facilis prodesset et. Est in offendit percipit, te nec tibique theophrastus. In alienum recusabo vituperata vel, nec te ullum accommodare. In admodum luptatum eam, dicant aeterno maiestatis qui et, cu mel decore volumus argumentum. Duo dicta inermis ad, eum tale offendit no. Ne cetero detraxit nominati vim. Est oratio minimum at. Ex tempor putant pri, no elit oporteat sadipscing ius. Ornatus ceteros offendit mea no, eos et ancillae voluptua mandamus. Zril nonumy ad vix, prompta iuvaret mea te. Omnesque salutatus repudiandae nec ea, et usu vidit tollit reformidans. Est harum ridens maiorum an, ut cum omittam elaboraret. An natum dicta duo, labitur fabulas vis cu."
+//        
+//        try! realm.write {
+////            realm.add(g);
+//            realm.add(article)
+//            
+//        }
+        
+        
+//        let sortedUsers = users.sorted("points", ascending: false)
+        
 
         
         /* Adding articles to the DB */

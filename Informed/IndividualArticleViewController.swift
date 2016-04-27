@@ -8,7 +8,7 @@
 
 import UIKit
 
-class IndividualArticleViewController: UIViewController {
+class IndividualArticleViewController: UIViewController, UITextViewDelegate {
     
     // Name of article
     @IBOutlet weak var articleName: UILabel!
@@ -21,11 +21,13 @@ class IndividualArticleViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        articleContents.delegate = self;
+
 
         articleContents.decelerationRate = UIScrollViewDecelerationRateFast;
         articleContents.userInteractionEnabled = true;
         articleContents.scrollEnabled = true;
-        articleContents.scrollRangeToVisible(NSRange(location:0, length:0))
+//        articleContents.scrollRangeToVisible(NSRange(location:0, length:0))
 
         print(articleName.text)
         
@@ -39,53 +41,65 @@ class IndividualArticleViewController: UIViewController {
         print(frame)
         // articleContents.frame = frame
 
+        if (articleContents.contentOffset.y >= articleContents.contentSize.height - articleContents.frame.size.height)
+        {
+            NSLog("at bottom");
+        }
         NSLog("Did load Individual Article");
-        scrollViewDidEndDragging(articleContents, willDecelerate:false);
-
-        // Do any additional setup after loading the view.
+//        scrollToBotom()
     }
     
     override func viewWillAppear(animated: Bool) {
         articleName.text = aName;
     }
     
-    func textViewWillEndDragging(scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>)
+    func scrollViewWillEndDragging(scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>)
     {
-        print("SCROLLING!!!")
-        //This is the index of the "page" that we will be landing at
-        let nearestIndex = Int(CGFloat(targetContentOffset.memory.x) / scrollView.bounds.size.width + 0.5)
-        
-        //Just to make sure we don't scroll past your content
-        let clampedIndex = 100.5;
-        // TODO : REPLACE 100.5 WITH : max( min(nearestIndex, yourPagesArray.count - 1 ), 0 )
-        
-        NSLog("hi");
-        //This is the actual x position in the scroll view
-        var xOffset = CGFloat(clampedIndex) * scrollView.bounds.size.width
-        
-        //I've found that scroll views will "stick" unless this is done
-        xOffset = xOffset == 0.0 ? 1.0 : xOffset
-        
-        //Tell the scroll view to land on our page
-        targetContentOffset.memory.x = xOffset
-        
+
+//        //This is the index of the "page" that we will be landing at
+//        let nearestIndex = Int(CGFloat(targetContentOffset.memory.x) / scrollView.bounds.size.width + 0.5)
+//        
+//        //Just to make sure we don't scroll past your content
+//        let clampedIndex = 100.5;
+//        // TODO : REPLACE 100.5 WITH : max( min(nearestIndex, yourPagesArray.count - 1 ), 0 )
+//        
+//        //This is the actual x position in the scroll view
+//        var xOffset = CGFloat(clampedIndex) * scrollView.bounds.size.width
+//        
+//        //I've found that scroll views will "stick" unless this is done
+//        xOffset = xOffset == 0.0 ? 1.0 : xOffset
+//        
+//        //Tell the scroll view to land on our page
+//        targetContentOffset.memory.x = xOffset
+//        
         
     }
     
     func scrollViewDidEndDragging(scrollView: UIScrollView, willDecelerate decelerate: Bool)
     {
-        NSLog("Called scrollViewDidEndDragging");
         if !decelerate
         {
             
             let currentIndex = floor(scrollView.contentOffset.x / scrollView.bounds.size.width);
-            // NSLog("%@", currentIndex);
             let offset = CGPointMake(scrollView.bounds.size.width * currentIndex, 0)
-            
             scrollView.setContentOffset(offset, animated: true)
         }
     }
-
+    
+    func scrollViewDidScroll(scrollView: UIScrollView) {
+        if (scrollView.contentOffset.y == scrollView.contentSize.height - scrollView.frame.size.height) {
+            // reached the bottom
+            print ("BOTTOM!!")
+            // TODO : ADD USER POINTS
+            
+        }
+    }
+    
+    func scrollToBotom() {
+        let range = NSMakeRange(articleContents.text.characters.count - 1, 1);
+        articleContents.scrollRangeToVisible(range);
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.

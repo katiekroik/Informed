@@ -23,7 +23,8 @@ class FirstViewController: UITableViewController {
         let realm = try! Realm()
         print(Realm.Configuration.defaultConfiguration.path!)
         
-        /*
+        
+        
         let articles = realm.objects(Article)
         // tableView.delegate = self;
         for a in articles {
@@ -31,7 +32,7 @@ class FirstViewController: UITableViewController {
         }
         print("** PRINTING ARTICLES **")
         print(articleArray)
- */
+ 
         
 //
     }
