@@ -10,11 +10,9 @@
 		022BB11A1CBC3AC60044452D /* Article.swift in Sources */ = {isa = PBXBuildFile; fileRef = 022BB1191CBC3AC60044452D /* Article.swift */; };
 		023E77081CB4A3F2009768EF /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 023E77071CB4A3F2009768EF /* User.swift */; };
 		029E3DC01CAC8ADC00640C82 /* IndividualArticleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 029E3DBF1CAC8ADC00640C82 /* IndividualArticleViewController.swift */; };
-		029E3DC21CAC925000640C82 /* indivArticleImage.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 029E3DC11CAC925000640C82 /* indivArticleImage.jpg */; };
 		029E3DC41CAC99D500640C82 /* leaderboardIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 029E3DC31CAC99D500640C82 /* leaderboardIcon.png */; };
 		02A4D83C1CBF128C0007E924 /* newsp.png in Resources */ = {isa = PBXBuildFile; fileRef = 02A4D83B1CBF128C0007E924 /* newsp.png */; };
 		02A4D8431CBF208B0007E924 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 02A4D8411CBF208B0007E924 /* Main.storyboard */; };
-		02A4D8451CBF21C10007E924 /* black-icons-news-vector.png in Resources */ = {isa = PBXBuildFile; fileRef = 02A4D8441CBF21C10007E924 /* black-icons-news-vector.png */; };
 		02A4D8471CC04E5F0007E924 /* NavLeaderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02A4D8461CC04E5F0007E924 /* NavLeaderViewController.swift */; };
 		02A4D84B1CC121670007E924 /* Genre.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02A4D84A1CC121670007E924 /* Genre.swift */; };
 		02A563801CD11B7200DC64D6 /* icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 02A5637F1CD11B7200DC64D6 /* icon.png */; };
@@ -49,11 +47,9 @@
 		022BB1191CBC3AC60044452D /* Article.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Article.swift; sourceTree = "<group>"; };
 		023E77071CB4A3F2009768EF /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		029E3DBF1CAC8ADC00640C82 /* IndividualArticleViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IndividualArticleViewController.swift; sourceTree = "<group>"; };
-		029E3DC11CAC925000640C82 /* indivArticleImage.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = indivArticleImage.jpg; sourceTree = "<group>"; };
 		029E3DC31CAC99D500640C82 /* leaderboardIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = leaderboardIcon.png; sourceTree = "<group>"; };
 		02A4D83B1CBF128C0007E924 /* newsp.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = newsp.png; sourceTree = "<group>"; };
 		02A4D8421CBF208B0007E924 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		02A4D8441CBF21C10007E924 /* black-icons-news-vector.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "black-icons-news-vector.png"; sourceTree = "<group>"; };
 		02A4D8461CC04E5F0007E924 /* NavLeaderViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavLeaderViewController.swift; sourceTree = "<group>"; };
 		02A4D84A1CC121670007E924 /* Genre.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Genre.swift; sourceTree = "<group>"; };
 		02A5637F1CD11B7200DC64D6 /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = icon.png; path = ../../Downloads/icon.png; sourceTree = "<group>"; };
@@ -152,8 +148,6 @@
 			isa = PBXGroup;
 			children = (
 				02A5637F1CD11B7200DC64D6 /* icon.png */,
-				029E3DC11CAC925000640C82 /* indivArticleImage.jpg */,
-				02A4D8441CBF21C10007E924 /* black-icons-news-vector.png */,
 				02A563831CD11F9500DC64D6 /* profile.png */,
 				02A4D83B1CBF128C0007E924 /* newsp.png */,
 				029E3DC31CAC99D500640C82 /* leaderboardIcon.png */,
@@ -291,12 +285,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				17B51CC41CAC811C002CC471 /* LaunchScreen.storyboard in Resources */,
-				029E3DC21CAC925000640C82 /* indivArticleImage.jpg in Resources */,
 				17B51CC11CAC811C002CC471 /* Assets.xcassets in Resources */,
 				02A4D8431CBF208B0007E924 /* Main.storyboard in Resources */,
 				02A563841CD11F9500DC64D6 /* profile.png in Resources */,
 				02A563801CD11B7200DC64D6 /* icon.png in Resources */,
-				02A4D8451CBF21C10007E924 /* black-icons-news-vector.png in Resources */,
 				02A4D83C1CBF128C0007E924 /* newsp.png in Resources */,
 				029E3DC41CAC99D500640C82 /* leaderboardIcon.png in Resources */,
 			);
