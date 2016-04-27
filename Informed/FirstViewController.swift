@@ -21,7 +21,7 @@ class FirstViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         let realm = try! Realm()
-        print(Realm.Configuration.defaultConfiguration.fileURL!)
+        print(Realm.Configuration.defaultConfiguration.path!)
         
         /*
         let articles = realm.objects(Article)
