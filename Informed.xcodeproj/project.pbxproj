@@ -18,6 +18,7 @@
 		02A4D8471CC04E5F0007E924 /* NavLeaderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02A4D8461CC04E5F0007E924 /* NavLeaderViewController.swift */; };
 		02A4D84B1CC121670007E924 /* Genre.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02A4D84A1CC121670007E924 /* Genre.swift */; };
 		02A563801CD11B7200DC64D6 /* icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 02A5637F1CD11B7200DC64D6 /* icon.png */; };
+		02A563841CD11F9500DC64D6 /* profile.png in Resources */ = {isa = PBXBuildFile; fileRef = 02A563831CD11F9500DC64D6 /* profile.png */; };
 		02C6A8E91CB3030E00F78425 /* LeaderboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02C6A8E81CB3030E00F78425 /* LeaderboardViewController.swift */; };
 		17B51CB81CAC811C002CC471 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17B51CB71CAC811C002CC471 /* AppDelegate.swift */; };
 		17B51CBA1CAC811C002CC471 /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17B51CB91CAC811C002CC471 /* FirstViewController.swift */; };
@@ -56,6 +57,7 @@
 		02A4D8461CC04E5F0007E924 /* NavLeaderViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavLeaderViewController.swift; sourceTree = "<group>"; };
 		02A4D84A1CC121670007E924 /* Genre.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Genre.swift; sourceTree = "<group>"; };
 		02A5637F1CD11B7200DC64D6 /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = icon.png; path = ../../Downloads/icon.png; sourceTree = "<group>"; };
+		02A563831CD11F9500DC64D6 /* profile.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = profile.png; sourceTree = "<group>"; };
 		02C399A11CB31C250043B2B1 /* Realm.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Realm.framework; path = "../Downloads/realm-swift-0.98.6/osx/swift-2.2/Realm.framework"; sourceTree = "<group>"; };
 		02C399A21CB31C250043B2B1 /* RealmSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RealmSwift.framework; path = "../Downloads/realm-swift-0.98.6/osx/swift-2.2/RealmSwift.framework"; sourceTree = "<group>"; };
 		02C6A8E81CB3030E00F78425 /* LeaderboardViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LeaderboardViewController.swift; sourceTree = "<group>"; };
@@ -152,6 +154,7 @@
 				02A5637F1CD11B7200DC64D6 /* icon.png */,
 				029E3DC11CAC925000640C82 /* indivArticleImage.jpg */,
 				02A4D8441CBF21C10007E924 /* black-icons-news-vector.png */,
+				02A563831CD11F9500DC64D6 /* profile.png */,
 				02A4D83B1CBF128C0007E924 /* newsp.png */,
 				029E3DC31CAC99D500640C82 /* leaderboardIcon.png */,
 				17B51CC01CAC811C002CC471 /* Assets.xcassets */,
@@ -291,6 +294,7 @@
 				029E3DC21CAC925000640C82 /* indivArticleImage.jpg in Resources */,
 				17B51CC11CAC811C002CC471 /* Assets.xcassets in Resources */,
 				02A4D8431CBF208B0007E924 /* Main.storyboard in Resources */,
+				02A563841CD11F9500DC64D6 /* profile.png in Resources */,
 				02A563801CD11B7200DC64D6 /* icon.png in Resources */,
 				02A4D8451CBF21C10007E924 /* black-icons-news-vector.png in Resources */,
 				02A4D83C1CBF128C0007E924 /* newsp.png in Resources */,
