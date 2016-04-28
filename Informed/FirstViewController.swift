@@ -90,8 +90,6 @@ class FirstViewController: UITableViewController {
                     with it and idk what's wrong... */
                     let vc = segue.destinationViewController as! IndividualArticleViewController
                     print(articleArray[i])
-                    // print(articleArray[i].articleName)
-                    // print(articleArray[i].articleText)
                     vc.name = articleArray[i].name
                     vc.contents = articleArray[i].content
                     

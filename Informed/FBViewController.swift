@@ -67,6 +67,7 @@ class FBViewController: UIViewController,  FBSDKLoginButtonDelegate {
         let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
         
         let nextViewController = storyBoard.instantiateViewControllerWithIdentifier("TabViewController")
+        print(nextViewController)
         self.presentViewController(nextViewController, animated:true, completion:nil)
         
     }

@@ -13,7 +13,6 @@
 		029E3DC41CAC99D500640C82 /* leaderboardIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 029E3DC31CAC99D500640C82 /* leaderboardIcon.png */; };
 		02A4D83C1CBF128C0007E924 /* newsp.png in Resources */ = {isa = PBXBuildFile; fileRef = 02A4D83B1CBF128C0007E924 /* newsp.png */; };
 		02A4D8431CBF208B0007E924 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 02A4D8411CBF208B0007E924 /* Main.storyboard */; };
-		02A4D8471CC04E5F0007E924 /* NavLeaderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02A4D8461CC04E5F0007E924 /* NavLeaderViewController.swift */; };
 		02A4D84B1CC121670007E924 /* Genre.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02A4D84A1CC121670007E924 /* Genre.swift */; };
 		02A563841CD11F9500DC64D6 /* profile.png in Resources */ = {isa = PBXBuildFile; fileRef = 02A563831CD11F9500DC64D6 /* profile.png */; };
 		02A563861CD14E3100DC64D6 /* icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 02A563851CD14E3100DC64D6 /* icon.png */; };
@@ -54,7 +53,6 @@
 		029E3DC31CAC99D500640C82 /* leaderboardIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = leaderboardIcon.png; sourceTree = "<group>"; };
 		02A4D83B1CBF128C0007E924 /* newsp.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = newsp.png; sourceTree = "<group>"; };
 		02A4D8421CBF208B0007E924 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		02A4D8461CC04E5F0007E924 /* NavLeaderViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavLeaderViewController.swift; sourceTree = "<group>"; };
 		02A4D84A1CC121670007E924 /* Genre.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Genre.swift; sourceTree = "<group>"; };
 		02A563831CD11F9500DC64D6 /* profile.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = profile.png; sourceTree = "<group>"; };
 		02A563851CD14E3100DC64D6 /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = icon.png; path = ../icon.png; sourceTree = "<group>"; };
@@ -135,8 +133,8 @@
 				17B51CB91CAC811C002CC471 /* FirstViewController.swift */,
 				17B51CBB1CAC811C002CC471 /* SecondViewController.swift */,
 				029E3DBF1CAC8ADC00640C82 /* IndividualArticleViewController.swift */,
+				174D4CA41CD165E100784CF0 /* FBViewController.swift */,
 				02C6A8E81CB3030E00F78425 /* LeaderboardViewController.swift */,
-				02A4D8461CC04E5F0007E924 /* NavLeaderViewController.swift */,
 				02A4D8411CBF208B0007E924 /* Main.storyboard */,
 				17B51CC21CAC811C002CC471 /* LaunchScreen.storyboard */,
 				174D4C9C1CD1640A00784CF0 /* FBSDKCoreKit.framework */,
@@ -144,7 +142,6 @@
 				24D747D31CCE707E00C13B35 /* Models */,
 				24D747D41CCE72E800C13B35 /* Supporting Files */,
 				174D4CA01CD1650A00784CF0 /* Informed-Bridging-Header.h */,
-				174D4CA41CD165E100784CF0 /* FBViewController.swift */,
 			);
 			path = Informed;
 			sourceTree = "<group>";
@@ -398,7 +395,6 @@
 				02A4D84B1CC121670007E924 /* Genre.swift in Sources */,
 				022BB11A1CBC3AC60044452D /* Article.swift in Sources */,
 				174D4CA51CD165E100784CF0 /* FBViewController.swift in Sources */,
-				02A4D8471CC04E5F0007E924 /* NavLeaderViewController.swift in Sources */,
 				029E3DC01CAC8ADC00640C82 /* IndividualArticleViewController.swift in Sources */,
 				17B51CBC1CAC811C002CC471 /* SecondViewController.swift in Sources */,
 				023E77081CB4A3F2009768EF /* User.swift in Sources */,
