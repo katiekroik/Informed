@@ -29,26 +29,14 @@ class IndividualArticleViewController: UIViewController, UITextViewDelegate {
         articleContents.decelerationRate = UIScrollViewDecelerationRateFast;
         articleContents.userInteractionEnabled = true;
         articleContents.scrollEnabled = true;
-//        articleContents.scrollRangeToVisible(NSRange(location:0, length:0))
 
         print(articleName.text)
         
         articleName.text = aName
         articleContents.text = contents
-        
-//        articleContents.frame
-        let frame = self.view.frame;
-    
-        print(articleContents.frame)
-        print(frame)
-        // articleContents.frame = frame
 
-        if (articleContents.contentOffset.y >= articleContents.contentSize.height - articleContents.frame.size.height)
-        {
-            NSLog("at bottom");
-        }
-        NSLog("Did load Individual Article");
-//        scrollToBotom()
+        let frame = self.view.frame;
+
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -96,15 +84,20 @@ class IndividualArticleViewController: UIViewController, UITextViewDelegate {
             let realm = try! Realm()
             let users = realm.objects(User)
             
+            let articles = realm.objects(Article)
             
-            let u = users[0]
-            print(u)
-            let val = u.points + 50
-            print(val)
-            
-            try! realm.write {
-                u.points = val
+            for a in articles {
+                print(a)
             }
+            
+//            let u = users[0]
+//            print(u)
+//            let val = u.points + 50
+//            print(val)
+//            
+//            try! realm.write {
+//                u.points = val
+//            }
         }
     }
     
