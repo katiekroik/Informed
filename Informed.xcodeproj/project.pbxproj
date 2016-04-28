@@ -18,6 +18,9 @@
 		02A563841CD11F9500DC64D6 /* profile.png in Resources */ = {isa = PBXBuildFile; fileRef = 02A563831CD11F9500DC64D6 /* profile.png */; };
 		02A563861CD14E3100DC64D6 /* icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 02A563851CD14E3100DC64D6 /* icon.png */; };
 		02C6A8E91CB3030E00F78425 /* LeaderboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02C6A8E81CB3030E00F78425 /* LeaderboardViewController.swift */; };
+		174D4C9E1CD1640A00784CF0 /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 174D4C9C1CD1640A00784CF0 /* FBSDKCoreKit.framework */; };
+		174D4C9F1CD1640A00784CF0 /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 174D4C9D1CD1640A00784CF0 /* FBSDKLoginKit.framework */; };
+		174D4CA51CD165E100784CF0 /* FBViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 174D4CA41CD165E100784CF0 /* FBViewController.swift */; };
 		17B51CB81CAC811C002CC471 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17B51CB71CAC811C002CC471 /* AppDelegate.swift */; };
 		17B51CBA1CAC811C002CC471 /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17B51CB91CAC811C002CC471 /* FirstViewController.swift */; };
 		17B51CBC1CAC811C002CC471 /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17B51CBB1CAC811C002CC471 /* SecondViewController.swift */; };
@@ -53,10 +56,14 @@
 		02A4D8461CC04E5F0007E924 /* NavLeaderViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavLeaderViewController.swift; sourceTree = "<group>"; };
 		02A4D84A1CC121670007E924 /* Genre.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Genre.swift; sourceTree = "<group>"; };
 		02A563831CD11F9500DC64D6 /* profile.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = profile.png; sourceTree = "<group>"; };
-		02A563851CD14E3100DC64D6 /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = icon.png; path = ../../../../Users/Katie/Informed/icon.png; sourceTree = DEVELOPER_DIR; };
+		02A563851CD14E3100DC64D6 /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = icon.png; path = ../icon.png; sourceTree = "<group>"; };
 		02C399A11CB31C250043B2B1 /* Realm.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Realm.framework; path = "../Downloads/realm-swift-0.98.6/osx/swift-2.2/Realm.framework"; sourceTree = "<group>"; };
 		02C399A21CB31C250043B2B1 /* RealmSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RealmSwift.framework; path = "../Downloads/realm-swift-0.98.6/osx/swift-2.2/RealmSwift.framework"; sourceTree = "<group>"; };
 		02C6A8E81CB3030E00F78425 /* LeaderboardViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LeaderboardViewController.swift; sourceTree = "<group>"; };
+		174D4C9C1CD1640A00784CF0 /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKCoreKit.framework; sourceTree = "<group>"; };
+		174D4C9D1CD1640A00784CF0 /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKLoginKit.framework; sourceTree = "<group>"; };
+		174D4CA01CD1650A00784CF0 /* Informed-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Informed-Bridging-Header.h"; sourceTree = "<group>"; };
+		174D4CA41CD165E100784CF0 /* FBViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FBViewController.swift; sourceTree = "<group>"; };
 		17B51CB41CAC811C002CC471 /* Informed.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Informed.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		17B51CB71CAC811C002CC471 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		17B51CB91CAC811C002CC471 /* FirstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
@@ -77,6 +84,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				BC85C896FA88618BC52E4C07 /* Pods_Informed.framework in Frameworks */,
+				174D4C9E1CD1640A00784CF0 /* FBSDKCoreKit.framework in Frameworks */,
+				174D4C9F1CD1640A00784CF0 /* FBSDKLoginKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -128,8 +137,12 @@
 				02A4D8461CC04E5F0007E924 /* NavLeaderViewController.swift */,
 				02A4D8411CBF208B0007E924 /* Main.storyboard */,
 				17B51CC21CAC811C002CC471 /* LaunchScreen.storyboard */,
+				174D4C9C1CD1640A00784CF0 /* FBSDKCoreKit.framework */,
+				174D4C9D1CD1640A00784CF0 /* FBSDKLoginKit.framework */,
 				24D747D31CCE707E00C13B35 /* Models */,
 				24D747D41CCE72E800C13B35 /* Supporting Files */,
+				174D4CA01CD1650A00784CF0 /* Informed-Bridging-Header.h */,
+				174D4CA41CD165E100784CF0 /* FBViewController.swift */,
 			);
 			path = Informed;
 			sourceTree = "<group>";
@@ -242,7 +255,7 @@
 		17B51CAC1CAC811B002CC471 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 0720;
+				LastSwiftUpdateCheck = 0730;
 				LastUpgradeCheck = 0720;
 				ORGANIZATIONNAME = nyu.edu;
 				TargetAttributes = {
@@ -380,6 +393,7 @@
 			files = (
 				02A4D84B1CC121670007E924 /* Genre.swift in Sources */,
 				022BB11A1CBC3AC60044452D /* Article.swift in Sources */,
+				174D4CA51CD165E100784CF0 /* FBViewController.swift in Sources */,
 				02A4D8471CC04E5F0007E924 /* NavLeaderViewController.swift in Sources */,
 				029E3DC01CAC8ADC00640C82 /* IndividualArticleViewController.swift in Sources */,
 				17B51CBC1CAC811C002CC471 /* SecondViewController.swift in Sources */,
@@ -525,10 +539,17 @@
 			baseConfigurationReference = 4B68D4CBFF649B9548960750 /* Pods-Informed.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Informed",
+				);
 				INFOPLIST_FILE = Informed/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = nyu.edu.Informed;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Informed/Informed-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
 		};
@@ -537,11 +558,17 @@
 			baseConfigurationReference = 1DC8D04BE29E1C742C54F17F /* Pods-Informed.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Informed",
+				);
 				"FRAMEWORK_SEARCH_PATHS[arch=*]" = RealmSwift.framework;
 				INFOPLIST_FILE = Informed/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = nyu.edu.Informed;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Informed/Informed-Bridging-Header.h";
 			};
 			name = Release;
 		};
