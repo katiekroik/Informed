@@ -103,6 +103,9 @@ class IndividualArticleViewController: UIViewController, UITextViewDelegate {
                     user.points = val
                 }
             }
+            else {
+                print("Re-reading an article -> no points...")
+            }
             
             print(user)
         }

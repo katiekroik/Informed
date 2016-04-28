@@ -14,7 +14,7 @@ class SecondViewController: UIViewController {
 
     @IBOutlet weak var welcomeMessage: UILabel!
     @IBOutlet weak var userPoints: UILabel!
-    @IBOutlet weak var userLikedArticles: UILabel!
+//    @IBOutlet weak var userLikedArticles: UILabel!
     @IBOutlet weak var userReadNumArticles: UILabel!
     @IBOutlet weak var userPlaceInLeaderboard: UILabel!
     
@@ -25,6 +25,20 @@ class SecondViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        let realm = try! Realm()
+        
+        let users = realm.objects(User)
+        let sortedUsers = users.sorted("points", ascending: false)
+        // TODO : GET MY USER
+        let index = 0;
+        
+        let u = users[index]
+        welcomeMessage.text = "Welcome, " + u.name
+        userPoints.text = String(u.points)
+        userReadNumArticles.text = String(u.articlesRead.count)
+        userPlaceInLeaderboard.text = String(index + 1)
+        
         
         // Do any additional setup after loading the view, typically from a nib.
     }
