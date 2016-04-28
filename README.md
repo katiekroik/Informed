@@ -23,3 +23,13 @@ end
 ```
 - [ ] run `pod install`
 - [ ] Use the `.xcworkspace` file that's automatically generated to develop
+
+#### Facebook Login
+- [ ] Imported the FB SDK.
+- [ ] Registered the app on developers.facebook.com --> facebook app ID: 1322094234473271
+- [ ] Connected the App Delegate to the FBSDKApplicationDelegate to access the facebook app in AppDelegate.swift (had to create a bridging-header file - Informed-Bridging-Header.h - to import the appropriate files)
+- [ ] In AppDelegate.swift, first check if the user is active by checking if FBSDKAccessToken.currentAccessToken() is nil. Depending on this, the app will show the login page or the main view controller.
+- [ ] In FBViewController.swift, created function fetchProfile() that grabs email, first name, last name, and profile picture of the user. (will use this info in database)
+- [ ] Finally, after logging in successfully the app will switch back to main view controller (view controller with identity TabViewController).
+- [ ] Logout action button on SecondViewController takes user back to FBViewController where the logout button is now present.
+
