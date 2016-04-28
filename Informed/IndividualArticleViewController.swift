@@ -21,6 +21,8 @@ class IndividualArticleViewController: UIViewController, UITextViewDelegate {
     var contents = String()
     var aName = String()
     
+    var article = Article()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         articleContents.delegate = self;
@@ -84,20 +86,25 @@ class IndividualArticleViewController: UIViewController, UITextViewDelegate {
             let realm = try! Realm()
             let users = realm.objects(User)
             
-            let articles = realm.objects(Article)
-            
-            for a in articles {
-                print(a)
+            var contains = false;
+            // TODO : ACTUALLY GET THE USER THATS LOGGED IN RIGHT NOW - HOW DO I DO THAT
+            var user = users[0];
+            for a in user.articlesRead {
+                if (a.name == name) {
+                    contains = true;
+                }
             }
             
-//            let u = users[0]
-//            print(u)
-//            let val = u.points + 50
-//            print(val)
-//            
-//            try! realm.write {
-//                u.points = val
-//            }
+            if (contains == false) {
+                let val = user.points + 25
+                // Add to the user read article database
+                try! realm.write {
+                    user.articlesRead.append(article)
+                    user.points = val
+                }
+            }
+            
+            print(user)
         }
     }
     

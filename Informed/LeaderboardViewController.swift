@@ -34,9 +34,9 @@ class LeaderboardViewController: UIViewController {
         let sortedUsers = users.sorted("points", ascending: false)
         
         
-        leader1.text = sortedUsers[0].name
-        points1.text = String(sortedUsers[0].points)
-//        
+//        leader1.text = sortedUsers[0].name
+//        points1.text = String(sortedUsers[0].points)
+//
 //        leader2.text = sortedUsers[1].name
 //        points2.text = String(sortedUsers[1].points)
 //        

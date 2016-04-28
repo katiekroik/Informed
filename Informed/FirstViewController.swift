@@ -95,6 +95,8 @@ class FirstViewController: UITableViewController {
                     vc.name = articleArray[i].name
                     vc.contents = articleArray[i].content
                     
+                    vc.article = articleArray[i]
+                    
 //                    vc.articleName.text = articleArray[i].articleName
 //                    vc.articleContents.text = articleArray[i].articleText
                     

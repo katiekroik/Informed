@@ -15,6 +15,35 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
+        
+        
+        FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
+        
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        
+        self.window = UIWindow(frame: UIScreen.mainScreen().bounds)
+        
+        //determine if session is active first
+        if(FBSDKAccessToken.currentAccessToken() != nil){
+            
+            let initialViewController = storyboard.instantiateViewControllerWithIdentifier("TabViewController")
+            
+            self.window?.rootViewController = initialViewController
+            self.window?.makeKeyAndVisible()
+        }
+        // if no session is active, prompt user to login through facebook
+        else{
+            
+            let initialViewController = storyboard.instantiateViewControllerWithIdentifier("FBViewController")
+            
+            self.window?.rootViewController = initialViewController
+            self.window?.makeKeyAndVisible()
+            
+            
+        }
+
+        
+        
         // Lets the schema be accepted by Realm
         let config = Realm.Configuration(
             // Sets the new Schema version
@@ -109,6 +138,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         return true
     }
+    
+    
+    func application(application: UIApplication, openURL url: NSURL, sourceApplication: String?, annotation: AnyObject) -> Bool {
+        return FBSDKApplicationDelegate.sharedInstance().application(application, openURL: url, sourceApplication: sourceApplication, annotation: annotation)
+    }
+    
 
     func applicationWillResignActive(application: UIApplication) {
         // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
