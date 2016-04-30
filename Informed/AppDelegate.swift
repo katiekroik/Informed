@@ -14,39 +14,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
     var currentUser: User!
+    var realm: Realm?
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
-        
-        
-        FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
-        
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        
-        self.window = UIWindow(frame: UIScreen.mainScreen().bounds)
-        
-        //determine if session is active first
-        if(FBSDKAccessToken.currentAccessToken() != nil){
-            // This may be unnecessary. Potentially inverse the if statement?
-            let facebookId = FBSDKAccessToken.currentAccessToken().userID
-            let potentialUsers = try! Realm().objects(User).filter("facebookId==%s", facebookId)
-            if potentialUsers.count > 0 {
-                currentUser = potentialUsers[0]
-                print (currentUser)
-            }
-            
-            //self.window?.rootViewController = initialViewController
-            self.window?.makeKeyAndVisible()
-        } else {
-            // if no session is active, prompt user to login through facebook
-            let initialViewController = storyboard.instantiateViewControllerWithIdentifier("FBViewController")
-            
-            self.window?.rootViewController = initialViewController
-            self.window?.makeKeyAndVisible()
-            
-            
-        }
-
-        
         
         // Lets the schema be accepted by Realm
         let config = Realm.Configuration(
@@ -63,12 +33,44 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         )
         // Set the config
         Realm.Configuration.defaultConfiguration = config
+        realm = try! Realm()
         print(Realm.Configuration.defaultConfiguration.path!)
-        let users = try! Realm().objects(User)
+        
+        
+        let users = realm!.objects(User)
         if users.count == 0 {
             populateUsers()
         }
         
+        
+        
+        FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
+        
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        
+        self.window = UIWindow(frame: UIScreen.mainScreen().bounds)
+        
+        //determine if session is active first
+        if(FBSDKAccessToken.currentAccessToken() != nil){
+            // This may be unnecessary. Potentially inverse the if statement?
+            let facebookId = FBSDKAccessToken.currentAccessToken().userID
+            let potentialUsers = realm!.objects(User).filter("facebookId==%s", facebookId)
+            if potentialUsers.count > 0 {
+                currentUser = potentialUsers[0]
+                print (currentUser)
+            }
+            
+            let initialViewController = storyboard.instantiateViewControllerWithIdentifier("TabViewController")
+            
+            self.window?.rootViewController = initialViewController
+            self.window?.makeKeyAndVisible()
+        } else {
+            // if no session is active, prompt user to login through facebook
+            let initialViewController = storyboard.instantiateViewControllerWithIdentifier("FBViewController")
+            
+            self.window?.rootViewController = initialViewController
+            self.window?.makeKeyAndVisible()
+        }
         
         return true
     }
@@ -102,7 +104,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         let leslie = User()
         leslie.name = "Leslie Knope"
-        leslie.facebookId = 1337
+        leslie.facebookId = "1337"
         leslie.articlesRead.append(article1)
         leslie.articlesRead.append(article2)
         leslie.favoriteArticles.append(article1)
@@ -114,7 +116,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         let ron = User()
         ron.name = "Ron Swanson"
-        ron.facebookId = 42
+        ron.facebookId = "42"
         ron.email = "dukeSilver@aol.com"
         ron.picture = "http://i.huffpost.com/gen/1264888/thumbs/o-RON-SWANSON-570.jpg?6"
         ron.points = 100
@@ -123,7 +125,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         let april = User()
         april.name = "April Ludgate"
-        april.facebookId = 93861
+        april.facebookId = "93861"
         april.email = "death@gmail.com"
         april.picture = "https://img.buzzfeed.com/buzzfeed-static/static/2015-01/7/11/campaign_images/webdr10/if-april-ludgate-had-instagram-2-24018-1420646599-0_dblbig.jpg"
         april.points = 500
@@ -133,7 +135,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         let andy = User()
         andy.name = "Andy Dwyer"
-        andy.facebookId = 12346789
+        andy.facebookId = "12346789"
         andy.email = "mouserat@hotmail.com"
         andy.picture = "https://img.buzzfeed.com/buzzfeed-static/static/2014-08/5/10/campaign_images/webdr10/10-reasons-andy-dwyer-from-parks-and-recreation-s-2-26656-1407248996-0_dblbig.jpg"
         andy.points = 720
@@ -143,16 +145,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         andy.startOfStreak = lastYear!
         andy.lastLogin = yesterday!
         
-        let realm = try! Realm()
-        
-        try! realm.write {
-            realm.add(newGenre)
-            realm.add(article1)
-            realm.add(article2)
-            realm.add(leslie)
-            realm.add(ron)
-            realm.add(april)
-            realm.add(andy)
+        try! realm!.write {
+            realm!.add(newGenre)
+            realm!.add(article1)
+            realm!.add(article2)
+            realm!.add(leslie)
+            realm!.add(ron)
+            realm!.add(april)
+            realm!.add(andy)
         }
     }
     

@@ -20,20 +20,6 @@ class FirstViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        let realm = try! Realm()
-        
-        
-        
-        let articles = realm.objects(Article)
-        // tableView.delegate = self;
-        for a in articles {
-            articleArray.append(a)
-        }
-        print("** PRINTING ARTICLES **")
-        print(articleArray)
- 
-        
-//
     }
 
     override func didReceiveMemoryWarning() {
@@ -52,7 +38,6 @@ class FirstViewController: UITableViewController {
     }
     
     override func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        // print(articleArray)
         return "Genre: None Right Now"
     }
     

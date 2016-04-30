@@ -10,7 +10,7 @@ import Foundation
 import RealmSwift
 
 class User: Object {
-    dynamic var facebookId = 0
+    dynamic var facebookId = ""
     dynamic var name = ""
     dynamic var email = ""
     dynamic var startOfStreak = NSDate()

@@ -23,21 +23,19 @@ class SecondViewController: UIViewController {
     
     @IBOutlet weak var favArticlesScrollview: UIScrollView!
     
+    var currentUser = User()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        let realm = try! Realm()
-        
-        let users = realm.objects(User)
-        let sortedUsers = users.sorted("points", ascending: false)
-        // TODO : GET MY USER
-        let index = 0;
-        
-        let u = users[index]
-        welcomeMessage.text = "Welcome, " + u.name
-        userPoints.text = String(u.points)
-        userReadNumArticles.text = String(u.articlesRead.count)
-        userPlaceInLeaderboard.text = String(index + 1)
+        let facebookId = FBSDKAccessToken.currentAccessToken().userID
+        let potentialUsers = try! Realm().objects(User).filter("facebookId==%s", facebookId)
+        if potentialUsers.count > 0 {
+            currentUser = potentialUsers[0]
+        }
+        welcomeMessage.text = "Welcome, " + currentUser.name
+        userPoints.text = String(currentUser.points)
+        userReadNumArticles.text = String(currentUser.articlesRead.count)
+        //userPlaceInLeaderboard.text = String(index + 1)
         
         
         // Do any additional setup after loading the view, typically from a nib.

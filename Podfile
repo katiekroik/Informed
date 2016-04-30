@@ -3,7 +3,7 @@ use_frameworks!
 
 target 'Informed' do
 
-    pod 'RealmSwift', '~> 0.98'
+    pod 'RealmSwift', '~> 0.100'
 
     pod 'Alamofire', '2.0.2'
 

@@ -137,11 +137,11 @@
 				02C6A8E81CB3030E00F78425 /* LeaderboardViewController.swift */,
 				02A4D8411CBF208B0007E924 /* Main.storyboard */,
 				17B51CC21CAC811C002CC471 /* LaunchScreen.storyboard */,
-				174D4C9C1CD1640A00784CF0 /* FBSDKCoreKit.framework */,
-				174D4C9D1CD1640A00784CF0 /* FBSDKLoginKit.framework */,
 				24D747D31CCE707E00C13B35 /* Models */,
 				24D747D41CCE72E800C13B35 /* Supporting Files */,
 				174D4CA01CD1650A00784CF0 /* Informed-Bridging-Header.h */,
+				174D4C9C1CD1640A00784CF0 /* FBSDKCoreKit.framework */,
+				174D4C9D1CD1640A00784CF0 /* FBSDKLoginKit.framework */,
 			);
 			path = Informed;
 			sourceTree = "<group>";

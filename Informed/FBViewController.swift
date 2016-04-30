@@ -46,8 +46,9 @@ class FBViewController: UIViewController,  FBSDKLoginButtonDelegate {
             let currentUser = User()
             let realm = try! Realm()
             
-            if let facebookId = result["id"] as? Int {
-                let existing = realm.objects(User).filter("id == %d", facebookId)
+            if let facebookId = result["id"] as? String {
+                // This should probably be Double but YOLO
+                let existing = realm.objects(User).filter("facebookId == %s", facebookId)
                 if existing.count != 0 {
                     return
                 }
