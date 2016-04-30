@@ -13,6 +13,7 @@ import RealmSwift
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
+    var currentUser: User!
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         
@@ -25,15 +26,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         //determine if session is active first
         if(FBSDKAccessToken.currentAccessToken() != nil){
+            // This may be unnecessary. Potentially inverse the if statement?
+            let facebookId = FBSDKAccessToken.currentAccessToken().userID
+            let potentialUsers = try! Realm().objects(User).filter("facebookId==%s", facebookId)
+            if potentialUsers.count > 0 {
+                currentUser = potentialUsers[0]
+                print (currentUser)
+            }
             
-            let initialViewController = storyboard.instantiateViewControllerWithIdentifier("TabViewController")
-            
-            self.window?.rootViewController = initialViewController
+            //self.window?.rootViewController = initialViewController
             self.window?.makeKeyAndVisible()
-        }
-        // if no session is active, prompt user to login through facebook
-        else{
-            
+        } else {
+            // if no session is active, prompt user to login through facebook
             let initialViewController = storyboard.instantiateViewControllerWithIdentifier("FBViewController")
             
             self.window?.rootViewController = initialViewController
@@ -127,6 +131,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         april.startOfStreak = twoDaysAgo!
         april.lastLogin = twoDaysAgo!
         
+        let andy = User()
+        andy.name = "Andy Dwyer"
+        andy.facebookId = 12346789
+        andy.email = "mouserat@hotmail.com"
+        andy.picture = "https://img.buzzfeed.com/buzzfeed-static/static/2014-08/5/10/campaign_images/webdr10/10-reasons-andy-dwyer-from-parks-and-recreation-s-2-26656-1407248996-0_dblbig.jpg"
+        andy.points = 720
+        andy.articlesRead.append(article1)
+        andy.articlesRead.append(article2)
+        andy.favoriteArticles.append(article1)
+        andy.startOfStreak = lastYear!
+        andy.lastLogin = yesterday!
+        
         let realm = try! Realm()
         
         try! realm.write {
@@ -136,6 +152,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             realm.add(leslie)
             realm.add(ron)
             realm.add(april)
+            realm.add(andy)
         }
     }
     

@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import RealmSwift
 
 class FBViewController: UIViewController,  FBSDKLoginButtonDelegate {
     
@@ -30,12 +31,9 @@ class FBViewController: UIViewController,  FBSDKLoginButtonDelegate {
         if  FBSDKAccessToken.currentAccessToken() != nil {
             fetchProfile()
         }
-        
-        
-        // Do any additional setup after loading the view.
     }
     
-    func fetchProfile(){
+    func fetchProfile() {
         print("fetch profile")
         
         let parameters = ["fields": "email,first_name,last_name, picture.type(large)"]
@@ -45,17 +43,39 @@ class FBViewController: UIViewController,  FBSDKLoginButtonDelegate {
                 return
             }
             
-//            
-//            if let email = result["email"] as? String{
-//                print(email)
-//            }
-//            
-//            if let picture = result["picture"] as? NSDictionary, data = picture["data"] as? NSDictionary, url = data["url"] as? String{
-//                print(url)
-//            }
+            let currentUser = User()
+            let realm = try! Realm()
             
-            // prints out all fields (email, first name, last name, and picture url)
-            print(result)
+            if let facebookId = result["id"] as? Int {
+                let existing = realm.objects(User).filter("id == %d", facebookId)
+                if existing.count != 0 {
+                    return
+                }
+                currentUser.facebookId = facebookId
+            }
+            
+            if let email = result["email"] as? String{
+                currentUser.email = email
+            }
+            
+            var nameString = ""
+            
+            if let first_name = result["first_name"] as? String {
+                nameString = first_name
+            }
+            
+            if let last_name = result["last_name"] as? String {
+                nameString += " " + last_name
+                currentUser.name = nameString
+            }
+            
+            if let picture = result["picture"] as? NSDictionary, data = picture["data"] as? NSDictionary, url = data["url"] as? String{
+                currentUser.picture = url
+            }
+            
+            try! realm.write {
+                realm.add(currentUser)
+            }
         }
     }
     
