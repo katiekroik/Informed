@@ -59,84 +59,84 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         )
         // Set the config
         Realm.Configuration.defaultConfiguration = config
-
-        let realm = try! Realm()
-        
-//        let articles = realm.objects(Article)
-//        
-//        var list = List<Article>()
-//        list.append(articles[2])
-//        
-//        let katie = User();
-//        katie.name = "Katie"
-//        katie.points = 5
-//        katie.id = 1
-////        katie.favoriteArticles = list
-//        
-//        try! realm.write {
-//            realm.add(katie, update: true)
-//        }
-        
-//        let articles = realm.objects(Article)
-//        let g = Genre()
-//        g.name = "World News"
-//        
-//        let article = Article()
-//        article.genre = realm.objects(Genre)[0]
-//        article.name = "Really Long Article"
-//        article.content = "Lorem ipsum dolor sit amet, in per aeterno suscipiantur, te nibh aperiam sit. Id albucius referrentur sea, an vis eirmod similique. Eos no oratio virtute, vel errem liberavisse cu. Verear albucius ex sed, erant dissentias in qui, in simul epicuri pri. Vis viderer feugiat appetere id, ipsum vidisse tritani ius ex. Rebum equidem et his, sed eius debet maiestatis te. An qui ludus facete iisque. Iriure corpora ut sed, inani error facilis mei ad. In maiorum oportere nec. Eos fierent accusamus consequuntur cu, reque eripuit menandri has eu. Vim consul aliquip suscipiantur id, mei vidisse ullamcorper ne. Eos nobis facilis prodesset et. Est in offendit percipit, te nec tibique theophrastus. In alienum recusabo vituperata vel, nec te ullum accommodare. In admodum luptatum eam, dicant aeterno maiestatis qui et, cu mel decore volumus argumentum. Duo dicta inermis ad, eum tale offendit no. Ne cetero detraxit nominati vim. Est oratio minimum at. Ex tempor putant pri, no elit oporteat sadipscing ius. Ornatus ceteros offendit mea no, eos et ancillae voluptua mandamus. Zril nonumy ad vix, prompta iuvaret mea te. Omnesque salutatus repudiandae nec ea, et usu vidit tollit reformidans. Est harum ridens maiorum an, ut cum omittam elaboraret. An natum dicta duo, labitur fabulas vis cu. Lorem ipsum dolor sit amet, in per aeterno suscipiantur, te nibh aperiam sit. Id albucius referrentur sea, an vis eirmod similique. Eos no oratio virtute, vel errem liberavisse cu. Verear albucius ex sed, erant dissentias in qui, in simul epicuri pri. Vis viderer feugiat appetere id, ipsum vidisse tritani ius ex. Rebum equidem et his, sed eius debet maiestatis te. An qui ludus facete iisque. Iriure corpora ut sed, inani error facilis mei ad. In maiorum oportere nec. Eos fierent accusamus consequuntur cu, reque eripuit menandri has eu. Vim consul aliquip suscipiantur id, mei vidisse ullamcorper ne. Eos nobis facilis prodesset et. Est in offendit percipit, te nec tibique theophrastus. In alienum recusabo vituperata vel, nec te ullum accommodare. In admodum luptatum eam, dicant aeterno maiestatis qui et, cu mel decore volumus argumentum. Duo dicta inermis ad, eum tale offendit no. Ne cetero detraxit nominati vim. Est oratio minimum at. Ex tempor putant pri, no elit oporteat sadipscing ius. Ornatus ceteros offendit mea no, eos et ancillae voluptua mandamus. Zril nonumy ad vix, prompta iuvaret mea te. Omnesque salutatus repudiandae nec ea, et usu vidit tollit reformidans. Est harum ridens maiorum an, ut cum omittam elaboraret. An natum dicta duo, labitur fabulas vis cu. Lorem ipsum dolor sit amet, in per aeterno suscipiantur, te nibh aperiam sit. Id albucius referrentur sea, an vis eirmod similique. Eos no oratio virtute, vel errem liberavisse cu. Verear albucius ex sed, erant dissentias in qui, in simul epicuri pri. Vis viderer feugiat appetere id, ipsum vidisse tritani ius ex. Rebum equidem et his, sed eius debet maiestatis te. An qui ludus facete iisque. Iriure corpora ut sed, inani error facilis mei ad. In maiorum oportere nec. Eos fierent accusamus consequuntur cu, reque eripuit menandri has eu. Vim consul aliquip suscipiantur id, mei vidisse ullamcorper ne. Eos nobis facilis prodesset et. Est in offendit percipit, te nec tibique theophrastus. In alienum recusabo vituperata vel, nec te ullum accommodare. In admodum luptatum eam, dicant aeterno maiestatis qui et, cu mel decore volumus argumentum. Duo dicta inermis ad, eum tale offendit no. Ne cetero detraxit nominati vim. Est oratio minimum at. Ex tempor putant pri, no elit oporteat sadipscing ius. Ornatus ceteros offendit mea no, eos et ancillae voluptua mandamus. Zril nonumy ad vix, prompta iuvaret mea te. Omnesque salutatus repudiandae nec ea, et usu vidit tollit reformidans. Est harum ridens maiorum an, ut cum omittam elaboraret. An natum dicta duo, labitur fabulas vis cu."
-//        
-//        try! realm.write {
-////            realm.add(g);
-//            realm.add(article)
-//            
-//        }
-        
-        
-//        let sortedUsers = users.sorted("points", ascending: false)
-        
-
-        
-        /* Adding articles to the DB */
-//        let article1 = Article()
-//        article1.articleName = "Lorem Ipsum";
-//        article1.articleText = "Lorem ipsum dolor sit amet, in per aeterno suscipiantur, te nibh aperiam sit. Id albucius referrentur sea, an vis eirmod similique. Eos no oratio virtute, vel errem liberavisse cu. Verear albucius ex sed, erant dissentias in qui, in simul epicuri pri. Vis viderer feugiat appetere id, ipsum vidisse tritani ius ex. Rebum equidem et his, sed eius debet maiestatis te. An qui ludus facete iisque. Iriure corpora ut sed, inani error facilis mei ad. In maiorum oportere nec. Eos fierent accusamus consequuntur cu, reque eripuit menandri has eu. Vim consul aliquip suscipiantur id, mei vidisse ullamcorper ne. Eos nobis facilis prodesset et. Est in offendit percipit, te nec tibique theophrastus. In alienum recusabo vituperata vel, nec te ullum accommodare. In admodum luptatum eam, dicant aeterno maiestatis qui et, cu mel decore volumus argumentum. Duo dicta inermis ad, eum tale offendit no. Ne cetero detraxit nominati vim. Est oratio minimum at. Ex tempor putant pri, no elit oporteat sadipscing ius. Ornatus ceteros offendit mea no, eos et ancillae voluptua mandamus. Zril nonumy ad vix, prompta iuvaret mea te. Omnesque salutatus repudiandae nec ea, et usu vidit tollit reformidans. Est harum ridens maiorum an, ut cum omittam elaboraret. An natum dicta duo, labitur fabulas vis cu.";
-//        try! realm.write {
-//            realm.add(article1)
-//        }
-//
-//        let list = List<Article>()
-//        list.append(article1)
-//
-//        /* ADDS A NEW USER*/
-//        let katie = User();
-//        katie.name = "Katie"
-//        katie.points = 5
-//        katie.favoriteArticles = list
-//        
-//        print("katie exists: \(katie.name)")
-//
-//        let users = realm.objects(User)
-//        print(users.count)
-//        
-//        try! realm.write{
-//            realm.add(katie)
-//        }
-        
-        /* ADDS AN ARTICLE */
-//        let article = Article()
-//        article.articleName = "I love Articles";
-//        article.articleText = "That's why we're making this news app called Informed!";
-//        
-        
-        /* Prints the objects */
-         print(realm.objects(User))
-         print(realm.objects(Article))
-//
-//         print(users.count)
+        print(Realm.Configuration.defaultConfiguration.path!)
+        let users = try! Realm().objects(User)
+        if users.count == 0 {
+            populateUsers()
+        }
         
         
         return true
+    }
+    
+    // Function populates Realm DB on phone with dummy values for testing purposes.
+    // Yes, I've been watching too much Parks & Rec.
+    func populateUsers() {
+        let newGenre = Genre()
+        newGenre.name = "Pawnee Politics"
+        
+        let calendar = NSCalendar.currentCalendar()
+        let twoDaysAgo = calendar.dateByAddingUnit(.Day, value: -2, toDate: NSDate(), options: [])
+        let yesterday = calendar.dateByAddingUnit(.Day, value: -1, toDate: NSDate(), options: [])
+        let lastYear = calendar.dateByAddingUnit(.Year, value: -1, toDate: NSDate(), options: [])
+        
+        let article1 = Article()
+        article1.genre = newGenre
+        article1.name = "Knope Wins on Recount"
+        article1.publisher = "Pawnee Sun"
+        article1.linkTo = "http://www.reddit.com/r/hockey"
+        article1.publishId = "8675309"
+        article1.datePublished = NSDate()
+        
+        let article2 = Article()
+        article2.genre = newGenre
+        article2.name = "Cone of Dunshire goes Viral!"
+        article2.datePublished = NSDate()
+        article2.linkTo = "http://www.reddit.com/r/baseball"
+        article2.publisher = "New York Times"
+        article2.publishId = "xYzLmnOp"
+        
+        let leslie = User()
+        leslie.name = "Leslie Knope"
+        leslie.facebookId = 1337
+        leslie.articlesRead.append(article1)
+        leslie.articlesRead.append(article2)
+        leslie.favoriteArticles.append(article1)
+        leslie.email = "knope@indiana.gov"
+        leslie.picture = "http://media.salon.com/2012/11/knope_campaign_rect.jpg"
+        leslie.points = 40000
+        leslie.startOfStreak = twoDaysAgo!
+        leslie.lastLogin = yesterday!
+        
+        let ron = User()
+        ron.name = "Ron Swanson"
+        ron.facebookId = 42
+        ron.email = "dukeSilver@aol.com"
+        ron.picture = "http://i.huffpost.com/gen/1264888/thumbs/o-RON-SWANSON-570.jpg?6"
+        ron.points = 100
+        ron.startOfStreak = lastYear!
+        ron.lastLogin = lastYear!
+        
+        let april = User()
+        april.name = "April Ludgate"
+        april.facebookId = 93861
+        april.email = "death@gmail.com"
+        april.picture = "https://img.buzzfeed.com/buzzfeed-static/static/2015-01/7/11/campaign_images/webdr10/if-april-ludgate-had-instagram-2-24018-1420646599-0_dblbig.jpg"
+        april.points = 500
+        april.articlesRead.append(article2)
+        april.startOfStreak = twoDaysAgo!
+        april.lastLogin = twoDaysAgo!
+        
+        let realm = try! Realm()
+        
+        try! realm.write {
+            realm.add(newGenre)
+            realm.add(article1)
+            realm.add(article2)
+            realm.add(leslie)
+            realm.add(ron)
+            realm.add(april)
+        }
     }
     
     

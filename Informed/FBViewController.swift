@@ -55,7 +55,7 @@ class FBViewController: UIViewController,  FBSDKLoginButtonDelegate {
 //            }
             
             // prints out all fields (email, first name, last name, and picture url)
-            //print(result)
+            print(result)
         }
     }
     

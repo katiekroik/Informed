@@ -11,8 +11,9 @@ import RealmSwift
 
 class Article: Object {
     dynamic var genre: Genre!
-    dynamic var id = 0
     dynamic var name = ""
-    dynamic var content = ""
     dynamic var publisher = ""
+    dynamic var publishId = ""
+    dynamic var linkTo = ""
+    dynamic var datePublished = NSDate()
 }

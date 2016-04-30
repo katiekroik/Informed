@@ -10,10 +10,13 @@ import Foundation
 import RealmSwift
 
 class User: Object {
-    dynamic var id = 0
+    dynamic var facebookId = 0
     dynamic var name = ""
+    dynamic var email = ""
+    dynamic var startOfStreak = NSDate()
+    dynamic var lastLogin = NSDate()
     dynamic var points = 0
+    dynamic var picture = ""
     let articlesRead = List<Article>()
     let favoriteArticles = List<Article>()
-    let friends = List<User>()
 }

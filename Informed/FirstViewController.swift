@@ -21,7 +21,6 @@ class FirstViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         let realm = try! Realm()
-        print(Realm.Configuration.defaultConfiguration.path!)
         
         
         
@@ -91,7 +90,6 @@ class FirstViewController: UITableViewController {
                     let vc = segue.destinationViewController as! IndividualArticleViewController
                     print(articleArray[i])
                     vc.name = articleArray[i].name
-                    vc.contents = articleArray[i].content
                     
                     vc.article = articleArray[i]
                     
