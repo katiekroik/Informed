@@ -30,6 +30,7 @@ class SecondViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         let facebookId = FBSDKAccessToken.currentAccessToken().userID
         let potentialUsers = try! Realm().objects(User).filter("facebookId==%s", facebookId)
         if potentialUsers.count > 0 {
@@ -38,10 +39,23 @@ class SecondViewController: UIViewController {
         welcomeMessage.text = "Welcome, " + currentUser.name
         userPoints.text = String(currentUser.points)
         userReadNumArticles.text = String(currentUser.articlesRead.count)
-        //userPlaceInLeaderboard.text = String(index + 1)
         
         email.text = currentUser.email
-//        dateLastLoggedIn.text = String(currentUser.lastLogin)
+        
+        let realm = try! Realm()
+        let users = realm.objects(User)
+        let sortedUsers = users.sorted("points", ascending: false)
+        
+        var count = 0;
+        
+        // Fill in the place
+        for u in sortedUsers {
+            count++;
+            if (u.email == currentUser.email) {
+                userPlaceInLeaderboard.text = String(count);
+            }
+        }
+
         var stringDate = String(currentUser.lastLogin)
         let dateArray = stringDate.characters.split{$0 == " "}.map(String.init)
         dateLastLoggedIn.text = dateArray[0]
