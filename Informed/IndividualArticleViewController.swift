@@ -24,6 +24,8 @@ class IndividualArticleViewController: UIViewController, UITextViewDelegate {
     var aName = String()
     var aUrl = String()
     var article = Article()
+    
+    var currentUser = User()
     override func viewDidLoad() {
         super.viewDidLoad()
 //        articleContents.delegate = self;
@@ -42,6 +44,31 @@ class IndividualArticleViewController: UIViewController, UITextViewDelegate {
         let url = NSURL (string: aUrl);
         let requestObj = NSURLRequest(URL: url!);
         webView.loadRequest(requestObj);
+
+        
+        var contains = false;
+        // TODO : ACTUALLY GET THE USER THATS LOGGED IN RIGHT NOW - HOW DO I DO THAT
+        //            var user = users[0];
+        //            currentUser
+        for a in currentUser.articlesRead {
+            if (a.name == name) {
+                contains = true;
+            }
+        }
+        
+        let realm = try! Realm()
+        
+        if (contains == false) {
+            let val = currentUser.points + 25
+            // Add to the user read article database
+            try! realm.write {
+                currentUser.articlesRead.append(article)
+                currentUser.points = val
+            }
+        }
+        else {
+            print("Re-reading an article -> no points...")
+        }
 
     }
     
@@ -83,35 +110,38 @@ class IndividualArticleViewController: UIViewController, UITextViewDelegate {
     }
     
     func scrollViewDidScroll(scrollView: UIScrollView) {
-        if (scrollView.contentOffset.y == scrollView.contentSize.height - scrollView.frame.size.height) {
+        print (scrollView.contentSize.height - scrollView.frame.size.height)
+        print( scrollView.contentOffset.y )
+        if (scrollView.contentOffset.y > ((scrollView.contentSize.height - scrollView.frame.size.height) / 2)) {
             // reached the bottom
             print ("BOTTOM!!")
 
             let realm = try! Realm()
-            let users = realm.objects(User)
+//            let users = realm.objects(User)
             
             var contains = false;
             // TODO : ACTUALLY GET THE USER THATS LOGGED IN RIGHT NOW - HOW DO I DO THAT
-            var user = users[0];
-            for a in user.articlesRead {
+//            var user = users[0];
+//            currentUser
+            for a in currentUser.articlesRead {
                 if (a.name == name) {
                     contains = true;
                 }
             }
             
             if (contains == false) {
-                let val = user.points + 25
+                let val = currentUser.points + 25
                 // Add to the user read article database
                 try! realm.write {
-                    user.articlesRead.append(article)
-                    user.points = val
+                    currentUser.articlesRead.append(article)
+                    currentUser.points = val
                 }
             }
             else {
                 print("Re-reading an article -> no points...")
             }
             
-            print(user)
+            print(currentUser)
         }
     }
     

@@ -17,9 +17,17 @@ class FirstViewController: UITableViewController {
     var articleArray = [(Article)]();
     var selectedArticle = 0
     
+    var currentUser = User()
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        let facebookId = FBSDKAccessToken.currentAccessToken().userID
+        let potentialUsers = try! Realm().objects(User).filter("facebookId==%s", facebookId)
+        if potentialUsers.count > 0 {
+            currentUser = potentialUsers[0]
+        }
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -96,6 +104,7 @@ class FirstViewController: UITableViewController {
                     
                     vc.article = articleArray[i]
                     vc.aUrl = articleArray[i].linkTo
+                    vc.currentUser = currentUser
                     
 //                    vc.articleName.text = articleArray[i].articleName
 //                    vc.articleContents.text = articleArray[i].articleText

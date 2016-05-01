@@ -40,16 +40,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 //        
 //        let article1 = Article()
 //        article1.genre = genre
-//        article1.name = "Ted Cruz at the California Republican Convention"
-//        article1.publisher = "CNN"
-//        article1.linkTo = "http://www.cnn.com/2016/04/30/politics/ted-cruz-california-republican-convention/index.html"
-//        article1.publishId = "8675309"
+//        article1.name = "Obama Takes Aim At Trump"
+//        article1.publisher = "The Guardian"
+//        article1.linkTo = "http://www.theguardian.com/us-news/2016/may/01/obama-takes-aim-at-trump-and-republicans-at-final-correspondents-dinner"
+//        article1.publishId = "5533982"
 //        article1.datePublished = NSDate()
 //        
 //        try! realm!.write {
 //            realm!.add(article1)
 //        }
-
+//
         
         let users = realm!.objects(User)
         if users.count == 0 {
