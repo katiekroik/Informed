@@ -13,36 +13,40 @@ class IndividualArticleViewController: UIViewController, UITextViewDelegate {
     
 
     // Name of article
-    @IBOutlet weak var articleName: UILabel!
-    // Article contents
-    @IBOutlet weak var articleContents: UITextView!
+//    @IBOutlet weak var articleName: UILabel!
+//    // Article contents
+//    @IBOutlet weak var articleContents: UITextView!
 
+    @IBOutlet weak var webView: UIWebView!
+    
     var name = String()
     var contents = String()
     var aName = String()
-    
+    var aUrl = String()
     var article = Article()
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-        articleContents.delegate = self;
-
-
-        articleContents.decelerationRate = UIScrollViewDecelerationRateFast;
-        articleContents.userInteractionEnabled = true;
-        articleContents.scrollEnabled = true;
-
-        print(articleName.text)
-        
-        articleName.text = aName
-        articleContents.text = contents
-
-        let frame = self.view.frame;
+//        articleContents.delegate = self;
+//
+//
+//        articleContents.decelerationRate = UIScrollViewDecelerationRateFast;
+//        articleContents.userInteractionEnabled = true;
+//        articleContents.scrollEnabled = true;
+//
+//        print(articleName.text)
+//        
+//        articleName.text = aName
+//        articleContents.text = contents
+//
+//        let frame = self.view.frame;
+        let url = NSURL (string: aUrl);
+        let requestObj = NSURLRequest(URL: url!);
+        webView.loadRequest(requestObj);
 
     }
     
     override func viewWillAppear(animated: Bool) {
-        articleName.text = aName;
+//        articleName.text = aName;
     }
     
     func scrollViewWillEndDragging(scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>)
@@ -112,8 +116,8 @@ class IndividualArticleViewController: UIViewController, UITextViewDelegate {
     }
     
     func scrollToBotom() {
-        let range = NSMakeRange(articleContents.text.characters.count - 1, 1);
-        articleContents.scrollRangeToVisible(range);
+//        let range = NSMakeRange(articleContents.text.characters.count - 1, 1);
+//        articleContents.scrollRangeToVisible(range);
     }
     
     override func didReceiveMemoryWarning() {

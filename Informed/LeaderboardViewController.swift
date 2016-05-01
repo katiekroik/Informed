@@ -40,14 +40,14 @@ class LeaderboardViewController: UIViewController {
         leader2.text = sortedUsers[1].name
         points2.text = String(sortedUsers[1].points)
         
-        leader3.text = sortedUsers[2].name
-        points3.text = String(sortedUsers[2].points)
-        
-        leader4.text = sortedUsers[3].name
-        points4.text = String(sortedUsers[3].points)
-        
-        leader5.text = sortedUsers[4].name
-        points5.text = String(sortedUsers[4].points)
+//        leader3.text = sortedUsers[2].name
+//        points3.text = String(sortedUsers[2].points)
+//        
+//        leader4.text = sortedUsers[3].name
+//        points4.text = String(sortedUsers[3].points)
+//        
+//        leader5.text = sortedUsers[4].name
+//        points5.text = String(sortedUsers[4].points)
 
         // Do any additional setup after loading the view.
     }

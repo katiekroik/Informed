@@ -21,12 +21,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Lets the schema be accepted by Realm
         let config = Realm.Configuration(
             // Sets the new Schema version
-            schemaVersion: 2,
+            schemaVersion: 3,
             
             // Blocks older versions
             migrationBlock: { migration, oldSchemaVersion in
                 // Old schema is less than 1
-                if (oldSchemaVersion < 2) {
+                if (oldSchemaVersion < 3) {
                     // And do nothing -> Realm will update it :D
                 }
             }
@@ -36,11 +36,26 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         realm = try! Realm()
         print(Realm.Configuration.defaultConfiguration.path!)
         
+//        let genre = realm!.objects(Genre)[0]
+//        
+//        let article1 = Article()
+//        article1.genre = genre
+//        article1.name = "Ted Cruz at the California Republican Convention"
+//        article1.publisher = "CNN"
+//        article1.linkTo = "http://www.cnn.com/2016/04/30/politics/ted-cruz-california-republican-convention/index.html"
+//        article1.publishId = "8675309"
+//        article1.datePublished = NSDate()
+//        
+//        try! realm!.write {
+//            realm!.add(article1)
+//        }
+
         
         let users = realm!.objects(User)
         if users.count == 0 {
             populateUsers()
         }
+//        populateUsers()
         
         
         

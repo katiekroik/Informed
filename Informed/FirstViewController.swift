@@ -13,7 +13,7 @@ class FirstViewController: UITableViewController {
 
     @IBOutlet weak var genre: UILabel!
     // Genre of News
-
+    @IBOutlet var webView: UIWebView!
     var articleArray = [(Article)]();
     var selectedArticle = 0
     
@@ -34,11 +34,29 @@ class FirstViewController: UITableViewController {
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // Return the number of rows in the section.
-        return articleArray.count
+        
+        var count = 0
+        
+        let realm = try! Realm()
+        let genre = realm.objects(Genre)[0]
+        let genreName = genre.name
+//        let genreFilter = NSPredicate(format: "genre = @%", genre)
+        let articles = realm.objects(Article)
+        
+        for a in articles {
+            if (a.genre == genre) {
+                count++
+                articleArray.append(a);
+            }
+        }
+        
+//        print(puppies)
+
+        return count
     }
     
     override func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return "Genre: None Right Now"
+        return "Pawnee Politics"
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
@@ -46,7 +64,7 @@ class FirstViewController: UITableViewController {
         
         print(indexPath.indexAtPosition(1))
         let i = indexPath.indexAtPosition(1)
-        print(articleArray[i])
+//        print(articleArray[i])
         cell.textLabel?.text = articleArray[i].name
         return cell
     }
@@ -77,6 +95,7 @@ class FirstViewController: UITableViewController {
                     vc.name = articleArray[i].name
                     
                     vc.article = articleArray[i]
+                    vc.aUrl = articleArray[i].linkTo
                     
 //                    vc.articleName.text = articleArray[i].articleName
 //                    vc.articleContents.text = articleArray[i].articleText
