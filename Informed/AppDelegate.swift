@@ -105,7 +105,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         article1.genre = newGenre
         article1.name = "Knope Wins on Recount"
         article1.publisher = "Pawnee Sun"
-        article1.linkTo = "http://www.reddit.com/r/hockey"
+        article1.linkTo = "http://international.sueddeutsche.de/post/143690739565/ttippapiere"
         article1.publishId = "8675309"
         article1.datePublished = NSDate()
         
@@ -113,7 +113,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         article2.genre = newGenre
         article2.name = "Cone of Dunshire goes Viral!"
         article2.datePublished = NSDate()
-        article2.linkTo = "http://www.reddit.com/r/baseball"
+        article2.linkTo = "https://peter.bourgon.org/go-best-practices-2016/"
         article2.publisher = "New York Times"
         article2.publishId = "xYzLmnOp"
         

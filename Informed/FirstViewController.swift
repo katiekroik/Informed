@@ -53,12 +53,10 @@ class FirstViewController: UITableViewController {
         
         for a in articles {
             if (a.genre == genre) {
-                count++
+                count += 1
                 articleArray.append(a);
             }
         }
-        
-//        print(puppies)
 
         return count
     }
@@ -70,7 +68,7 @@ class FirstViewController: UITableViewController {
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("LabelCell", forIndexPath: indexPath)
         
-        print(indexPath.indexAtPosition(1))
+//        print(indexPath.indexAtPosition(1))
         let i = indexPath.indexAtPosition(1)
 //        print(articleArray[i])
         cell.textLabel?.text = articleArray[i].name
@@ -100,7 +98,6 @@ class FirstViewController: UITableViewController {
                     with it and idk what's wrong... */
                     let vc = segue.destinationViewController as! IndividualArticleViewController
                     print(articleArray[i])
-                    vc.name = articleArray[i].name
                     
                     vc.article = articleArray[i]
                     vc.aUrl = articleArray[i].linkTo

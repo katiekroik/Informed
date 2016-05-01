@@ -8,24 +8,28 @@
 
 import UIKit
 import RealmSwift
+import WebKit
 
-class IndividualArticleViewController: UIViewController, UITextViewDelegate {
+class IndividualArticleViewController: UIViewController, UITextViewDelegate, WKNavigationDelegate {
     
 
     // Name of article
 //    @IBOutlet weak var articleName: UILabel!
 //    // Article contents
 //    @IBOutlet weak var articleContents: UITextView!
-
-    @IBOutlet weak var webView: UIWebView!
     
-    var name = String()
-    var contents = String()
-    var aName = String()
-    var aUrl = String()
-    var article = Article()
+    var aUrl: String!
+    var article: Article!
+    var currentUser: User!
+    var realm = try! Realm()
+    var webView: WKWebView!
     
-    var currentUser = User()
+    override func loadView() {
+        webView = WKWebView()
+        webView.navigationDelegate = self
+        view = webView
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 //        articleContents.delegate = self;
@@ -41,22 +45,30 @@ class IndividualArticleViewController: UIViewController, UITextViewDelegate {
 //        articleContents.text = contents
 //
 //        let frame = self.view.frame;
+        
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "+", style: .Plain, target: self, action: #selector(IndividualArticleViewController.options))
         let url = NSURL (string: aUrl);
         let requestObj = NSURLRequest(URL: url!);
         webView.loadRequest(requestObj);
 
         
         var contains = false;
-        // TODO : ACTUALLY GET THE USER THATS LOGGED IN RIGHT NOW - HOW DO I DO THAT
-        //            var user = users[0];
-        //            currentUser
+        
+        if currentUser == nil {
+            let facebookId = FBSDKAccessToken.currentAccessToken().userID
+            let potentialUsers = realm.objects(User).filter("facebookId == %s", facebookId)
+            if potentialUsers.count == 0 {
+                navigationController?.popToRootViewControllerAnimated(true)
+                
+            }
+            currentUser = potentialUsers.first
+        }
+        
         for a in currentUser.articlesRead {
-            if (a.name == name) {
+            if (a.linkTo == aUrl) {
                 contains = true;
             }
         }
-        
-        let realm = try! Realm()
         
         if (contains == false) {
             let val = currentUser.points + 25
@@ -115,16 +127,21 @@ class IndividualArticleViewController: UIViewController, UITextViewDelegate {
         if (scrollView.contentOffset.y > ((scrollView.contentSize.height - scrollView.frame.size.height) / 2)) {
             // reached the bottom
             print ("BOTTOM!!")
-
-            let realm = try! Realm()
-//            let users = realm.objects(User)
             
             var contains = false;
-            // TODO : ACTUALLY GET THE USER THATS LOGGED IN RIGHT NOW - HOW DO I DO THAT
-//            var user = users[0];
-//            currentUser
+            
+            if currentUser == nil {
+                let facebookId = FBSDKAccessToken.currentAccessToken().userID
+                let potentialUsers = realm.objects(User).filter("facebookId == %s", facebookId)
+                if potentialUsers.count == 0 {
+                    navigationController?.popToRootViewControllerAnimated(true)
+                    
+                }
+                currentUser = potentialUsers.first
+            }
+            
             for a in currentUser.articlesRead {
-                if (a.name == name) {
+                if (a.linkTo == aUrl) {
                     contains = true;
                 }
             }
@@ -142,6 +159,19 @@ class IndividualArticleViewController: UIViewController, UITextViewDelegate {
             }
             
             print(currentUser)
+        }
+    }
+    
+    func options() {
+        let ac = UIAlertController(title: "Options", message: nil, preferredStyle: .ActionSheet)
+        ac.addAction(UIAlertAction(title: "Add to Favorites", style: .Default, handler: favorite))
+        ac.popoverPresentationController?.barButtonItem = self.navigationItem.rightBarButtonItem
+        presentViewController(ac, animated: true, completion: nil)
+    }
+    
+    func favorite(action: UIAlertAction!) {
+        try! realm.write {
+            currentUser.favoriteArticles.append(article)
         }
     }
     
