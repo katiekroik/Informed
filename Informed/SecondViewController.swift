@@ -21,6 +21,9 @@ class SecondViewController: UIViewController {
     @IBOutlet weak var userMostEducatedIn: UILabel!
     @IBOutlet weak var userReadingStreak: UILabel!
     
+    @IBOutlet weak var dateLastLoggedIn: UILabel!
+    @IBOutlet weak var email: UILabel!
+    @IBOutlet weak var image: UIImageView!
     @IBOutlet weak var favArticlesScrollview: UIScrollView!
     
     var currentUser = User()
@@ -37,6 +40,16 @@ class SecondViewController: UIViewController {
         userReadNumArticles.text = String(currentUser.articlesRead.count)
         //userPlaceInLeaderboard.text = String(index + 1)
         
+        email.text = currentUser.email
+//        dateLastLoggedIn.text = String(currentUser.lastLogin)
+        var stringDate = String(currentUser.lastLogin)
+        let dateArray = stringDate.characters.split{$0 == " "}.map(String.init)
+        dateLastLoggedIn.text = dateArray[0]
+        if let url = NSURL(string: currentUser.picture) {
+            if let data = NSData(contentsOfURL: url) {
+                image.image = UIImage(data: data)
+            }
+        }
         
         // Do any additional setup after loading the view, typically from a nib.
     }
