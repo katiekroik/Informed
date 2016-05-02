@@ -23,7 +23,7 @@ class FirstViewController: UITableViewController {
     var realm: Realm!
     var date: NSDate!
     var currentGenre: Genre!
-    
+    var allGenres = List<Genre>()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -56,6 +56,19 @@ class FirstViewController: UITableViewController {
         currentGenre = genres.first
         
         genreTitle.text! = currentGenre.name
+        
+        while i < genres.count {
+            allGenres.append(genres[i])
+            i += 1
+        }
+        
+        return populateForGenre(currentGenre.name)
+    }
+    
+    // TODO: Attach button to this so that when a new genre is selected, we pull the articles from the database.
+    func populateForGenre(inGenre: String) -> Int {
+        var i = 0
+        currentGenre = realm.objects(Genre).filter("name == %s", inGenre).first
         let articlesForGenre = realm.objects(Article).filter("genre.name ==%s", currentGenre.name)
         articleArray.removeAll()
         
@@ -68,7 +81,11 @@ class FirstViewController: UITableViewController {
     }
     
     override func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return "Pawnee Politics"
+        if let titleText = currentGenre?.name {
+            return titleText
+        } else {
+            return "Oops"
+        }
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
