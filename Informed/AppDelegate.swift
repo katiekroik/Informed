@@ -101,12 +101,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         article1.publisher = "Pawnee Sun"
         article1.linkTo = "http://international.sueddeutsche.de/post/143690739565/ttippapiere"
         article1.publishId = "8675309"
-        article1.datePublished = NSDate()
+        article1.datePublished = lastYear!
         
         let article2 = Article()
         article2.genre = sports
         article2.name = "Cone of Dunshire goes Viral!"
-        article2.datePublished = NSDate()
+        article2.datePublished = lastYear!
         article2.linkTo = "https://peter.bourgon.org/go-best-practices-2016/"
         article2.publisher = "New York Times"
         article2.publishId = "xYzLmnOp"

@@ -27,44 +27,12 @@ class FirstViewController: UITableViewController {
     var currentGenre: Genre!
     var allGenres = List<Genre>()
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        let facebookId = FBSDKAccessToken.currentAccessToken().userID
-        realm = try! Realm()
-        let potentialUsers = realm.objects(User).filter("facebookId==%s", facebookId)
-        if potentialUsers.count > 0 {
-            currentUser = potentialUsers.first
-        }
-        date = NSDate()
-        
-        var i = 0
-        let genres = realm.objects(Genre)
-        currentGenre = genres.first
-        
-        genreTitle.text! = currentGenre.name
-        
-        while i < genres.count {
-            allGenres.append(genres[i])
-            i += 1
-        }
-        
-        loadNewArticles()
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
-    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        // Return the number of sections.
-        return 1
-    }
-    
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // Return the number of rows in the section.
-        return populateForGenre(currentGenre.name)
-    }
+    let nprIds = [
+        "politics" : 1014,
+        "entertainment" : 1048,
+        "sports" : 1055,
+        "technology" : 1019
+    ]
     
     // TODO: Attach button to this so that when a new genre is selected, we pull the articles from the database.
     func populateForGenre(inGenre: String) -> Int {
@@ -78,23 +46,44 @@ class FirstViewController: UITableViewController {
             i += 1
         }
         
+        
         return articlesForGenre.count
     }
     
     private func loadNewArticles() {
-        showLoadingHUD()
-        loadGuardianArticles()
-        hideLoadingHUD()
+        //showLoadingHUD()
+        loadGuardianArticles(currentGenre.name.lowercaseString)
+        loadNprArticles(currentGenre.name.lowercaseString)
+        populateForGenre(currentGenre.name)
+        //hideLoadingHUD()
     }
     
-    private func loadGuardianArticles() {
-        let mostRecent = realm.objects(Article).sorted("datePublished", ascending: false).first
+    private func loadNprArticles(inGenre: String) {
+        let id = nprIds[inGenre]
+        let nprParameters = [
+            "apiKey" : "MDIzNzk1Mjk1MDE0NjA1NzU0ODg1Y2ZlZQ000",
+            "format" : "json",
+            "id" : String(id!)
+        ]
+        Alamofire.request(.GET, "http://api.npr.org/query", parameters: nprParameters)
+            .responseJSON { (_,_,result) in
+                switch result {
+                case .Success(let data):
+                    let json = JSON(data)
+                    let filteredResults = json["list"]["story"]
+                case .Failure(_, let error):
+                    print("Request failed with error \(error)")
+                }
+        }
+    }
+    
+    private func loadGuardianArticles(inGenre: String) {
+        let mostRecent = realm.objects(Article).filter("genre.name == %s", inGenre).sorted("datePublished", ascending: false).first
         let newArticles = List<Article>()
         
-        // GUARDIAN REQUEST
         let guardianParameters = [
             "api-key" : "e7fccd80-1524-44c8-aabb-7db8a8921872",
-            "section" : currentGenre.name.lowercaseString
+            "section" : inGenre
         ]
         Alamofire.request(.GET, "http://content.guardianapis.com/search",parameters: guardianParameters)
             .responseJSON { (_, _, result) in
@@ -105,6 +94,9 @@ class FirstViewController: UITableViewController {
                     let dateFormatter = NSDateFormatter()
                     dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZ"
                     for (_, subJson):(String, JSON) in filteredResults {
+                        if self.realm.objects(Article).filter("publishId == %s", subJson["id"].string!).count > 0 {
+                            break
+                        }
                         let thisArticle = Article()
                         let thisDate = dateFormatter.dateFromString(subJson["webPublicationDate"].string!)
                         thisArticle.datePublished = thisDate!
@@ -118,8 +110,10 @@ class FirstViewController: UITableViewController {
                         thisArticle.linkTo = subJson["webUrl"].string!
                         newArticles.append(thisArticle)
                     }
-                    try! self.realm.write {
-                        self.realm.add(newArticles)
+                    if newArticles.count > 0 {
+                        try! self.realm.write {
+                            self.realm.add(newArticles)
+                        }
                     }
                 case .Failure(_, let error):
                     print("Request failed with error \(error)")
@@ -144,11 +138,59 @@ class FirstViewController: UITableViewController {
         MBProgressHUD.hideAllHUDsForView(articleTable, animated: true)
     }
     
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        let facebookId = FBSDKAccessToken.currentAccessToken().userID
+        realm = try! Realm()
+        let potentialUsers = realm.objects(User).filter("facebookId==%s", facebookId)
+        if potentialUsers.count > 0 {
+            currentUser = potentialUsers.first
+        }
+        date = NSDate()
+        
+        var i = 0
+        let genres = realm.objects(Genre)
+        currentGenre = genres.first
+        
+        genreTitle.text! = currentGenre.name
+        
+        while i < genres.count {
+            allGenres.append(genres[i])
+            i += 1
+        }
+        
+        let refreshControl = UIRefreshControl()
+        refreshControl.addTarget(self, action: #selector(FirstViewController.refresh(_:)), forControlEvents: .ValueChanged)
+        tableView.addSubview(refreshControl)
+    }
+    
+    func refresh(refreshControl: UIRefreshControl) {
+        loadNewArticles()
+        self.articleTable.reloadData()
+        refreshControl.endRefreshing()
+    }
+
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
+    }
+    
+    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+        // Return the number of sections.
+        return 1
+    }
+    
+    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        // Return the number of rows in the section.
+        return populateForGenre(currentGenre.name)
+    }
+    
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("LabelCell", forIndexPath: indexPath)
         
         let i = indexPath.indexAtPosition(1)
         cell.textLabel?.text = articleArray[i].name
+        
         return cell
     }
     
@@ -164,19 +206,17 @@ class FirstViewController: UITableViewController {
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!) {
-        print("in prepare for segue")
         print(segue.identifier)
         if segue.identifier == "ShowIndivSegue" {
-            print("preparing")
             if let cell = sender as? UITableViewCell {
-                let i = selectedArticle
+                selectedArticle = (articleTable.indexPathForCell(cell)?.item)!
                 if segue.identifier == "ShowIndivSegue" {
                     /* Right now I have it set to NavLeaderViewController, bc I'm playing around
                     with it and idk what's wrong... */
                     let vc = segue.destinationViewController as! IndividualArticleViewController
                     
-                    vc.article = articleArray[i]
-                    vc.aUrl = articleArray[i].linkTo
+                    vc.article = articleArray[selectedArticle]
+                    vc.aUrl = articleArray[selectedArticle].linkTo
                     vc.currentUser = currentUser
                     
 //                    vc.articleName.text = articleArray[i].articleName
