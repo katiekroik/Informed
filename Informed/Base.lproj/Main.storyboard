@@ -80,8 +80,8 @@
                                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="World News" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2nW-F2-6Jb" colorLabel="IBBuiltInLabel-Green">
-                                        <rect key="frame" x="167" y="358" width="106" height="18"/>
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Politics News" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2nW-F2-6Jb" colorLabel="IBBuiltInLabel-Green">
+                                        <rect key="frame" x="167" y="358" width="106" height="19"/>
                                         <fontDescription key="fontDescription" name="AmericanTypewriter" family="American Typewriter" pointSize="16"/>
                                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
@@ -266,30 +266,30 @@
         <scene sceneID="FIM-gG-cKB">
             <objects>
                 <tableViewController id="1Ku-Ob-C0w" customClass="FirstViewController" customModule="Informed" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="41" sectionHeaderHeight="28" sectionFooterHeight="28" id="2on-dI-gOU">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="87" sectionHeaderHeight="28" sectionFooterHeight="28" id="2on-dI-gOU">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.64318560449999995" green="0.7645306852" blue="0.95693260729999996" alpha="1" colorSpace="calibratedRGB"/>
                         <color key="sectionIndexBackgroundColor" red="0.64318560449999995" green="0.7645306852" blue="0.95693260729999996" alpha="1" colorSpace="calibratedRGB"/>
-                        <label key="tableHeaderView" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=" [ GENRE ]" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="pBR-0K-yBw" userLabel="[ GENRE ]">
-                            <rect key="frame" x="0.0" y="64" width="320" height="66"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <fontDescription key="fontDescription" name="AmericanTypewriter" family="American Typewriter" pointSize="17"/>
-                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                            <nil key="highlightedColor"/>
-                        </label>
+                        <pickerView key="tableHeaderView" contentMode="scaleToFill" id="xUy-33-opP">
+                            <rect key="frame" x="0.0" y="64" width="320" height="80"/>
+                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                            <connections>
+                                <outlet property="dataSource" destination="1Ku-Ob-C0w" id="Pqh-Rk-Ug9"/>
+                            </connections>
+                        </pickerView>
                         <tabBar key="tableFooterView" contentMode="scaleToFill" id="H90-Hu-yPe">
-                            <rect key="frame" x="0.0" y="199" width="320" height="49"/>
+                            <rect key="frame" x="0.0" y="220" width="320" height="49"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             <items/>
                         </tabBar>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="LabelCell" rowHeight="41" id="l7V-Na-cbX">
-                                <rect key="frame" x="0.0" y="158" width="320" height="41"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="LabelCell" rowHeight="48" id="l7V-Na-cbX">
+                                <rect key="frame" x="0.0" y="172" width="320" height="48"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="l7V-Na-cbX" id="JiC-2v-Utv">
-                                    <rect key="frame" x="0.0" y="0.0" width="287" height="40"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="287" height="47"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                                 <accessibility key="accessibilityConfiguration" label="Read Indiv Article"/>
@@ -308,7 +308,7 @@
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="articleTable" destination="2on-dI-gOU" id="AWu-zX-B4W"/>
-                        <outlet property="genreTitle" destination="pBR-0K-yBw" id="KeI-vn-voB"/>
+                        <outlet property="genrePicker" destination="xUy-33-opP" id="fuD-J5-NWV"/>
                         <outlet property="searchDisplayController" destination="9nE-43-Qsn" id="1Jk-iy-zAe"/>
                     </connections>
                 </tableViewController>

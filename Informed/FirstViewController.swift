@@ -12,20 +12,26 @@ import Alamofire
 import MBProgressHUD
 import SwiftyJSON
 
-class FirstViewController: UITableViewController {
+class FirstViewController: UITableViewController, UIPickerViewDelegate, UIPickerViewDataSource {
     
     
-    @IBOutlet weak var genreTitle: UILabel!
     // Genre of News
     var articleArray = [(Article)]();
     var selectedArticle = 0
     @IBOutlet var articleTable: UITableView!
+    
+    @IBOutlet var genrePicker: UIPickerView!
     
     var currentUser: User!
     var realm: Realm!
     var date: NSDate!
     var currentGenre: Genre!
     var allGenres = List<Genre>()
+    
+    var genreArray = [String]()
+    //var genreArray = ["Politics", "Sports", "Entertainment", "Technology"]
+    
+    var pickedGenre = 0
     
     let nprIds = [
         "politics" : 1014,
@@ -40,6 +46,7 @@ class FirstViewController: UITableViewController {
         "sports" : "sport",
         "technology" : "technology"
     ]
+    
     
     // TODO: Attach button to this so that when a new genre is selected, we pull the articles from the database.
     func populateForGenre(inGenre: String) -> Int {
@@ -61,7 +68,7 @@ class FirstViewController: UITableViewController {
         //showLoadingHUD()
         loadGuardianArticles(currentGenre.name.lowercaseString)
         loadNprArticles(currentGenre.name.lowercaseString)
-        populateForGenre(currentGenre.name)
+        populateForGenre(genreArray[pickedGenre])
         self.articleTable.reloadData()
         //hideLoadingHUD()
     }
@@ -185,7 +192,10 @@ class FirstViewController: UITableViewController {
         let genres = realm.objects(Genre)
         currentGenre = genres.first
         
-        genreTitle.text! = currentGenre.name
+        //genreTitle.text! = currentGenre.name
+        
+        genrePicker.delegate = self
+        genrePicker.dataSource = self
         
         while i < genres.count {
             allGenres.append(genres[i])
@@ -214,13 +224,14 @@ class FirstViewController: UITableViewController {
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // Return the number of rows in the section.
-        return populateForGenre(currentGenre.name)
+        return populateForGenre(genreArray[pickedGenre])
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("LabelCell", forIndexPath: indexPath)
         
         let i = indexPath.indexAtPosition(1)
+        cell.textLabel?.font = UIFont(name: "AmericanTypeWriter", size: 15)
         cell.textLabel?.text = articleArray[i].name
         
         return cell
@@ -261,5 +272,31 @@ class FirstViewController: UITableViewController {
             }
         }
     }
+    
+    func pickerView(pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        
+        for Genre in allGenres{
+            genreArray.append(Genre.name)
+        }
+        
+        return genreArray[row]
+    }
+    
+    func pickerView(pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        let genres = realm.objects(Genre)
+
+        return genres.count
+    }
+    
+    func numberOfComponentsInPickerView(pickerView: UIPickerView) -> Int{
+        return 1
+    }
+    
+    func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        pickedGenre = row
+        loadNewArticles()
+    }
+
+
 }
 
