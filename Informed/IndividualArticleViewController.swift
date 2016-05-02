@@ -46,7 +46,7 @@ class IndividualArticleViewController: UIViewController, UITextViewDelegate, WKN
 //
 //        let frame = self.view.frame;
         
-        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "+", style: .Plain, target: self, action: #selector(IndividualArticleViewController.options))
+//        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "+", style: .Plain, target: self, action: #selector(IndividualArticleViewController.options))
         let url = NSURL (string: aUrl);
         let requestObj = NSURLRequest(URL: url!);
         webView.loadRequest(requestObj);

@@ -19,7 +19,6 @@ class FirstViewController: UITableViewController {
     
     var currentUser = User()
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         let facebookId = FBSDKAccessToken.currentAccessToken().userID
@@ -68,11 +67,17 @@ class FirstViewController: UITableViewController {
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("LabelCell", forIndexPath: indexPath)
         
-//        print(indexPath.indexAtPosition(1))
         let i = indexPath.indexAtPosition(1)
-//        print(articleArray[i])
         cell.textLabel?.text = articleArray[i].name
         return cell
+    }
+    
+    func didSelectRowAtIndexPath(tableView: UITableView,
+        didSelectRowAtIndexPath indexPath: NSIndexPath) {
+            print ("CALLING DIDSELECT");
+            let row = indexPath.row
+            print("Row: \(row)")
+            selectedArticle = row
     }
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
@@ -87,28 +92,21 @@ class FirstViewController: UITableViewController {
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!) {
+//        tableView(this, )
         print("in prepare for segue")
         print(segue.identifier)
         if segue.identifier == "ShowIndivSegue" {
             print("preparing")
             if let cell = sender as? UITableViewCell {
                 let i = selectedArticle
+
                 if segue.identifier == "ShowIndivSegue" {
-                    /* Right now I have it set to NavLeaderViewController, bc I'm playing around
-                    with it and idk what's wrong... */
                     let vc = segue.destinationViewController as! IndividualArticleViewController
                     print(articleArray[i])
                     
                     vc.article = articleArray[i]
                     vc.aUrl = articleArray[i].linkTo
                     vc.currentUser = currentUser
-                    
-//                    vc.articleName.text = articleArray[i].articleName
-//                    vc.articleContents.text = articleArray[i].articleText
-                    
-//                    let vc = segue.destinationViewController as! NavLeaderViewController
-//                    vc.articleName = articleArray[i].articleName
-//                    vc.articleContents = articleArray[i].articleText
                 }
             }
         }
