@@ -69,7 +69,7 @@ class FirstViewController: UITableViewController, UIPickerViewDelegate, UIPicker
         let calendar = NSCalendar.currentCalendar()
         let fiveMinutesAgo = calendar.dateByAddingUnit(.Minute, value: -5, toDate: NSDate(), options: [])
         
-        if lastTimeChecked.compare(fiveMinutesAgo!) == NSComparisonResult.OrderedAscending {
+        if lastTimeChecked.compare(fiveMinutesAgo!) == NSComparisonResult.OrderedAscending || realm.objects(Article).count < 100 {
             lastTimeChecked = NSDate()
             print("It's been more than five minutes!")
             showLoadingHUD()
