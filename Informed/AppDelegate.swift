@@ -36,28 +36,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         realm = try! Realm()
         print(Realm.Configuration.defaultConfiguration.path!)
         
-//        let genre = realm!.objects(Genre)[0]
-//        
-//        let article1 = Article()
-//        article1.genre = genre
-//        article1.name = "Obama Takes Aim At Trump"
-//        article1.publisher = "The Guardian"
-//        article1.linkTo = "http://www.theguardian.com/us-news/2016/may/01/obama-takes-aim-at-trump-and-republicans-at-final-correspondents-dinner"
-//        article1.publishId = "5533982"
-//        article1.datePublished = NSDate()
-//        
-//        try! realm!.write {
-//            realm!.add(article1)
-//        }
-//
-        
         let users = realm!.objects(User)
         if users.count == 0 {
             populateUsers()
         }
-//        populateUsers()
-        
-        
         
         FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
         
@@ -72,6 +54,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             let potentialUsers = realm!.objects(User).filter("facebookId==%s", facebookId)
             if potentialUsers.count > 0 {
                 currentUser = potentialUsers.first
+            } else {
+                let initialViewController = storyboard.instantiateViewControllerWithIdentifier("FBViewController")
+                
+                self.window?.rootViewController = initialViewController
+                self.window?.makeKeyAndVisible()
             }
             
             let initialViewController = storyboard.instantiateViewControllerWithIdentifier("TabViewController")
@@ -114,12 +101,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         article1.publisher = "Pawnee Sun"
         article1.linkTo = "http://international.sueddeutsche.de/post/143690739565/ttippapiere"
         article1.publishId = "8675309"
-        article1.datePublished = NSDate()
+        article1.datePublished = lastYear!
         
         let article2 = Article()
         article2.genre = sports
         article2.name = "Cone of Dunshire goes Viral!"
-        article2.datePublished = NSDate()
+        article2.datePublished = lastYear!
         article2.linkTo = "https://peter.bourgon.org/go-best-practices-2016/"
         article2.publisher = "New York Times"
         article2.publishId = "xYzLmnOp"

@@ -8,5 +8,7 @@ target 'Informed' do
     pod 'Alamofire', '2.0.2'
 
     pod 'MBProgressHUD', '~> 0.9.0'
+    
+    pod 'SwiftyJSON', :git => 'https://github.com/SwiftyJSON/SwiftyJSON.git'
 
 end
