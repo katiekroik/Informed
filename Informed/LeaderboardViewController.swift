@@ -17,6 +17,7 @@ class LeaderboardViewController: UIViewController {
     @IBOutlet weak var leader3: UILabel!
     @IBOutlet weak var leader4: UILabel!
     @IBOutlet weak var leader5: UILabel!
+    
     @IBOutlet weak var points1: UILabel!
     @IBOutlet weak var points2: UILabel!
     @IBOutlet weak var points3: UILabel!

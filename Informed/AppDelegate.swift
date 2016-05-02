@@ -14,7 +14,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
     var currentUser: User!
-    var realm: Realm?
+    var realm: Realm!
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         
@@ -71,8 +71,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             let facebookId = FBSDKAccessToken.currentAccessToken().userID
             let potentialUsers = realm!.objects(User).filter("facebookId==%s", facebookId)
             if potentialUsers.count > 0 {
-                currentUser = potentialUsers[0]
-                print (currentUser)
+                currentUser = potentialUsers.first
             }
             
             let initialViewController = storyboard.instantiateViewControllerWithIdentifier("TabViewController")
@@ -93,8 +92,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     // Function populates Realm DB on phone with dummy values for testing purposes.
     // Yes, I've been watching too much Parks & Rec.
     func populateUsers() {
-        let newGenre = Genre()
-        newGenre.name = "Pawnee Politics"
+        
+        // Add the Genres
+        let politics = Genre()
+        politics.name = "Politics"
+        let sports = Genre()
+        sports.name = "Sports"
+        let entertainment = Genre()
+        entertainment.name = "Entertainment"
+        let technology = Genre()
+        technology.name = "Technology"
         
         let calendar = NSCalendar.currentCalendar()
         let twoDaysAgo = calendar.dateByAddingUnit(.Day, value: -2, toDate: NSDate(), options: [])
@@ -102,7 +109,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let lastYear = calendar.dateByAddingUnit(.Year, value: -1, toDate: NSDate(), options: [])
         
         let article1 = Article()
-        article1.genre = newGenre
+        article1.genre = politics
         article1.name = "Knope Wins on Recount"
         article1.publisher = "Pawnee Sun"
         article1.linkTo = "http://international.sueddeutsche.de/post/143690739565/ttippapiere"
@@ -110,7 +117,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         article1.datePublished = NSDate()
         
         let article2 = Article()
-        article2.genre = newGenre
+        article2.genre = sports
         article2.name = "Cone of Dunshire goes Viral!"
         article2.datePublished = NSDate()
         article2.linkTo = "https://peter.bourgon.org/go-best-practices-2016/"
@@ -160,14 +167,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         andy.startOfStreak = lastYear!
         andy.lastLogin = yesterday!
         
-        try! realm!.write {
-            realm!.add(newGenre)
-            realm!.add(article1)
-            realm!.add(article2)
-            realm!.add(leslie)
-            realm!.add(ron)
-            realm!.add(april)
-            realm!.add(andy)
+        try! realm.write {
+            realm.add(politics)
+            realm.add(sports)
+            realm.add(entertainment)
+            realm.add(technology)
+            
+            realm.add(article1)
+            realm.add(article2)
+            
+            realm.add(leslie)
+            realm.add(ron)
+            realm.add(april)
+            realm.add(andy)
         }
     }
     
