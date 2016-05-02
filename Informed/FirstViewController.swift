@@ -8,25 +8,32 @@
 
 import UIKit
 import RealmSwift
+import Alamofire
+import MBProgressHUD
 
 class FirstViewController: UITableViewController {
-
-    @IBOutlet weak var genre: UILabel!
+    
+    
+    @IBOutlet weak var genreTitle: UILabel!
     // Genre of News
-    @IBOutlet var webView: UIWebView!
     var articleArray = [(Article)]();
     var selectedArticle = 0
     
-    var currentUser = User()
+    var currentUser: User!
+    var realm: Realm!
+    var date: NSDate!
+    var currentGenre: Genre!
+    var allGenres = List<Genre>()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         let facebookId = FBSDKAccessToken.currentAccessToken().userID
-        let potentialUsers = try! Realm().objects(User).filter("facebookId==%s", facebookId)
+        realm = try! Realm()
+        let potentialUsers = realm.objects(User).filter("facebookId==%s", facebookId)
         if potentialUsers.count > 0 {
-            currentUser = potentialUsers[0]
+            currentUser = potentialUsers.first
         }
-        
+        date = NSDate()
     }
 
     override func didReceiveMemoryWarning() {
@@ -42,26 +49,43 @@ class FirstViewController: UITableViewController {
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // Return the number of rows in the section.
         
-        var count = 0
+        var i = 0
         
         let realm = try! Realm()
-        let genre = realm.objects(Genre)[0]
-        let genreName = genre.name
-//        let genreFilter = NSPredicate(format: "genre = @%", genre)
-        let articles = realm.objects(Article)
+        let genres = realm.objects(Genre)
+        currentGenre = genres.first
         
-        for a in articles {
-            if (a.genre == genre) {
-                count += 1
-                articleArray.append(a);
-            }
+        genreTitle.text! = currentGenre.name
+        
+        while i < genres.count {
+            allGenres.append(genres[i])
+            i += 1
         }
-
-        return count
+        
+        return populateForGenre(currentGenre.name)
+    }
+    
+    // TODO: Attach button to this so that when a new genre is selected, we pull the articles from the database.
+    func populateForGenre(inGenre: String) -> Int {
+        var i = 0
+        currentGenre = realm.objects(Genre).filter("name == %s", inGenre).first
+        let articlesForGenre = realm.objects(Article).filter("genre.name ==%s", currentGenre.name)
+        articleArray.removeAll()
+        
+        while i < articlesForGenre.count {
+            articleArray.append(articlesForGenre[i])
+            i += 1
+        }
+        
+        return articlesForGenre.count
     }
     
     override func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return "Pawnee Politics"
+        if let titleText = currentGenre?.name {
+            return titleText
+        } else {
+            return "Oops"
+        }
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
