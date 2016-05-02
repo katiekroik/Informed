@@ -11,6 +11,7 @@ import RealmSwift
 
 class FBViewController: UIViewController,  FBSDKLoginButtonDelegate {
     
+    @IBOutlet var cancelLogout: UIButton!
     
     let loginButton: FBSDKLoginButton = {
         let button = FBSDKLoginButton()
@@ -18,17 +19,27 @@ class FBViewController: UIViewController,  FBSDKLoginButtonDelegate {
         return button
     }()
     
+    @IBAction func cancelLogoutAction(sender: UIButton) {
+        let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
+        
+        let nextViewController = storyBoard.instantiateViewControllerWithIdentifier("TabViewController")
+        self.presentViewController(nextViewController, animated:true, completion:nil)
+        
+        
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        cancelLogout.hidden = true // cancel log out button should not appear on welcome page
         
         view.addSubview(loginButton)
         loginButton.center = view.center
         loginButton.delegate = self
-        
+
         
         if  FBSDKAccessToken.currentAccessToken() != nil {
+            cancelLogout.hidden = false // show cancel log out button now that user is active
             fetchProfile()
         }
     }
@@ -94,7 +105,7 @@ class FBViewController: UIViewController,  FBSDKLoginButtonDelegate {
     }
     
     func loginButtonDidLogOut(loginButton: FBSDKLoginButton!) {
-        
+        cancelLogout.hidden = true // hide again when returning to log in page
     }
     
     func loginButtonWillLogin(loginButton: FBSDKLoginButton!) -> Bool {
