@@ -36,28 +36,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         realm = try! Realm()
         print(Realm.Configuration.defaultConfiguration.path!)
         
-//        let genre = realm!.objects(Genre)[0]
-//        
-//        let article1 = Article()
-//        article1.genre = genre
-//        article1.name = "Obama Takes Aim At Trump"
-//        article1.publisher = "The Guardian"
-//        article1.linkTo = "http://www.theguardian.com/us-news/2016/may/01/obama-takes-aim-at-trump-and-republicans-at-final-correspondents-dinner"
-//        article1.publishId = "5533982"
-//        article1.datePublished = NSDate()
-//        
-//        try! realm!.write {
-//            realm!.add(article1)
-//        }
-//
-        
         let users = realm!.objects(User)
         if users.count == 0 {
             populateUsers()
         }
-//        populateUsers()
-        
-        
         
         FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
         
@@ -72,6 +54,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             let potentialUsers = realm!.objects(User).filter("facebookId==%s", facebookId)
             if potentialUsers.count > 0 {
                 currentUser = potentialUsers.first
+            } else {
+                let initialViewController = storyboard.instantiateViewControllerWithIdentifier("FBViewController")
+                
+                self.window?.rootViewController = initialViewController
+                self.window?.makeKeyAndVisible()
             }
             
             let initialViewController = storyboard.instantiateViewControllerWithIdentifier("TabViewController")

@@ -50,13 +50,13 @@ class SecondViewController: UIViewController {
         
         // Fill in the place
         for u in sortedUsers {
-            count++;
+            count += 1;
             if (u.email == currentUser.email) {
                 userPlaceInLeaderboard.text = String(count);
             }
         }
 
-        var stringDate = String(currentUser.lastLogin)
+        let stringDate = String(currentUser.lastLogin)
         let dateArray = stringDate.characters.split{$0 == " "}.map(String.init)
         dateLastLoggedIn.text = dateArray[0]
         if let url = NSURL(string: currentUser.picture) {

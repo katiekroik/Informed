@@ -10,6 +10,7 @@ import UIKit
 import RealmSwift
 import Alamofire
 import MBProgressHUD
+import SwiftyJSON
 
 class FirstViewController: UITableViewController {
     
@@ -35,6 +36,19 @@ class FirstViewController: UITableViewController {
             currentUser = potentialUsers.first
         }
         date = NSDate()
+        
+        var i = 0
+        let genres = realm.objects(Genre)
+        currentGenre = genres.first
+        
+        genreTitle.text! = currentGenre.name
+        
+        while i < genres.count {
+            allGenres.append(genres[i])
+            i += 1
+        }
+        
+        loadNewArticles()
     }
 
     override func didReceiveMemoryWarning() {
@@ -49,22 +63,6 @@ class FirstViewController: UITableViewController {
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // Return the number of rows in the section.
-        
-        var i = 0
-        
-        let realm = try! Realm()
-        let genres = realm.objects(Genre)
-        currentGenre = genres.first
-        
-        genreTitle.text! = currentGenre.name
-        
-        while i < genres.count {
-            allGenres.append(genres[i])
-            i += 1
-        }
-        
-        loadNewArticles()
-        
         return populateForGenre(currentGenre.name)
     }
     
@@ -72,7 +70,7 @@ class FirstViewController: UITableViewController {
     func populateForGenre(inGenre: String) -> Int {
         var i = 0
         currentGenre = realm.objects(Genre).filter("name == %s", inGenre).first
-        let articlesForGenre = realm.objects(Article).filter("genre.name ==%s", currentGenre.name)
+        let articlesForGenre = realm.objects(Article).filter("genre.name == %s", currentGenre.name)
         articleArray.removeAll()
         
         while i < articlesForGenre.count {
@@ -84,13 +82,48 @@ class FirstViewController: UITableViewController {
     }
     
     private func loadNewArticles() {
-        let parameters = [
+        showLoadingHUD()
+        loadGuardianArticles()
+        hideLoadingHUD()
+    }
+    
+    private func loadGuardianArticles() {
+        let mostRecent = realm.objects(Article).sorted("datePublished", ascending: false).first
+        let newArticles = List<Article>()
+        
+        // GUARDIAN REQUEST
+        let guardianParameters = [
             "api-key" : "e7fccd80-1524-44c8-aabb-7db8a8921872",
-            "q" : "sports"
+            "section" : currentGenre.name.lowercaseString
         ]
-        Alamofire.request(.GET, "http://content.guardianapis.com/search",parameters: parameters)
-            .responseJSON { response in
-                debugPrint(response)
+        Alamofire.request(.GET, "http://content.guardianapis.com/search",parameters: guardianParameters)
+            .responseJSON { (_, _, result) in
+                switch result {
+                case .Success(let data):
+                    let json = JSON(data)
+                    let filteredResults = json["response"]["results"]
+                    let dateFormatter = NSDateFormatter()
+                    dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZ"
+                    for (_, subJson):(String, JSON) in filteredResults {
+                        let thisArticle = Article()
+                        let thisDate = dateFormatter.dateFromString(subJson["webPublicationDate"].string!)
+                        thisArticle.datePublished = thisDate!
+                        thisArticle.genre = self.currentGenre
+                        thisArticle.name = subJson["webTitle"].string!
+                        thisArticle.publisher = "The Guardian"
+                        thisArticle.publishId = subJson["id"].string!
+                        if thisArticle.publishId == mostRecent?.datePublished {
+                            break
+                        }
+                        thisArticle.linkTo = subJson["webUrl"].string!
+                        newArticles.append(thisArticle)
+                    }
+                    try! self.realm.write {
+                        self.realm.add(newArticles)
+                    }
+                case .Failure(_, let error):
+                    print("Request failed with error \(error)")
+                }
         }
     }
     
@@ -114,9 +147,7 @@ class FirstViewController: UITableViewController {
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("LabelCell", forIndexPath: indexPath)
         
-//        print(indexPath.indexAtPosition(1))
         let i = indexPath.indexAtPosition(1)
-//        print(articleArray[i])
         cell.textLabel?.text = articleArray[i].name
         return cell
     }
