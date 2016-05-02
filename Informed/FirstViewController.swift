@@ -27,8 +27,9 @@ class FirstViewController: UITableViewController, UIPickerViewDelegate, UIPicker
     var date: NSDate!
     var currentGenre: Genre!
     var allGenres = List<Genre>()
+    var lastTimeChecked: NSDate!
     
-    var genreArray = [String]()
+    var genreArray = [Genre]()
     //var genreArray = ["Politics", "Sports", "Entertainment", "Technology"]
     
     var pickedGenre = 0
@@ -49,9 +50,9 @@ class FirstViewController: UITableViewController, UIPickerViewDelegate, UIPicker
     
     
     // TODO: Attach button to this so that when a new genre is selected, we pull the articles from the database.
-    func populateForGenre(inGenre: String) -> Int {
+    func populateForGenre() -> Int {
         var i = 0
-        currentGenre = realm.objects(Genre).filter("name == %s", inGenre).first
+        currentGenre = realm.objects(Genre).filter("name == %s", currentGenre.name).first
         let articlesForGenre = realm.objects(Article).filter("genre.name == %s", currentGenre.name)
         articleArray.removeAll()
         
@@ -65,12 +66,21 @@ class FirstViewController: UITableViewController, UIPickerViewDelegate, UIPicker
     }
     
     private func loadNewArticles() {
-        //showLoadingHUD()
-        loadGuardianArticles(currentGenre.name.lowercaseString)
-        loadNprArticles(currentGenre.name.lowercaseString)
-        populateForGenre(genreArray[pickedGenre])
+        let calendar = NSCalendar.currentCalendar()
+        let fiveMinutesAgo = calendar.dateByAddingUnit(.Minute, value: -5, toDate: NSDate(), options: [])
+        
+        if lastTimeChecked.compare(fiveMinutesAgo!) == NSComparisonResult.OrderedAscending {
+            lastTimeChecked = NSDate()
+            print("It's been more than five minutes!")
+            showLoadingHUD()
+            loadGuardianArticles(currentGenre.name.lowercaseString)
+            loadNprArticles(currentGenre.name.lowercaseString)
+            hideLoadingHUD()
+        }
+        
+        currentGenre = genreArray[pickedGenre]
+        populateForGenre()
         self.articleTable.reloadData()
-        //hideLoadingHUD()
     }
     
     private func loadNprArticles(inGenre: String) {
@@ -187,6 +197,7 @@ class FirstViewController: UITableViewController, UIPickerViewDelegate, UIPicker
             currentUser = potentialUsers.first
         }
         date = NSDate()
+        lastTimeChecked = NSDate()
         
         var i = 0
         let genres = realm.objects(Genre)
@@ -224,7 +235,8 @@ class FirstViewController: UITableViewController, UIPickerViewDelegate, UIPicker
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // Return the number of rows in the section.
-        return populateForGenre(genreArray[pickedGenre])
+        currentGenre = genreArray[pickedGenre]
+        return populateForGenre()
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
@@ -276,10 +288,10 @@ class FirstViewController: UITableViewController, UIPickerViewDelegate, UIPicker
     func pickerView(pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         
         for Genre in allGenres{
-            genreArray.append(Genre.name)
+            genreArray.append(Genre)
         }
         
-        return genreArray[row]
+        return genreArray[row].name
     }
     
     func pickerView(pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
@@ -294,6 +306,7 @@ class FirstViewController: UITableViewController, UIPickerViewDelegate, UIPicker
     
     func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         pickedGenre = row
+        currentGenre = genreArray[pickedGenre]
         loadNewArticles()
     }
 
