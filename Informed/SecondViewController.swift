@@ -36,11 +36,14 @@ class SecondViewController: UIViewController {
         if potentialUsers.count > 0 {
             currentUser = potentialUsers[0]
         }
-        welcomeMessage.text = "Welcome, " + currentUser.name
+        welcomeMessage.font = UIFont(name: "AmericanTypeWriter", size: 20)
+        welcomeMessage.text = "Welcome, " + currentUser.name + "!"
+        userPoints.font = UIFont(name: "AmericanTypeWriter", size: 15)
         userPoints.text = String(currentUser.points)
+        userReadNumArticles.font = UIFont(name: "AmericanTypeWriter", size: 15)
         userReadNumArticles.text = String(currentUser.articlesRead.count)
         
-        email.text = currentUser.email
+        //email.text = currentUser.email
         
         let realm = try! Realm()
         let users = realm.objects(User)
@@ -52,13 +55,14 @@ class SecondViewController: UIViewController {
         for u in sortedUsers {
             count++;
             if (u.email == currentUser.email) {
+                userPlaceInLeaderboard.font = UIFont(name: "AmericanTypeWriter", size: 15)
                 userPlaceInLeaderboard.text = String(count);
             }
         }
 
         var stringDate = String(currentUser.lastLogin)
         let dateArray = stringDate.characters.split{$0 == " "}.map(String.init)
-        dateLastLoggedIn.text = dateArray[0]
+        //dateLastLoggedIn.text = dateArray[0]
         if let url = NSURL(string: currentUser.picture) {
             if let data = NSData(contentsOfURL: url) {
                 image.image = UIImage(data: data)
