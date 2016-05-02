@@ -34,6 +34,13 @@ class FirstViewController: UITableViewController {
         "technology" : 1019
     ]
     
+    let guardianIds = [
+        "politics" : "politics",
+        "entertainment" : "culture",
+        "sports" : "sport",
+        "technology" : "technology"
+    ]
+    
     // TODO: Attach button to this so that when a new genre is selected, we pull the articles from the database.
     func populateForGenre(inGenre: String) -> Int {
         var i = 0
@@ -55,15 +62,22 @@ class FirstViewController: UITableViewController {
         loadGuardianArticles(currentGenre.name.lowercaseString)
         loadNprArticles(currentGenre.name.lowercaseString)
         populateForGenre(currentGenre.name)
+        self.articleTable.reloadData()
         //hideLoadingHUD()
     }
     
     private func loadNprArticles(inGenre: String) {
+        let newArticles = List<Article>()
         let id = nprIds[inGenre]
         let nprParameters = [
             "apiKey" : "MDIzNzk1Mjk1MDE0NjA1NzU0ODg1Y2ZlZQ000",
             "format" : "json",
-            "id" : String(id!)
+            "id" : String(id!),
+            "hideChildren" : "1",
+            "fields" : "titles,dates",
+            "requiredAssets" : "text",
+            "dateType" : "story",
+            "searchType" : "mainText"
         ]
         Alamofire.request(.GET, "http://api.npr.org/query", parameters: nprParameters)
             .responseJSON { (_,_,result) in
@@ -71,6 +85,27 @@ class FirstViewController: UITableViewController {
                 case .Success(let data):
                     let json = JSON(data)
                     let filteredResults = json["list"]["story"]
+                    let dateFormatter = NSDateFormatter()
+                    dateFormatter.dateFormat = "EEE, dd MMMM yyyy HH:mm:ss -0400"
+                    for(_, subJson):(String, JSON) in filteredResults {
+                        if self.realm.objects(Article).filter("publishId == %s", subJson["id"].string!).count > 0 {
+                            break
+                        }
+                        let thisArticle = Article()
+                        let thisDate = dateFormatter.dateFromString(subJson["pubDate"]["$text"].string!)
+                        thisArticle.datePublished = thisDate!
+                        thisArticle.genre = self.currentGenre
+                        thisArticle.linkTo = subJson["link"][2]["$text"].string!
+                        thisArticle.name = subJson["title"]["$text"].string!
+                        thisArticle.publisher = "NPR"
+                        thisArticle.publishId = subJson["id"].string!
+                        newArticles.append(thisArticle)
+                    }
+                    if newArticles.count > 0 {
+                        try! self.realm.write {
+                            self.realm.add(newArticles)
+                        }
+                    }
                 case .Failure(_, let error):
                     print("Request failed with error \(error)")
                 }
@@ -78,13 +113,14 @@ class FirstViewController: UITableViewController {
     }
     
     private func loadGuardianArticles(inGenre: String) {
-        let mostRecent = realm.objects(Article).filter("genre.name == %s", inGenre).sorted("datePublished", ascending: false).first
         let newArticles = List<Article>()
+        let id = guardianIds[inGenre]!
         
         let guardianParameters = [
             "api-key" : "e7fccd80-1524-44c8-aabb-7db8a8921872",
-            "section" : inGenre
+            "section" : id
         ]
+        
         Alamofire.request(.GET, "http://content.guardianapis.com/search",parameters: guardianParameters)
             .responseJSON { (_, _, result) in
                 switch result {
@@ -104,9 +140,6 @@ class FirstViewController: UITableViewController {
                         thisArticle.name = subJson["webTitle"].string!
                         thisArticle.publisher = "The Guardian"
                         thisArticle.publishId = subJson["id"].string!
-                        if thisArticle.publishId == mostRecent?.datePublished {
-                            break
-                        }
                         thisArticle.linkTo = subJson["webUrl"].string!
                         newArticles.append(thisArticle)
                     }
@@ -142,7 +175,7 @@ class FirstViewController: UITableViewController {
         super.viewDidLoad()
         let facebookId = FBSDKAccessToken.currentAccessToken().userID
         realm = try! Realm()
-        let potentialUsers = realm.objects(User).filter("facebookId==%s", facebookId)
+        let potentialUsers = realm.objects(User).filter("facebookId == %s", facebookId)
         if potentialUsers.count > 0 {
             currentUser = potentialUsers.first
         }
@@ -166,7 +199,6 @@ class FirstViewController: UITableViewController {
     
     func refresh(refreshControl: UIRefreshControl) {
         loadNewArticles()
-        self.articleTable.reloadData()
         refreshControl.endRefreshing()
     }
 

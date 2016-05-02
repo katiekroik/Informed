@@ -61,7 +61,7 @@ class SecondViewController: UIViewController {
         }
 
         let stringDate = String(currentUser.lastLogin)
-        let dateArray = stringDate.characters.split{$0 == " "}.map(String.init)
+        _ = stringDate.characters.split{$0 == " "}.map(String.init)
         //dateLastLoggedIn.text = dateArray[0]
         if let url = NSURL(string: currentUser.picture) {
             if let data = NSData(contentsOfURL: url) {
