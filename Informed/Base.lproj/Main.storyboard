@@ -345,6 +345,7 @@
                     <navigationItem key="navigationItem" id="nXU-xJ-Ljr"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
+                        <outlet property="articleTable" destination="2on-dI-gOU" id="AWu-zX-B4W"/>
                         <outlet property="genreTitle" destination="pBR-0K-yBw" id="KeI-vn-voB"/>
                         <outlet property="searchDisplayController" destination="9nE-43-Qsn" id="1Jk-iy-zAe"/>
                     </connections>

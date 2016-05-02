@@ -18,6 +18,7 @@ class FirstViewController: UITableViewController {
     // Genre of News
     var articleArray = [(Article)]();
     var selectedArticle = 0
+    @IBOutlet var articleTable: UITableView!
     
     var currentUser: User!
     var realm: Realm!
@@ -62,6 +63,8 @@ class FirstViewController: UITableViewController {
             i += 1
         }
         
+        loadNewArticles()
+        
         return populateForGenre(currentGenre.name)
     }
     
@@ -80,12 +83,32 @@ class FirstViewController: UITableViewController {
         return articlesForGenre.count
     }
     
+    private func loadNewArticles() {
+        let parameters = [
+            "api-key" : "e7fccd80-1524-44c8-aabb-7db8a8921872",
+            "q" : "sports"
+        ]
+        Alamofire.request(.GET, "http://content.guardianapis.com/search",parameters: parameters)
+            .responseJSON { response in
+                debugPrint(response)
+        }
+    }
+    
     override func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         if let titleText = currentGenre?.name {
             return titleText
         } else {
             return "Oops"
         }
+    }
+    
+    private func showLoadingHUD() {
+        let hud = MBProgressHUD.showHUDAddedTo(articleTable, animated: true)
+        hud.labelText = "Loading..."
+    }
+    
+    private func hideLoadingHUD() {
+        MBProgressHUD.hideAllHUDsForView(articleTable, animated: true)
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
@@ -120,7 +143,6 @@ class FirstViewController: UITableViewController {
                     /* Right now I have it set to NavLeaderViewController, bc I'm playing around
                     with it and idk what's wrong... */
                     let vc = segue.destinationViewController as! IndividualArticleViewController
-                    print(articleArray[i])
                     
                     vc.article = articleArray[i]
                     vc.aUrl = articleArray[i].linkTo
