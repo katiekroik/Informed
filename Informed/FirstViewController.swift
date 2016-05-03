@@ -14,7 +14,6 @@ import SwiftyJSON
 
 class FirstViewController: UITableViewController, UIPickerViewDelegate, UIPickerViewDataSource {
     
-    
     // Genre of News
     var articleArray = [(Article)]();
     var selectedArticle = 0
@@ -30,7 +29,6 @@ class FirstViewController: UITableViewController, UIPickerViewDelegate, UIPicker
     var lastTimeChecked: NSDate!
     
     var genreArray = [Genre]()
-    //var genreArray = ["Politics", "Sports", "Entertainment", "Technology"]
     
     var pickedGenre = 0
     

@@ -12,14 +12,8 @@ import WebKit
 
 class IndividualArticleViewController: UIViewController, UITextViewDelegate, WKNavigationDelegate {
     
-
-    // Name of article
-//    @IBOutlet weak var articleName: UILabel!
-//    // Article contents
-//    @IBOutlet weak var articleContents: UITextView!
-    
-    var aUrl: String!
     var article: Article!
+    var aUrl: String!
     var currentUser: User!
     var realm = try! Realm()
     var webView: WKWebView!
@@ -31,7 +25,6 @@ class IndividualArticleViewController: UIViewController, UITextViewDelegate, WKN
         webView.navigationDelegate = self
         webView.scrollView.delegate = self
         view = webView
-        
     }
     
     
@@ -42,10 +35,8 @@ class IndividualArticleViewController: UIViewController, UITextViewDelegate, WKN
         let url = NSURL (string: aUrl);
         let requestObj = NSURLRequest(URL: url!);
         webView.loadRequest(requestObj);
-
         
-        var contains = false;
-        
+        // If there is no current users, get one
         if currentUser == nil {
             let facebookId = FBSDKAccessToken.currentAccessToken().userID
             let potentialUsers = realm.objects(User).filter("facebookId == %s", facebookId)
@@ -57,39 +48,10 @@ class IndividualArticleViewController: UIViewController, UITextViewDelegate, WKN
         }
         
     }
-    
-    override func viewWillAppear(animated: Bool) {
-//        articleName.text = aName;
-    }
-    
-    func scrollViewWillEndDragging(scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>)
-    {
 
-//        //This is the index of the "page" that we will be landing at
-//        let nearestIndex = Int(CGFloat(targetContentOffset.memory.x) / scrollView.bounds.size.width + 0.5)
-//        
-//        //Just to make sure we don't scroll past your content
-//        let clampedIndex = 100.5;
-//        // TODO : REPLACE 100.5 WITH : max( min(nearestIndex, yourPagesArray.count - 1 ), 0 )
-//        
-//        //This is the actual x position in the scroll view
-//        var xOffset = CGFloat(clampedIndex) * scrollView.bounds.size.width
-//        
-//        //I've found that scroll views will "stick" unless this is done
-//        xOffset = xOffset == 0.0 ? 1.0 : xOffset
-//        
-//        //Tell the scroll view to land on our page
-//        targetContentOffset.memory.x = xOffset
-//        
-        
-    }
-    
-    
-    func scrollViewDidEndDragging(scrollView: UIScrollView, willDecelerate decelerate: Bool)
-    {
-        if !decelerate
-        {
-            
+
+    func scrollViewDidEndDragging(scrollView: UIScrollView, willDecelerate decelerate: Bool){
+        if !decelerate {
             let currentIndex = floor(scrollView.contentOffset.x / scrollView.bounds.size.width);
             let offset = CGPointMake(scrollView.bounds.size.width * currentIndex, 0)
             scrollView.setContentOffset(offset, animated: true)
@@ -98,8 +60,10 @@ class IndividualArticleViewController: UIViewController, UITextViewDelegate, WKN
     
     func scrollViewDidScroll(scrollView: UIScrollView) {
         var contains = false
+        // If the threshold wasn't already passed -> why waste time if it already was
         if (!alreadyPassedThreshold) {
-            if (scrollView.contentOffset.y > ((scrollView.contentSize.height - scrollView.frame.size.height) * (4/6))) {
+            // When the offset gets passed 2/3 down the page
+            if (scrollView.contentOffset.y > ((scrollView.contentSize.height - scrollView.frame.size.height) * (2/3))) {
                 alreadyPassedThreshold = true
                 // Keep track of the genre and publishers of the article read
                 var numReadOfGenre = [String: Int]()
@@ -138,10 +102,10 @@ class IndividualArticleViewController: UIViewController, UITextViewDelegate, WKN
                         currentUser.points = val
                     }
                 }
+                // Otherwise, print that you don't get any points
                 else {
                     print("Re-reading an article -> no points...")
                 }
-                print(currentUser)
             }
 
         }
@@ -158,11 +122,6 @@ class IndividualArticleViewController: UIViewController, UITextViewDelegate, WKN
         try! realm.write {
             currentUser.favoriteArticles.append(article)
         }
-    }
-    
-    func scrollToBotom() {
-//        let range = NSMakeRange(articleContents.text.characters.count - 1, 1);
-//        articleContents.scrollRangeToVisible(range);
     }
     
     override func didReceiveMemoryWarning() {

@@ -31,11 +31,13 @@ class SecondViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        // Get the FB ID and find the user
         let facebookId = FBSDKAccessToken.currentAccessToken().userID
         let potentialUsers = try! Realm().objects(User).filter("facebookId==%s", facebookId)
         if potentialUsers.count > 0 {
             currentUser = potentialUsers[0]
         }
+        // Fill in the user info
         welcomeMessage.font = UIFont(name: "AmericanTypeWriter", size: 20)
         welcomeMessage.text = "Welcome, " + currentUser.name + "!"
         userPoints.font = UIFont(name: "AmericanTypeWriter", size: 15)
@@ -43,8 +45,7 @@ class SecondViewController: UIViewController {
         userReadNumArticles.font = UIFont(name: "AmericanTypeWriter", size: 15)
         userReadNumArticles.text = String(currentUser.articlesRead.count)
         
-        //email.text = currentUser.email
-        
+        // Sort the users and get what place they're in
         let realm = try! Realm()
         let users = realm.objects(User)
         let sortedUsers = users.sorted("points", ascending: false)
@@ -60,10 +61,14 @@ class SecondViewController: UIViewController {
             }
         }
 
+        // Get the string of when the user last logged in
         let stringDate = String(currentUser.lastLogin)
+        // Split the string date
         _ = stringDate.characters.split{$0 == " "}.map(String.init)
-        //dateLastLoggedIn.text = dateArray[0]
+        
+        // If the URL resolves
         if let url = NSURL(string: currentUser.picture) {
+            // Insert that data
             if let data = NSData(contentsOfURL: url) {
                 image.image = UIImage(data: data)
             }

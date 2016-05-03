@@ -39,7 +39,6 @@ class LeaderboardViewController: UIViewController {
         
         let sortedUsers = users.sorted("points", ascending: false)
         
-        
         leader1.text = sortedUsers[0].name
         points1.text = String(sortedUsers[0].points)
         if let url = NSURL(string: sortedUsers[0].picture) {
@@ -80,10 +79,6 @@ class LeaderboardViewController: UIViewController {
             }
         }
         
-        
-        
-        
-
         // Do any additional setup after loading the view.
     }
 

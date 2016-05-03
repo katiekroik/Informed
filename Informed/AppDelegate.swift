@@ -47,7 +47,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         self.window = UIWindow(frame: UIScreen.mainScreen().bounds)
         
-        //determine if session is active first
+        // Determine if session is active first
         if(FBSDKAccessToken.currentAccessToken() != nil){
             // This may be unnecessary. Potentially inverse the if statement?
             let facebookId = FBSDKAccessToken.currentAccessToken().userID
@@ -66,7 +66,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             self.window?.rootViewController = initialViewController
             self.window?.makeKeyAndVisible()
         } else {
-            // if no session is active, prompt user to login through facebook
+            // If no session is active, prompt user to login through facebook
             let initialViewController = storyboard.instantiateViewControllerWithIdentifier("FBViewController")
             
             self.window?.rootViewController = initialViewController
