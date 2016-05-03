@@ -64,14 +64,37 @@ class IndividualArticleViewController: UIViewController, UITextViewDelegate, WKN
             currentUser = potentialUsers.first
         }
         
+        // Keep track of the genre and publishers of the article read
+        var numReadOfGenre = [String: Int]()
+        var numReadOfSource = [String: Int]()
+        
         for a in currentUser.articlesRead {
+            // If it's a new genre, add it
+            if numReadOfGenre[a.genre.name] == nil {
+                numReadOfGenre[a.genre.name] = 1
+            } else {
+                numReadOfGenre[a.genre.name] = numReadOfGenre[a.genre.name]! + 1
+            }
+            // If it's a new source, add it
+            if numReadOfSource[a.publisher] == nil {
+                numReadOfSource[a.publisher] = 1
+            } else {
+                numReadOfSource[a.publisher] = numReadOfSource[a.publisher]! + 1
+            }
+            
             if (a.linkTo == aUrl) {
                 contains = true;
             }
         }
         
+        // Create a multiplier based on how many articles you've read from that publisher
+        var mult = max(0.6, 1.2 - Double(numReadOfSource[article.publisher]!))
+        
+        // If the user hasn't read the article
         if (contains == false) {
-            let val = currentUser.points + 25
+            // Get the new val
+            let val = currentUser.points + Int(max(15, mult * Double(50 - (2 * numReadOfGenre[article.genre.name]!))))
+            print(val)
             // Add to the user read article database
             try! realm.write {
                 currentUser.articlesRead.append(article)
@@ -130,6 +153,14 @@ class IndividualArticleViewController: UIViewController, UITextViewDelegate, WKN
             
             var contains = false;
             
+//            var numReadOfGenre = ["Politics": 0, "Sports": 0, "Entertainment": 0, "Technology": 0]
+            var numReadOfGenre = [String: Int]()
+            numReadOfGenre["Politics"] = 0
+            numReadOfGenre["Sports"] = 0
+            numReadOfGenre["Entertainment"] = 0
+            numReadOfGenre["Tech"] = 0
+            // 0 = Politics, 1 = Sports, 2 = Entertainment, 3 = Tech
+            
             if currentUser == nil {
                 let facebookId = FBSDKAccessToken.currentAccessToken().userID
                 let potentialUsers = realm.objects(User).filter("facebookId == %s", facebookId)
@@ -141,6 +172,8 @@ class IndividualArticleViewController: UIViewController, UITextViewDelegate, WKN
             }
             
             for a in currentUser.articlesRead {
+//                numReadOfGenre["Politics"]
+                print (numReadOfGenre["Politics"])
                 if (a.linkTo == aUrl) {
                     contains = true;
                 }
