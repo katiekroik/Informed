@@ -21,8 +21,8 @@ Since we've only had a few weeks to do so, we haven't completed everything we wa
 - [ ] Insert some mock data in the DB
 
 ##### Our File Structure
-Informed
 ```
+Informed
 +-- _Informed
 |    +-- AppDelegate
 |    +-- FBViewController - if a user is not logged in, shows a login button
