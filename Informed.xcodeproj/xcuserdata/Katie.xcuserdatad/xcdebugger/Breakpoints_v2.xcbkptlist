@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Bucket
+   type = "1"
+   version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Informed/SecondViewController.swift"
+            timestampString = "481493724.934495"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "18"
+            endingLineNumber = "18"
+            landmarkName = "SecondViewController"
+            landmarkType = "3">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Informed.SecondViewController.userReadNumArticles.getter : weak Swift.ImplicitlyUnwrappedOptional&lt;__ObjC.UILabel&gt;"
+                  moduleName = "Informed"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/Katie/Informed/Informed/SecondViewController.swift"
+                  timestampString = "483499043.946307"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "0"
+                  endingLineNumber = "0"
+                  offsetFromSymbolStart = "12">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Informed.SecondViewController.userReadNumArticles.setter : weak Swift.ImplicitlyUnwrappedOptional&lt;__ObjC.UILabel&gt;"
+                  moduleName = "Informed"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/Katie/Informed/Informed/SecondViewController.swift"
+                  timestampString = "483499043.946528"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "0"
+                  endingLineNumber = "0"
+                  offsetFromSymbolStart = "16">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Informed.SecondViewController.userReadNumArticles.materializeForSet : weak Swift.ImplicitlyUnwrappedOptional&lt;__ObjC.UILabel&gt;"
+                  moduleName = "Informed"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/Katie/Informed/Informed/SecondViewController.swift"
+                  timestampString = "483499043.946688"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "0"
+                  endingLineNumber = "0"
+                  offsetFromSymbolStart = "16">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Informed.SecondViewController.init (Informed.SecondViewController.Type)(nibName : Swift.Optional&lt;Swift.String&gt;, bundle : Swift.Optional&lt;__ObjC.NSBundle&gt;) -&gt; Informed.SecondViewController"
+                  moduleName = "Informed"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/Katie/Informed/Informed/SecondViewController.swift"
+                  timestampString = "483499043.946841"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "18"
+                  endingLineNumber = "18"
+                  offsetFromSymbolStart = "292">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Informed.SecondViewController.init (Informed.SecondViewController.Type)(coder : __ObjC.NSCoder) -&gt; Swift.Optional&lt;Informed.SecondViewController&gt;"
+                  moduleName = "Informed"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/Katie/Informed/Informed/SecondViewController.swift"
+                  timestampString = "483499043.947006"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "18"
+                  endingLineNumber = "18"
+                  offsetFromSymbolStart = "194">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
+</Bucket>
