@@ -1,0 +1,269 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Bucket
+   type = "0"
+   version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Informed/NavLeaderViewController.swift"
+            timestampString = "482378923.70563"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "15"
+            endingLineNumber = "15"
+            landmarkName = "NavLeaderViewController"
+            landmarkType = "3">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Informed.NavLeaderViewController.articleContents.getter : Swift.String"
+                  moduleName = "Informed"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/Katie/Informed/Informed/NavLeaderViewController.swift"
+                  timestampString = "482378967.615671"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "0"
+                  endingLineNumber = "0"
+                  offsetFromSymbolStart = "12">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Informed.NavLeaderViewController.articleContents.materializeForSet : Swift.String"
+                  moduleName = "Informed"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/Katie/Informed/Informed/NavLeaderViewController.swift"
+                  timestampString = "482378967.616191"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "0"
+                  endingLineNumber = "0"
+                  offsetFromSymbolStart = "12">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Informed.NavLeaderViewController.init (Informed.NavLeaderViewController.Type)(navigationBarClass : Swift.Optional&lt;Swift.AnyObject.Type&gt;, toolbarClass : Swift.Optional&lt;Swift.AnyObject.Type&gt;) -&gt; Informed.NavLeaderViewController"
+                  moduleName = "Informed"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/Katie/Informed/Informed/NavLeaderViewController.swift"
+                  timestampString = "482378967.616413"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "15"
+                  endingLineNumber = "15"
+                  offsetFromSymbolStart = "109">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Informed.NavLeaderViewController.init (Informed.NavLeaderViewController.Type)(rootViewController : __ObjC.UIViewController) -&gt; Informed.NavLeaderViewController"
+                  moduleName = "Informed"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/Katie/Informed/Informed/NavLeaderViewController.swift"
+                  timestampString = "482378967.61664"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "15"
+                  endingLineNumber = "15"
+                  offsetFromSymbolStart = "97">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Informed.NavLeaderViewController.init (Informed.NavLeaderViewController.Type)(nibName : Swift.Optional&lt;Swift.String&gt;, bundle : Swift.Optional&lt;__ObjC.NSBundle&gt;) -&gt; Informed.NavLeaderViewController"
+                  moduleName = "Informed"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/Katie/Informed/Informed/NavLeaderViewController.swift"
+                  timestampString = "482378967.616869"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "15"
+                  endingLineNumber = "15"
+                  offsetFromSymbolStart = "161">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Informed.NavLeaderViewController.init (Informed.NavLeaderViewController.Type)(coder : __ObjC.NSCoder) -&gt; Swift.Optional&lt;Informed.NavLeaderViewController&gt;"
+                  moduleName = "Informed"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/Katie/Informed/Informed/NavLeaderViewController.swift"
+                  timestampString = "482378967.617151"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "15"
+                  endingLineNumber = "15"
+                  offsetFromSymbolStart = "97">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Informed/IndividualArticleViewController.swift"
+            timestampString = "483481163.722174"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "11"
+            endingLineNumber = "11">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Informed.IndividualArticleViewController.__deallocating_deinit"
+                  moduleName = "Informed"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/Katie/Informed/Informed/IndividualArticleViewController.swift"
+                  timestampString = "483929600.249327"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "0"
+                  endingLineNumber = "0"
+                  offsetFromSymbolStart = "12">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Informed.IndividualArticleViewController.init (Informed.IndividualArticleViewController.Type)(nibName : Swift.Optional&lt;Swift.String&gt;, bundle : Swift.Optional&lt;__ObjC.NSBundle&gt;) -&gt; Informed.IndividualArticleViewController"
+                  moduleName = "Informed"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/Katie/Informed/Informed/IndividualArticleViewController.swift"
+                  timestampString = "483929600.249502"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "0"
+                  endingLineNumber = "0"
+                  offsetFromSymbolStart = "77">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Informed.IndividualArticleViewController.init (Informed.IndividualArticleViewController.Type)(coder : __ObjC.NSCoder) -&gt; Swift.Optional&lt;Informed.IndividualArticleViewController&gt;"
+                  moduleName = "Informed"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/Katie/Informed/Informed/IndividualArticleViewController.swift"
+                  timestampString = "483929600.249646"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "0"
+                  endingLineNumber = "0"
+                  offsetFromSymbolStart = "39">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Informed/SecondViewController.swift"
+            timestampString = "483499042.061266"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "14"
+            endingLineNumber = "14"
+            landmarkName = "SecondViewController"
+            landmarkType = "3">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Informed.SecondViewController.welcomeMessage.getter : weak Swift.ImplicitlyUnwrappedOptional&lt;__ObjC.UILabel&gt;"
+                  moduleName = "Informed"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/Katie/Informed/Informed/SecondViewController.swift"
+                  timestampString = "483499042.073809"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "0"
+                  endingLineNumber = "0"
+                  offsetFromSymbolStart = "12">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Informed.SecondViewController.welcomeMessage.setter : weak Swift.ImplicitlyUnwrappedOptional&lt;__ObjC.UILabel&gt;"
+                  moduleName = "Informed"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/Katie/Informed/Informed/SecondViewController.swift"
+                  timestampString = "483499042.07399"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "0"
+                  endingLineNumber = "0"
+                  offsetFromSymbolStart = "16">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Informed.SecondViewController.welcomeMessage.materializeForSet : weak Swift.ImplicitlyUnwrappedOptional&lt;__ObjC.UILabel&gt;"
+                  moduleName = "Informed"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/Katie/Informed/Informed/SecondViewController.swift"
+                  timestampString = "483499042.074117"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "0"
+                  endingLineNumber = "0"
+                  offsetFromSymbolStart = "16">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Informed.SecondViewController.init (Informed.SecondViewController.Type)(nibName : Swift.Optional&lt;Swift.String&gt;, bundle : Swift.Optional&lt;__ObjC.NSBundle&gt;) -&gt; Informed.SecondViewController"
+                  moduleName = "Informed"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/Katie/Informed/Informed/SecondViewController.swift"
+                  timestampString = "483499042.074235"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "15"
+                  endingLineNumber = "15"
+                  offsetFromSymbolStart = "70">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Informed.SecondViewController.init (Informed.SecondViewController.Type)(coder : __ObjC.NSCoder) -&gt; Swift.Optional&lt;Informed.SecondViewController&gt;"
+                  moduleName = "Informed"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/Katie/Informed/Informed/SecondViewController.swift"
+                  timestampString = "483499042.074424"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "15"
+                  endingLineNumber = "15"
+                  offsetFromSymbolStart = "31">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
+</Bucket>
