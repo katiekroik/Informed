@@ -27,8 +27,8 @@ class FirstViewController: UITableViewController, UIPickerViewDelegate, UIPicker
     var allGenres = List<Genre>()
     var lastTimeChecked: NSDate!
     
+    // variables for picker view
     var genreArray = [Genre]()
-    
     var pickedGenre = 0
     
     // The following two dictionaries use our genre naming conventions as keys,
@@ -49,7 +49,7 @@ class FirstViewController: UITableViewController, UIPickerViewDelegate, UIPicker
     ]
     
     
-    // TODO: Attach button to this so that when a new genre is selected, we pull the articles from the database.
+    // When a new genre is selected, we pull the articles from the database.
     // At the moment, this determines the number of table cells we need.
     func populateForGenre() -> Int {
         var i = 0
@@ -315,30 +315,32 @@ class FirstViewController: UITableViewController, UIPickerViewDelegate, UIPicker
     }
     
     func pickerView(pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        
+        // create the genre array which will populate picker view
         for Genre in allGenres{
+            // add each genre from realm to array
             genreArray.append(Genre)
         }
-        
-        return genreArray[row].name
+        return genreArray[row].name // return the names of the genres
     }
     
     func pickerView(pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        // set up number of rows in picker view according to number of genres from realm
         let genres = realm.objects(Genre)
-
         return genres.count
     }
     
+    // only one column of choices for genre
     func numberOfComponentsInPickerView(pickerView: UIPickerView) -> Int{
         return 1
     }
     
+    // function to determine what to do when something is picked on picker view
     func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         pickedGenre = row
+        // the index of picker view should align with index in genre array
         currentGenre = genreArray[pickedGenre]
+        // reload articles when picked
         loadNewArticles()
     }
-
-
 }
 
