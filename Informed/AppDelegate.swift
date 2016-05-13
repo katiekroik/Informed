@@ -42,13 +42,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             populateUsers()
         }
         
+        // set up fb delegate for login instance
         FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
         
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         
         self.window = UIWindow(frame: UIScreen.mainScreen().bounds)
         
-        // Determine if session is active first
+        // Determine if session is active first based off of current access token
         if(FBSDKAccessToken.currentAccessToken() != nil){
             // This may be unnecessary. Potentially inverse the if statement?
             let facebookId = FBSDKAccessToken.currentAccessToken().userID
@@ -56,11 +57,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             if potentialUsers.count > 0 {
                 currentUser = potentialUsers.first
             } else {
+                // if no session is active set the vc to be the FB login page
                 let initialViewController = storyboard.instantiateViewControllerWithIdentifier("FBViewController")
-                
                 self.window?.rootViewController = initialViewController
                 self.window?.makeKeyAndVisible()
             }
+            
             
             let initialViewController = storyboard.instantiateViewControllerWithIdentifier("TabViewController")
             
@@ -151,7 +153,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
     }
     
-    
+    // required function for FBSDK to access facebook properly
     func application(application: UIApplication, openURL url: NSURL, sourceApplication: String?, annotation: AnyObject) -> Bool {
         return FBSDKApplicationDelegate.sharedInstance().application(application, openURL: url, sourceApplication: sourceApplication, annotation: annotation)
     }
