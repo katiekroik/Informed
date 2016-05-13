@@ -31,6 +31,9 @@ class FirstViewController: UITableViewController, UIPickerViewDelegate, UIPicker
     
     var pickedGenre = 0
     
+    // The following two dictionaries use our genre naming conventions as keys,
+    // and the corresponding news outlet's naming conventions as the values.
+    // This makes for slightly more elegant code when requests are made to either.
     let nprIds = [
         "politics" : 1014,
         "entertainment" : 1048,
@@ -47,6 +50,7 @@ class FirstViewController: UITableViewController, UIPickerViewDelegate, UIPicker
     
     
     // TODO: Attach button to this so that when a new genre is selected, we pull the articles from the database.
+    // At the moment, this determines the number of table cells we need.
     func populateForGenre() -> Int {
         var i = 0
         currentGenre = realm.objects(Genre).filter("name == %s", currentGenre.name).first
@@ -62,6 +66,8 @@ class FirstViewController: UITableViewController, UIPickerViewDelegate, UIPicker
         return articlesForGenre.count
     }
     
+    // When called, this function checks for how long ago we made a request to the APIs of each news outlet.
+    // If it's been over five minutes, run another request. Otherwise, ignore the request (we don't want to overuse our API limits!!)
     private func loadNewArticles() {
         let calendar = NSCalendar.currentCalendar()
         let fiveMinutesAgo = calendar.dateByAddingUnit(.Minute, value: -5, toDate: NSDate(), options: [])
@@ -80,31 +86,40 @@ class FirstViewController: UITableViewController, UIPickerViewDelegate, UIPicker
         self.articleTable.reloadData()
     }
     
+    // Use NPR API to load stories pertaining to the passed genre.
     private func loadNprArticles(inGenre: String) {
         let newArticles = List<Article>()
         let id = nprIds[inGenre]
         let nprParameters = [
-            "apiKey" : "MDIzNzk1Mjk1MDE0NjA1NzU0ODg1Y2ZlZQ000",
-            "format" : "json",
-            "id" : String(id!),
-            "hideChildren" : "1",
-            "fields" : "titles,dates",
-            "requiredAssets" : "text",
-            "dateType" : "story",
-            "searchType" : "mainText"
+            "apiKey" : "MDIzNzk1Mjk1MDE0NjA1NzU0ODg1Y2ZlZQ000", // Our API Key (Shh!!)
+            "format" : "json",                                  // Easiest format for parsing.
+            "id" : String(id!),                                 // NPR's ID corresponding to said category.
+            "hideChildren" : "1",                               // Tailor our results.
+            "fields" : "titles,dates",                          // Continue to tailor our results.
+            "requiredAssets" : "text",                          // Unsure, but necessary.
+            "dateType" : "story",                               // They have a few different DateTypes for articles.
+            "searchType" : "mainText"                           // We want articles, not comments or related.
         ]
         Alamofire.request(.GET, "http://api.npr.org/query", parameters: nprParameters)
             .responseJSON { (_,_,result) in
                 switch result {
                 case .Success(let data):
+                    // This path executes if Alamofire's attempt to make a connection is successful.
                     let json = JSON(data)
                     let filteredResults = json["list"]["story"]
+                    
+                    // We use our own custom date formatter to convert the NPR API's
+                    // into something more consistent in our own database.
                     let dateFormatter = NSDateFormatter()
                     dateFormatter.dateFormat = "EEE, dd MMMM yyyy HH:mm:ss -0400"
+                    
                     for(_, subJson):(String, JSON) in filteredResults {
+                        // Traverse each returned article,
+                        // and first ensure that we do not already have it in the database.
                         if self.realm.objects(Article).filter("publishId == %s", subJson["id"].string!).count > 0 {
                             break
                         }
+                        // Otherwise, create a new article and populate with information.
                         let thisArticle = Article()
                         let thisDate = dateFormatter.dateFromString(subJson["pubDate"]["$text"].string!)
                         thisArticle.datePublished = thisDate!
@@ -115,35 +130,47 @@ class FirstViewController: UITableViewController, UIPickerViewDelegate, UIPicker
                         thisArticle.publishId = subJson["id"].string!
                         newArticles.append(thisArticle)
                     }
+                    // Only add to the database if there is at least one new article.
                     if newArticles.count > 0 {
                         try! self.realm.write {
                             self.realm.add(newArticles)
                         }
                     }
                 case .Failure(_, let error):
+                    // This should never happen.
                     print("Request failed with error \(error)")
                 }
         }
     }
     
+    // Function which makes a request out to The Guardian's API using Alamofire.
+    // When completed, it should add new articles to the database.
     private func loadGuardianArticles(inGenre: String) {
         let newArticles = List<Article>()
-        let id = guardianIds[inGenre]!
+        let id = guardianIds[inGenre]!  // Get The Guardian's ID corresponding to this genre from our earlier defined dictionary.
         
         let guardianParameters = [
-            "api-key" : "e7fccd80-1524-44c8-aabb-7db8a8921872",
+            "api-key" : "e7fccd80-1524-44c8-aabb-7db8a8921872", // Our API Key (Shh! Don't tell anyone!)
             "section" : id
         ]
         
+        // Make the request.
         Alamofire.request(.GET, "http://content.guardianapis.com/search",parameters: guardianParameters)
             .responseJSON { (_, _, result) in
                 switch result {
                 case .Success(let data):
+                    // If successful, parse the JSON
                     let json = JSON(data)
                     let filteredResults = json["response"]["results"]
+                    
+                    // Reformat their date to correspond to the existing format used in our database.
                     let dateFormatter = NSDateFormatter()
                     dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZ"
+                    
                     for (_, subJson):(String, JSON) in filteredResults {
+                        // Only add to our array if there isn't already a corresponding record in the database.
+                        // Don't worry about updated articles, as they will have the same link as the old ones
+                        // (This is the benefit of storing links, not whole stories).
                         if self.realm.objects(Article).filter("publishId == %s", subJson["id"].string!).count > 0 {
                             break
                         }
@@ -157,6 +184,7 @@ class FirstViewController: UITableViewController, UIPickerViewDelegate, UIPicker
                         thisArticle.linkTo = subJson["webUrl"].string!
                         newArticles.append(thisArticle)
                     }
+                    // Only add to the database if there's something worth adding.
                     if newArticles.count > 0 {
                         try! self.realm.write {
                             self.realm.add(newArticles)
@@ -176,11 +204,12 @@ class FirstViewController: UITableViewController, UIPickerViewDelegate, UIPicker
         }
     }
     
+    // This just displays a loading HUD in the middle of the page. May be redundant.
     private func showLoadingHUD() {
         let hud = MBProgressHUD.showHUDAddedTo(articleTable, animated: true)
         hud.labelText = "Loading..."
     }
-    
+    // Hides the loading HUD from the previous function. Mostly implemented MBProgressHUD as a means to experiment with CocoaPods.
     private func hideLoadingHUD() {
         MBProgressHUD.hideAllHUDsForView(articleTable, animated: true)
     }
