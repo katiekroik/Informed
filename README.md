@@ -59,3 +59,18 @@ end
 - Create a user object with the FB email - if one doesn't exist already
 - Finally, after logging in successfully the app will switch back to main view controller (`TabViewController`).
 - Logout action button on `SecondViewController` takes user back to `FBViewController` where the logout button is now present.
+
+##### How We Obtained the News Articles
+- We found this awesome Pod called [Alamofire](https://github.com/Alamofire/Alamofire), which makes HTTP requests super simple.
+- After spending some time getting down their functional conventions, in addition to building some test projects, we fit it into `FirstViewController.swift`.
+- One awesome trait Alamofire has is that it can return results in XML, JSON, or raw text form, which makes it really easy to parse if you have a familiarity with one.
+- For now, all requests are made to The Guardian and NPR's APIs, and returned in JSON format. In the future, we would like to extend this to other news outlets as well.
+- Each API request is made within it's own function in `FirstViewController.swift`
+
+##### Storing the Data
+- While we originally considered hosting a database, most thing we encountered either costed too much, or had a ton of steps to obtain, or were just plain hard to integrate with a Swift app.
+- We elected to use [Realm](https://realm.io/), a mobile database which is stored locally on your iOS device.
+- Obviously in future implementations, we'll rely on something more stable and globally accessible, but for the scope of our project, Realm got the job done fast, and is a really cool growing technology that we got to experiment with.
+- Realm interactions take place throughout the app, most notably in `AppDelegate.swift` and `FirstViewController.swift`
+        - In `AppDelegate.swift`, it's used to populate the database if no records currently exist. By default, we used fake names from the TV show [Parks and Rec.](http://www.nbc.com/parks-and-recreation) as competitors for our current user.
+        - In `FirstViewController.swift`, Realm is used to fetch and display new articles, by searching the `Article` table of our database for records which match the `Genre` type in question.
