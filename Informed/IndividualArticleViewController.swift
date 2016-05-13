@@ -71,7 +71,7 @@ class IndividualArticleViewController: UIViewController, UITextViewDelegate, WKN
             }
         }
         
-        
+        //
         if (numReadOfSource[article.publisher] == nil) {
             numReadOfSource[article.publisher] = 0
         }
