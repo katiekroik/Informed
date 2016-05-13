@@ -72,5 +72,5 @@ end
 - We elected to use [Realm](https://realm.io/), a mobile database which is stored locally on your iOS device.
 - Obviously in future implementations, we'll rely on something more stable and globally accessible, but for the scope of our project, Realm got the job done fast, and is a really cool growing technology that we got to experiment with.
 - Realm interactions take place throughout the app, most notably in `AppDelegate.swift` and `FirstViewController.swift`
-        - In `AppDelegate.swift`, it's used to populate the database if no records currently exist. By default, we used fake names from the TV show [Parks and Rec.](http://www.nbc.com/parks-and-recreation) as competitors for our current user.
-        - In `FirstViewController.swift`, Realm is used to fetch and display new articles, by searching the `Article` table of our database for records which match the `Genre` type in question.
+- In `AppDelegate.swift`, it's used to populate the database if no records currently exist. By default, we used fake names from the TV show [Parks and Rec.](http://www.nbc.com/parks-and-recreation) as competitors for our current user.
+- In `FirstViewController.swift`, Realm is used to fetch and display new articles, by searching the `Article` table of our database for records which match the `Genre` type in question.
