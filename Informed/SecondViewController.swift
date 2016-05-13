@@ -14,7 +14,6 @@ class SecondViewController: UIViewController {
 
     @IBOutlet weak var welcomeMessage: UILabel!
     @IBOutlet weak var userPoints: UILabel!
-//    @IBOutlet weak var userLikedArticles: UILabel!
     @IBOutlet weak var userReadNumArticles: UILabel!
     @IBOutlet weak var userPlaceInLeaderboard: UILabel!
     
@@ -41,25 +40,9 @@ class SecondViewController: UIViewController {
         welcomeMessage.font = UIFont(name: "AmericanTypeWriter", size: 20)
         welcomeMessage.text = "Welcome, " + currentUser.name + "!"
         userPoints.font = UIFont(name: "AmericanTypeWriter", size: 15)
-        userPoints.text = String(currentUser.points)
         userReadNumArticles.font = UIFont(name: "AmericanTypeWriter", size: 15)
-        userReadNumArticles.text = String(currentUser.articlesRead.count)
         
-        // Sort the users and get what place they're in
-        let realm = try! Realm()
-        let users = realm.objects(User)
-        let sortedUsers = users.sorted("points", ascending: false)
-        
-        var count = 0;
-        
-        // Fill in the place
-        for u in sortedUsers {
-            count += 1;
-            if (u.email == currentUser.email) {
-                userPlaceInLeaderboard.font = UIFont(name: "AmericanTypeWriter", size: 15)
-                userPlaceInLeaderboard.text = String(count);
-            }
-        }
+        print(currentUser.points)
 
         // Get the string of when the user last logged in
         let stringDate = String(currentUser.lastLogin)
@@ -75,6 +58,42 @@ class SecondViewController: UIViewController {
         }
         
         // Do any additional setup after loading the view, typically from a nib.
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        print("appearing")
+        userPoints.text = String(currentUser.points)
+        userReadNumArticles.text = String(currentUser.articlesRead.count)
+        let realm = try! Realm()
+        let users = realm.objects(User)
+        let sortedUsers = users.sorted("points", ascending: false)
+        
+        var count = 0;
+        
+        // Fill in the place
+        for u in sortedUsers {
+            count += 1;
+            if (u.email == currentUser.email) {
+                userPlaceInLeaderboard.font = UIFont(name: "AmericanTypeWriter", size: 15)
+                userPlaceInLeaderboard.text = String(count);
+            }
+        }
+        
+        var numReadOfGenre = [String: Int]()
+        
+        for u in currentUser.articlesRead {
+            if (numReadOfGenre[u.genre.name] == nil) {
+                numReadOfGenre[u.genre.name] = 1
+            } else {
+                numReadOfGenre[u.genre.name] = numReadOfGenre[u.genre.name]! + 1
+            }
+        }
+        
+        let sortedGenres = numReadOfGenre.sort({$0.1 > $1.1})
+        print(numReadOfGenre)
+        print(sortedGenres)
+        print(sortedGenres.first!.0)
+        userMostEducatedIn.text = sortedGenres.first!.0
     }
 
     @IBAction func Logout(sender: UIButton) {

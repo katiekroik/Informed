@@ -18,7 +18,6 @@ class FirstViewController: UITableViewController, UIPickerViewDelegate, UIPicker
     var articleArray = [(Article)]();
     var selectedArticle = 0
     @IBOutlet var articleTable: UITableView!
-    
     @IBOutlet var genrePicker: UIPickerView!
     
     var currentUser: User!

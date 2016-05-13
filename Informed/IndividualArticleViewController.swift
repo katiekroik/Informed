@@ -71,6 +71,14 @@ class IndividualArticleViewController: UIViewController, UITextViewDelegate, WKN
             }
         }
         
+        
+        if (numReadOfSource[article.publisher] == nil) {
+            numReadOfSource[article.publisher] = 0
+        }
+        if (numReadOfGenre[article.genre.name] == nil) {
+            numReadOfGenre[article.genre.name] = 0
+        }
+        
         // Create a multiplier based on how many articles you've read from that publisher
         var mult = max(0.6, 1.2 - Double(numReadOfSource[article.publisher]!))
         
@@ -88,13 +96,11 @@ class IndividualArticleViewController: UIViewController, UITextViewDelegate, WKN
         else {
             print("Re-reading an article -> no points...")
         }
-        
     }
     
     override func viewWillAppear(animated: Bool) {
         //        articleName.text = aName;
     }
-    
     
     func scrollViewDidEndDragging(scrollView: UIScrollView, willDecelerate decelerate: Bool)
     {
