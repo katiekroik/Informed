@@ -18,7 +18,7 @@ Since we've only had a few weeks to do so, we haven't completed everything we wa
 - [ ] Download the project
 - [ ] Run `pod install`
 - [ ] Use the `.xcworkspace` file that's automatically generated
-- [ ] Run!! Mock data should be loaded into your db
+- [ ] Run on iPhone 5s!! Mock data should be loaded into your db
 
 ##### Our File Structure
 ```
