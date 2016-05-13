@@ -12,7 +12,7 @@ import RealmSwift
 class FBViewController: UIViewController,  FBSDKLoginButtonDelegate {
     
     @IBOutlet var cancelLogout: UIButton!
-    
+    // set up blue facebook login button
     let loginButton: FBSDKLoginButton = {
         let button = FBSDKLoginButton()
         button.readPermissions = ["email"]
@@ -21,7 +21,7 @@ class FBViewController: UIViewController,  FBSDKLoginButtonDelegate {
     
     @IBAction func cancelLogoutAction(sender: UIButton) {
         let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
-        
+        // set next vc to be news reading page
         let nextViewController = storyBoard.instantiateViewControllerWithIdentifier("TabViewController")
         self.presentViewController(nextViewController, animated:true, completion:nil)
         
@@ -34,7 +34,7 @@ class FBViewController: UIViewController,  FBSDKLoginButtonDelegate {
         cancelLogout.hidden = true // cancel log out button should not appear on welcome page
         
         view.addSubview(loginButton)
-        loginButton.center = view.center
+        loginButton.center = view.center // center button on page
         loginButton.delegate = self
 
         
@@ -45,8 +45,8 @@ class FBViewController: UIViewController,  FBSDKLoginButtonDelegate {
     }
     
     func fetchProfile() {
-        print("fetch profile")
-        
+        //print("fetch profile")
+        //fetch these parameters from facebook
         let parameters = ["fields": "email,first_name,last_name, picture.type(large)"]
         FBSDKGraphRequest(graphPath: "me", parameters: parameters).startWithCompletionHandler { (connection, result, error) -> Void in
             if error != nil {
@@ -84,7 +84,7 @@ class FBViewController: UIViewController,  FBSDKLoginButtonDelegate {
             if let picture = result["picture"] as? NSDictionary, data = picture["data"] as? NSDictionary, url = data["url"] as? String{
                 currentUser.picture = url
             }
-            
+            // add user to realm db
             try! realm.write {
                 realm.add(currentUser)
             }
