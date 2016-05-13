@@ -97,11 +97,7 @@ class IndividualArticleViewController: UIViewController, UITextViewDelegate, WKN
             print("Re-reading an article -> no points...")
         }
     }
-    
-    override func viewWillAppear(animated: Bool) {
-        //        articleName.text = aName;
-    }
-    
+
     func scrollViewDidEndDragging(scrollView: UIScrollView, willDecelerate decelerate: Bool)
     {
         if !decelerate

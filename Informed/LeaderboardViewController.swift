@@ -34,6 +34,10 @@ class LeaderboardViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        // Do any additional setup after loading the view.
+    }
+    
+    override func viewDidAppear(animated: Bool) {
         let realm = try! Realm()
         let users = realm.objects(User)
         
@@ -46,7 +50,7 @@ class LeaderboardViewController: UIViewController {
                 image1.image = UIImage(data: data)
             }
         }
-
+        
         leader2.text = sortedUsers[1].name
         points2.text = String(sortedUsers[1].points)
         if let url = NSURL(string: sortedUsers[1].picture) {
@@ -78,8 +82,6 @@ class LeaderboardViewController: UIViewController {
                 image5.image = UIImage(data: data)
             }
         }
-        
-        // Do any additional setup after loading the view.
     }
 
     override func didReceiveMemoryWarning() {
