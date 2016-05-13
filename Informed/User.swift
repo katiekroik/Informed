@@ -5,6 +5,8 @@
 //  Created by Katie Kroik on 4/5/16.
 //  Copyright © 2016 nyu.edu. All rights reserved.
 //
+// User object to hold information fetched from facebook and used in realm database
+
 
 import Foundation
 import RealmSwift
