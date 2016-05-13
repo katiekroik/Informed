@@ -77,7 +77,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         return true
     }
     
-    // Function populates Realm DB on phone with dummy values for testing purposes.
+    // If this is the first time a user is accessing our app, populate their local realm database with fake users for now.
+    // Realm is stored entirely locally. We considered moving to a cloud based database but realized for the scope of this project,
+    // that was going to be costly when it comes to both time and our actual wallets. Plus, realm was fun to experiment with.
     // Yes, I've been watching too much Parks & Rec.
     func populateUsers() {
         
@@ -116,7 +118,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         ron.startOfStreak = lastYear!
         ron.lastLogin = lastYear!
         
-        // Make an april users
+        // Make an april user
         let april = User()
         april.name = "April Ludgate"
         april.facebookId = "93861"
